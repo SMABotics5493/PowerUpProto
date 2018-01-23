@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-/*public class DriveStraight extends Command {
+public class DriveStraight extends Command {
 
 	private double speed;
 	private double time;
@@ -43,4 +43,4 @@ import edu.wpi.first.wpilibj.command.Command;
     // subsystems is scheduled to run
     protected void interrupted() {
     }
-}*/
+}

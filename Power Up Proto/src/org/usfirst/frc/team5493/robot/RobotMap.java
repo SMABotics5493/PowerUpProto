@@ -20,20 +20,29 @@ public class RobotMap {
 	public final static int JOYBTN_LT = 1;
 	public final static int JOYBTN_RT = 5;
 	
-	public static int leftFront;
-	public static int leftBack;
-	public static int rightFront;
-	public static int rightBack;
-
-	public static int intakeLeft;
-	public static int intakeRight;
+	public final static int RIGHTYAXIS = 5;
+	public final static int LEFTYAXIS = 1;
 	
-	public static int climber; 
+	public static int leftFront = 7;
+	public static int leftBack = 6;
+	public static int rightFront = 2;
+	public static int rightBack = 5;
+
+	public static int intakeLeft = 3;
+	public static int intakeRight = 1;
+	
+	public static int climber = 4; 
 	
 	public static int leftEncoderA;
 	public static int leftEncoderB;
 	public static int rightEncoderA;
 	public static int rightEncoderB;
+	
+	public static int solenoidForward;
+	public static int solenoidReverse;
+	
+	//public static int gyro;
+	
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;

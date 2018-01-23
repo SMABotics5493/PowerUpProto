@@ -5,9 +5,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
+import org.usfirst.frc.team5493.robot.commands.DriveStraightwithGyro;
 import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
+import org.usfirst.frc.team5493.robot.subsystems.Solenoid;
 import org.usfirst.frc.team5493.robot.subsystems.driveBase;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -19,7 +22,7 @@ public class Robot extends IterativeRobot {
 	public static final driveBase driveBase = new driveBase();
 	public static Climber climber;
 	public static OI oi;
-
+	public static Solenoid solenoid;
 	public static CubeControls cubeControls; 
 	
  Command autonomousCommand;
@@ -35,6 +38,7 @@ public class Robot extends IterativeRobot {
     	climber = new Climber();
     	cubeControls = new CubeControls();
 		oi = new OI();
+//		solenoid = new Solenoid();
 		
         chooser = new SendableChooser();
         chooser.addDefault("Tank Drive", new JoystickDrive());
@@ -67,7 +71,7 @@ public class Robot extends IterativeRobot {
 	 */
     public void autonomousInit() {
         autonomousCommand = (Command) chooser.getSelected();
-        
+        autonomousCommand = new DriveStraightwithGyro();
 		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
 		case "My Auto":
