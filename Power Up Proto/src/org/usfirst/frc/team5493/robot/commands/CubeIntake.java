@@ -2,6 +2,7 @@ package org.usfirst.frc.team5493.robot.commands;
 
 import org.usfirst.frc.team5493.robot.Robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -9,15 +10,19 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CubeIntake extends Command {
 
+	private boolean isFinished;
+	
     public CubeIntake() {
         requires(Robot.cubeControls);
     }
     
+    DigitalInput limitSwitch;
     //When Button is pressed, CubeIntake will turn on and take in cube until limit switch = 1
     //once limit switch = 1, CubeIntake will stop
     
     // Called just before this Command runs the first time
     protected void initialize() {
+    	//limitSwitch = new DigitalInput(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -28,7 +33,7 @@ public class CubeIntake extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     // Called once after isFinished returns true

@@ -3,9 +3,10 @@ import org.usfirst.frc.team5493.robot.commands.ClimbDown;
 import org.usfirst.frc.team5493.robot.commands.ClimbUp;
 import org.usfirst.frc.team5493.robot.commands.CubeIntake;
 import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
-//import org.usfirst.frc.team5493.robot.commands.SolenoidForward;
-//import org.usfirst.frc.team5493.robot.commands.SolenoidReverse;
+import org.usfirst.frc.team5493.robot.commands.SolenoidForward;
+import org.usfirst.frc.team5493.robot.commands.SolenoidReverse;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
+import org.usfirst.frc.team5493.robot.subsystems.Solenoid;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
@@ -22,6 +23,12 @@ public class OI {
     private Joystick joystick = new Joystick(RobotMap.Joystick_Port);
     DriverStation ds = DriverStation.getInstance();
  
+    JoystickButton cubeIntake = new JoystickButton(joystick, RobotMap.JOYBTN_RT);
+	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_LT);
+	JoystickButton climbUp = new JoystickButton(joystick, RobotMap.JOYBTN_Y);
+	JoystickButton climbDown = new JoystickButton(joystick, RobotMap.JOYBTN_A);
+	JoystickButton solenoidForward = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
+	JoystickButton solenoidReverse = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
    
     public Joystick getDriveJoystick(){
     	return driveJoystick;
@@ -35,20 +42,14 @@ public class OI {
     
     public OI(){
     	
-    	JoystickButton cubeIntake = new JoystickButton(joystick, RobotMap.JOYBTN_RT);
-    	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_LT);
-    	JoystickButton climbUp = new JoystickButton(joystick, RobotMap.JOYBTN_Y);
-    	JoystickButton climbDown = new JoystickButton(joystick, RobotMap.JOYBTN_A);
-    	JoystickButton solenoidForward = new JoystickButton(joystick, RobotMap.JOYBTN_LT);
-    	JoystickButton solenoidReverse = new JoystickButton(joystick, RobotMap.JOYBTN_RT);
-
-    	
     	cubeIntake.whileHeld(new CubeIntake());
     	cubeOuttake.whileHeld(new CubeOuttake());
     	climbUp.whileHeld(new ClimbUp());
     	climbDown.whileHeld(new ClimbDown());
-//    	solenoidForward.whenPressed(new SolenoidForward());
-//    	solenoidReverse.whenPressed(new SolenoidReverse());
+    	solenoidForward.whenPressed(new SolenoidForward());
+    	solenoidReverse.whenPressed(new SolenoidReverse());
+    	
+    	
     	//JoystickButton triggerButton = new JoystickButton(joy, RobotMap.JOYBTN_TRIGGER);
     	
     	//SmartDashboard.putData(null);

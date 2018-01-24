@@ -38,8 +38,8 @@ public class RobotMap {
 	public static int rightEncoderA;
 	public static int rightEncoderB;
 	
-	public static int solenoidForward;
-	public static int solenoidReverse;
+	public static int solenoidForward = 1;
+	public static int solenoidReverse = 9;
 	
 	//public static int gyro;
 	

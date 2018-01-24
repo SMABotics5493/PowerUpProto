@@ -12,7 +12,6 @@ import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
 import org.usfirst.frc.team5493.robot.subsystems.Solenoid;
 import org.usfirst.frc.team5493.robot.subsystems.driveBase;
-
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import com.ctre.CANTalon.TalonControlMode;
@@ -23,7 +22,8 @@ public class Robot extends IterativeRobot {
 	public static Climber climber;
 	public static OI oi;
 	public static Solenoid solenoid;
-	public static CubeControls cubeControls; 
+	public static CubeControls cubeControls;
+ 
 	
  Command autonomousCommand;
     SendableChooser chooser;
