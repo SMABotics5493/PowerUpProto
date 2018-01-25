@@ -22,6 +22,9 @@ public class CubeControls extends Subsystem {
 	
 	leftIntakeMotor = new WPI_TalonSRX(RobotMap.intakeLeft);
 	rightIntakeMotor = new WPI_TalonSRX(RobotMap.intakeRight);
+	
+	leftIntakeMotor.configOpenloopRamp(.2, 1);
+	rightIntakeMotor.configOpenloopRamp(.2, 1);
     //intake = new RobotDrive(leftIntakeMotor,rightIntakeMotor);
 	
 	// Put methods for controlling this subsystem

@@ -13,8 +13,9 @@ public class Climber extends Subsystem {
 
 	 public WPI_TalonSRX climbMotor;
 	
-	public void climber() {
-		
+	public Climber() {
+	super();
+	
 	climbMotor = new WPI_TalonSRX(RobotMap.climber);
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

@@ -5,6 +5,7 @@ import org.usfirst.frc.team5493.robot.commands.CubeIntake;
 import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
 import org.usfirst.frc.team5493.robot.commands.SolenoidForward;
 import org.usfirst.frc.team5493.robot.commands.SolenoidReverse;
+import org.usfirst.frc.team5493.robot.commands.Stop;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.Solenoid;
 
@@ -24,11 +25,12 @@ public class OI {
     DriverStation ds = DriverStation.getInstance();
  
     JoystickButton cubeIntake = new JoystickButton(joystick, RobotMap.JOYBTN_RT);
-	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_LT);
+	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_X);
 	JoystickButton climbUp = new JoystickButton(joystick, RobotMap.JOYBTN_Y);
 	JoystickButton climbDown = new JoystickButton(joystick, RobotMap.JOYBTN_A);
 	JoystickButton solenoidForward = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
 	JoystickButton solenoidReverse = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
+	JoystickButton stop = new JoystickButton(joystick, RobotMap.JOYBTN_B);
    
     public Joystick getDriveJoystick(){
     	return driveJoystick;
@@ -48,6 +50,7 @@ public class OI {
     	climbDown.whileHeld(new ClimbDown());
     	solenoidForward.whenPressed(new SolenoidForward());
     	solenoidReverse.whenPressed(new SolenoidReverse());
+    	stop.whenPressed(new Stop());
     	
     	
     	//JoystickButton triggerButton = new JoystickButton(joy, RobotMap.JOYBTN_TRIGGER);

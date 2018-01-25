@@ -27,8 +27,9 @@ public class CubeIntake extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.cubeControls.leftIntakeMotor.set(1.0);
-    	Robot.cubeControls.rightIntakeMotor.set(1.0);
+    	Robot.cubeControls.leftIntakeMotor.set(-0.5);
+    	Robot.cubeControls.rightIntakeMotor.set(0.5);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
