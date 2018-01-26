@@ -3,6 +3,7 @@ package org.usfirst.frc.team5493.robot.subsystems;
 import org.usfirst.frc.team5493.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -12,11 +13,25 @@ public class Solenoid extends Subsystem {
 	
 	DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.solenoidForward, RobotMap.solenoidReverse);
 	
-	public void forward() {
+	public void open() {
+		if (solenoid.get() == DoubleSolenoid.Value.kForward) {
+			DriverStation.reportError("Pnuematics Releases: Forward", false);
+		} else if (solenoid.get() == DoubleSolenoid.Value.kReverse) {
+			DriverStation.reportError("Pnuematics Release: Reverse", false);
+		} else if (solenoid.get() == DoubleSolenoid.Value.kOff) {
+			DriverStation.reportError("Pnuematics Release: Off", false);
+		}
 		solenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 	
-	public void reverse(){
+	public void close(){
+		if (solenoid.get() == DoubleSolenoid.Value.kReverse) {
+			DriverStation.reportError("Pnuematics Releases: Reverse", false);
+		} else if (solenoid.get() == DoubleSolenoid.Value.kForward) {
+			DriverStation.reportError("Pnuematics Release: Forward", false);
+		} else if (solenoid.get() == DoubleSolenoid.Value.kOff) {
+			DriverStation.reportError("Pnuematics Release: Off", false);
+		}
 		solenoid.set(DoubleSolenoid.Value.kForward);
 	}
 
@@ -28,5 +43,15 @@ public class Solenoid extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
+	public void reverse(Object object) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void forward(Object object) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

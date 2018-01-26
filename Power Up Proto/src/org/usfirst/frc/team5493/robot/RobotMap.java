@@ -11,14 +11,14 @@ public class RobotMap {
 	public final static int Joystick_Drive_Port = 0;
 	public final static int Joystick_Port = 1;
 	
-	public final static int JOYBTN_A = 1;
+	public final static int JOYBTN_A = 4;
 	public final static int JOYBTN_B = 2;
 	public final static int JOYBTN_X = 3;
-	public final static int JOYBTN_Y = 4; 
+	public final static int JOYBTN_Y = 1; 
 	public final static int JOYBTN_LB = 5;
 	public final static int JOYBTN_RB = 6;
-	//public final static int JOYBTN_LT = 1;
-	public final static int JOYBTN_RT = 5;
+	public final static int JOYBTN_RT = 6;
+	public final static int JOYBTN_LT = 5;
 	
 	public final static int RIGHTYAXIS = 5;
 	public final static int LEFTYAXIS = 1;

@@ -9,8 +9,11 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SolenoidReverse extends Command {
 
+	boolean isActive;
+	
     public SolenoidReverse() {
-    	//requires(Robot.solenoid);
+    	requires(Robot.solenoid);
+    	isActive = true;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -21,12 +24,12 @@ public class SolenoidReverse extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.solenoid.reverse();
+    	Robot.solenoid.reverse(null);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return isActive;
     }
 
     // Called once after isFinished returns true
