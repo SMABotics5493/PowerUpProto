@@ -13,12 +13,12 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 /**
  *
  */
-public class DriveStraightwithGyro extends TimedCommand {
+public class DriveStraightWithGyro extends TimedCommand {
 
 //	private RobotDrive gyroDrive;
 	private ADXRS450_Gyro gyro;
 	double Kp = 0.03;
-    public DriveStraightwithGyro() {
+    public DriveStraightWithGyro() {
     	super(10);
         gyro = new ADXRS450_Gyro();
         gyro.reset();

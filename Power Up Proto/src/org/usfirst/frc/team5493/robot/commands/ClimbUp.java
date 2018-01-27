@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ClimbUp extends Command {
 
+	boolean isFinished;
     public ClimbUp() {
        requires(Robot.climber);
     }
@@ -19,17 +20,18 @@ public class ClimbUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.climber.climbMotor.set(0.5);
+    	isFinished = true;
+    	Robot.climber.climbUp();
+    	isFinished = false;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.climber.climbMotor.set(0.0);
     }
 
     // Called when another command which requires one or more of the same

@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
-public class driveBase extends Subsystem {
+public class DriveBase extends Subsystem {
 	double wheelDiameter = 6.0;
 	
 	double pulsesPerRevolution = 1440.0;
@@ -31,16 +31,16 @@ public class driveBase extends Subsystem {
 	private final String DRIVE_SYSTEM = "Tank Drive System";
 	private final String LEFT_FRONT = "Left Front Motor";
 	
-	public driveBase(){
+	public DriveBase(){
 		super();
 
-		leftFrontMotor = new WPI_TalonSRX(RobotMap.leftFront);
-		leftBackMotor = new WPI_TalonSRX(RobotMap.leftBack);
-		rightFrontMotor = new WPI_TalonSRX(RobotMap.rightFront);
-		rightBackMotor = new WPI_TalonSRX(RobotMap.rightBack);
+		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT);
+		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK);
+		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT);
+		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK);
 		
-		leftBackMotor.set(ControlMode.Follower,RobotMap.leftFront);
-		rightBackMotor.set(ControlMode.Follower, RobotMap.rightFront);
+		leftBackMotor.set(ControlMode.Follower,RobotMap.LEFT_FRONT);
+		rightBackMotor.set(ControlMode.Follower, RobotMap.RIGHT_FRONT);
 		
 		leftFrontMotor.configOpenloopRamp(.5,1);
 		leftBackMotor.configOpenloopRamp(.5,1);
