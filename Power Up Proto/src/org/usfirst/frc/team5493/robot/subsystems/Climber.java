@@ -4,6 +4,7 @@ import org.usfirst.frc.team5493.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -15,9 +16,19 @@ public class Climber extends Subsystem {
 	
 	public void climber() {
 		
+		
 	climbMotor = new WPI_TalonSRX(RobotMap.climber);
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	
+	double secondsFromNeutral = 0;
+	int timeoutMs = 0;
+	
+	Preferences prefs = Preferences.getInstance();
+	
+	secondsFromNeutral = prefs.getDouble("RampRateClimber", 0.25);
+	timeoutMs = prefs.getInt("RampRateClimberTimeout", 1);
+	
+	climbMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+	
 	 }
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

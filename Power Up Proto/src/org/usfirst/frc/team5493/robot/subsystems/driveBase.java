@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -39,6 +40,22 @@ public class driveBase extends Subsystem {
 		//leftBackMotor = (assigning a port on the joystick for controlling the left back motor)
 		drive = new RobotDrive(leftFrontMotor, rightFrontMotor, leftBackMotor, rightBackMotor);
 		drive.setExpiration(0.1); 
+		
+		double secondsFromNeutral = 0;
+		int timeoutMs = 0;
+		
+		Preferences prefs = Preferences.getInstance();
+		
+		secondsFromNeutral = prefs.getDouble("RampRateDriveBase", 0.25);
+		timeoutMs = prefs.getInt("RampRateDriveBaseTimeout", 1);
+		
+		leftFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		rightFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		leftBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		rightBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		
+		
+		
 		
 		leftEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
 		rightEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
