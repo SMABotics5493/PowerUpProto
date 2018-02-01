@@ -21,7 +21,7 @@
 			overwrite="true">
 		</unzip>
 		
-		<unzip src="${user.home}/wpilib/resources/java.zip" dest="${user.home}/wpilib"
+		<unzip src="${user.home}/wpilib/resources/java.zip" dest="${user.home}/wpilib/java/current"
 			overwrite="true">
 		</unzip>
 		
