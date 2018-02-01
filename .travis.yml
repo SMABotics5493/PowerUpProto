@@ -12,5 +12,5 @@ secure: "zfy6+ewOyxnK6RKj3Ns8ul4yYGTHHecbXt2sgjGEVLuMB6hmTh7lh2Ymc693JlsqdHT/YE+
 script:
   - ant -f travis.build.xml
   # other script steps might be done before running the actual analysis
-  - sonar-scanner
+  - sonar-scanner -X
 
