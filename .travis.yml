@@ -1,6 +1,6 @@
 language: java
 
-before-install: cd "Power Up Proto"
+before_install: cd "Power Up Proto"
 
 install: ant
 
