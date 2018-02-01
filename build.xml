@@ -15,7 +15,7 @@
 		<unzip src="${user.home}/frcplugin.zip" dest="${user.home}/wpilib" overwrite="true">
 			<patternset>
 				<include
-					name="EclipsePluginsV${travis.frc-plugin-version}\eclipse\plugins\edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}\resources\java.zip" />
+	name="**\java.zip" />
 			</patternset>
 		</unzip>
 		
