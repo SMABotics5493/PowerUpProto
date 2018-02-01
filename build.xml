@@ -9,6 +9,8 @@
 
 	<target name="travis-init">
 		<get src="${travis.frc-plugin-url}" dest="${user.home}/frcplugin.zip" />
+		
+		<mkdir dir="${user.home}/wpilib"/>
 
 		<unzip src="${user.home}/frcplugin.zip" dest="${user.home}/wpilib" overwrite="true">
 			<patternset>
