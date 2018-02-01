@@ -15,7 +15,19 @@
 		<unzip src="${user.home}/frcplugin.zip" dest="${user.home}/wpilib" overwrite="true">
 		</unzip>
 		
-		<unzip src="${user.home}/wpilib/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}/resources/java.zip" dest="${user.home}/wpilib"
+		
+ 
+		<dirset id="dist.contents" dir="{user.home}/wpilib/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}/resources" includes="*"/>  
+
+
+ 
+<property name="prop.dist.contents" refid="dist.contents"/> 
+
+
+ 
+<echo>${prop.dist.contents}</echo> 
+		$
+		<unzip src="{user.home}/wpilib/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}/resources/java.zip" dest="${user.home}/wpilib"
 			overwrite="true">
 		</unzip>
 	</target>
