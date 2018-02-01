@@ -19,7 +19,7 @@
 			</patternset>
 		</unzip>
 		
-		<unzip src="${user.home}/wpilib/resources/java.zip" dest="${user.home}/wpilib"
+		<unzip src="${user.home}/java.zip" dest="${user.home}/wpilib"
 			overwrite="true">
 		</unzip>
 	</target>
