@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+	<?xml version="1.0" encoding="UTF-8"?>
 
 <project name="Travis FRC Deployment" default="travis-init">
 
@@ -19,7 +19,7 @@
 			</patternset>
 		</unzip>
 
-		<dirset id="dist.contents" dir="${user.home}/wpilib" includes="*"/> 
+		<fileset id="dist.contents" dir="${user.home}/wpilib" includes="*"/> 
 <property name="prop.dist.contents" refid="dist.contents"/>
 <echo>${prop.dist.contents}</echo>
 		
