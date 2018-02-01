@@ -21,16 +21,15 @@
 			overwrite="true">
 		</unzip>
 		
+		<unzip src="${user.home}/wpilib/resources/java.zip" dest="${user.home}/wpilib"
+			overwrite="true">
+		</unzip>
+		
 		<dirset id="dist.contents" 
 			dir="${user.home}/wpilib/"
 			includes="*"/>  
 		<property name="prop.dist.contents" refid="dist.contents"/> 
 		<echo>contents = ${prop.dist.contents}</echo>
-		
-		<unzip src="${user.home}/wpilib/resources/java.zip" dest="${user.home}/wpilib"
-			overwrite="true">
-		</unzip>
-		
 	</target>
 	<!-- <import file="frc-build.xml"/> <import file="${wpilib.ant.dir}/build.xml"/> -->
 </project>
