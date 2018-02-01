@@ -15,16 +15,22 @@
 		<unzip src="${user.home}/frcplugin.zip" dest="${user.home}/wpilib" overwrite="true">
 		</unzip>
 		<!-- ${user.home}/wpilib/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}/resources -->
-
+	        <!-- edu.wpi.first.wpilib.plugins.java_2018.2.2.jar -->	
+		 
+		<unzip src="${user.home}/wpilib/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}.jar" dest="${user.home}/wpilib"
+			overwrite="true">
+		</unzip>
+		
 		<dirset id="dist.contents" 
-			dir="${user.home}/wpilib/eclipse/plugins"
+			dir="${user.home}/wpilib/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}"
 			includes="*"/>  
 		<property name="prop.dist.contents" refid="dist.contents"/> 
-		<echo>contents = ${prop.dist.contents}</echo> 
+		<echo>contents = ${prop.dist.contents}</echo>
 		
 		<unzip src="${user.home}/wpilib/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}/resources/java.zip" dest="${user.home}/wpilib"
 			overwrite="true">
 		</unzip>
+		
 	</target>
 	<!-- <import file="frc-build.xml"/> <import file="${wpilib.ant.dir}/build.xml"/> -->
 </project>
