@@ -25,13 +25,8 @@
 			overwrite="true">
 		</unzip>
 		
-		<dirset id="dist.contents" 
-			dir="${user.home}/wpilib/java/current"
-			includes="*"/>  
-		<property name="prop.dist.contents" refid="dist.contents"/> 
-		<echo>contents = ${prop.dist.contents}</echo>
+		<ant antfile="${user.home}/wpilib/java/current/ant/build.xml" target="compile"/>
 	</target>
-	<!-- <import file="frc-build.xml"/> <import file="${wpilib.ant.dir}/build.xml"/> -->
 </project>
 
 
