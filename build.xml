@@ -25,7 +25,9 @@
 			overwrite="true">
 		</unzip>
 		
-		<ant antfile="${user.home}/wpilib/java/current/ant/build.xml" target="compile"/>
+		<!--
+			<ant antfile="${user.home}/wpilib/java/current/ant/build.xml" target="compile"/>
+		-->
 	</target>
 </project>
 
