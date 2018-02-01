@@ -20,5 +20,5 @@ addons:
 script:
   - ant -f travis.build.xml
   # other script steps might be done before running the actual analysis
-  - sonar-scanner -X
-
+  - sonar-scanner 
+  
