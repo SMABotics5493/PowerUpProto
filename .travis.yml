@@ -9,7 +9,8 @@ addons:
     organization: "smaboticsmaster-github" # the key of the org you chose at step #3
     token:
       secure: "APgBOssFv3wdNjQXaBV1eU2B78KsoZ00grCsbyX/eWkRnW44n4cA2yoDeCGK8cTqCAjOnrUnm+wymRwE2l0asoPBbjdL9FV5weGBfICLySQHVjjMPrYQPv26swW+oyD+nDZ6Hpnbfo5FXnMcodRxINZ6ezT222/vB2KQSRo+Lm2NDcOnhgIvhgoZrUPtcxH51xE/dwP/4MJfpIrlyo88yv4LXnOD2vQQ+bi2kea+yDrcbKQGT6Bph5yLtybJ7SAsGDVMxY0O0puR0srvKLy//ge/aJZ8eTzY2yKL/FdH9Iq0uj1wx9Ae2Ch1WFazbBTAwsLQNjxXWU45kMel0UdP0DPxLIkihJPOFFg9MZfZM7fk3BOXVT35Ktz8OBzXTDvROIw27hlPNUAwnEz2E/YmJHu6OmeP7U2cnoVNOjvdT5cgFS21zhsqQtBGD/3FjPZbhd0fE53KwxVNQNyTWrkblqGn4w6DlAiHwFLhGNjqbnDb1vYbNtc6qiTA2KS8cmWsQLSbYFrmcwQUcBkNtkvBTTsI8qiAeHsST/tcJfSZDctLXq5b6Gz7kpM3odRJtLsELf7hzWiXO9POf5rMYIxXlExsFhcBl3wW1okTXC62ov9sOz5mrj5HguyySFeRNNX6QntfWwBDVa/jIBV/wAQBo1VAs0cvFv6Hsp2sxuV19Oc="
-
+    branches:
+      - *
 script:
   - ant -f travis.build.xml
   # other script steps might be done before running the actual analysis
