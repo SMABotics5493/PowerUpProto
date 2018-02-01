@@ -26,7 +26,7 @@
 
  
 <echo>${prop.dist.contents}</echo> 
-		$
+		
 		<unzip src="{user.home}/wpilib/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}/resources/java.zip" dest="${user.home}/wpilib"
 			overwrite="true">
 		</unzip>
