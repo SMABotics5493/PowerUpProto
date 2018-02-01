@@ -17,7 +17,7 @@
 		<!-- ${user.home}/wpilib/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}/resources -->
 
 		<dirset id="dist.contents" 
-			dir="${user.home}/wpilib/eclipse/plugins/"
+			dir="${user.home}/wpilib/eclipse"
 			includes="*"/>  
 		<property name="prop.dist.contents" refid="dist.contents"/> 
 		<echo>${prop.dist.contents}</echo> 
