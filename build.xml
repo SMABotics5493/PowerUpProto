@@ -26,7 +26,7 @@
 		</unzip>
 		
 		<dirset id="dist.contents" 
-			dir="${user.home}/wpilib/"
+			dir="${user.home}/wpilib/java/current"
 			includes="*"/>  
 		<property name="prop.dist.contents" refid="dist.contents"/> 
 		<echo>contents = ${prop.dist.contents}</echo>
