@@ -14,7 +14,9 @@
 
 		<unzip src="${user.home}/frcplugin.zip" dest="${user.home}/wpilib" overwrite="true">
 		</unzip>
-		
+		<dirset id="dist.contents" dir="${nativePackageDir}" includes="*"/> 
+<property name="prop.dist.contents" refid="dist.contents"/>
+<echo>${prop.dist.contents}</echo>
 		<unzip src="${user.home}/**/java.zip" dest="${user.home}/wpilib"
 			overwrite="true">
 		</unzip>
