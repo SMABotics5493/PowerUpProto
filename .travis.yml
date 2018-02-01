@@ -1,6 +1,7 @@
-before-script: cd "Power Up Proto"
-
 language: java
+
+before-install: cd "Power Up Proto"
+
 install: ant
 
 addons:
