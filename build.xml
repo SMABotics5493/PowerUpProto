@@ -18,12 +18,8 @@
 					name="EclipsePluginsV${travis.frc-plugin-version}\eclipse\plugins\edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}\resources\java.zip" />
 			</patternset>
 		</unzip>
-
-		<fileset id="dist.contents" dir="${user.home}/wpilib" includes="*"/> 
-<property name="prop.dist.contents" refid="dist.contents"/>
-<echo>${prop.dist.contents}</echo>
 		
-		<unzip src="${user.home}/wpilib/java.zip" dest="${user.home}/wpilib"
+		<unzip src="${user.home}/wpilib/resources/java.zip" dest="${user.home}/wpilib"
 			overwrite="true">
 		</unzip>
 	</target>
