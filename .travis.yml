@@ -2,7 +2,7 @@
 
 before_script: cd "Power Up Proto"
 
-install: ant jar
+install: ant
 
 addons:
   sonarcloud:
@@ -10,10 +10,7 @@ addons:
     token:
 secure: "zfy6+ewOyxnK6RKj3Ns8ul4yYGTHHecbXt2sgjGEVLuMB6hmTh7lh2Ymc693JlsqdHT/YE+TL7wkWbdQsNgKnwP3zLWqZdGuGuUjNrcNZFBHJhphtRtRZhIVKiGLWn3JD6mZiSj+ek214UPc/i/ZpXUgbcrxI94gmCk7R+t3l3KF1w/+bVdtQIXWTcssvy7QryZDoUN3K8Um2oFXno3lKwrDjxueqa4cVaNj87WlAB5E2OnvumpFG5aei/zltAg3ApMBGYooT2P9OV+zXjIcSvsAomxTA0QO8a+EMxaZS/I7Wau7op44EzfgeA9iVD80Vde3n4ENCL/bPlr/oqWR1Jl3jkI01E3/iB1hKIzX72uXi3TLg7rVtOE7xwKMTrDRsl23wEPPPibhONHFYe7ZJgtDaftm7ZHOhANJJ5r8Hr2f1CwiB0QU0vXD4H1VTP6+nJCs47VjmC1OhWmT/G5SfJMUEY49EQFk4p2P0YfaqmUtI4rQANmJPG5Qt1kw8/r3agHfCVZvsoiiKsBa0rkpQefJNGNI0mUTd5SuLlDaHg0vug8OS1wMjVqAj4YQ0iV2cWmhAJKrlLRV5fpeaZPI/P+VNscwTRGZQdviwLxict4Yhx8AkDNVPLCsPscdOfx823GL3zi7DHn6yhUAvyikDyXcmfbwwEji/+nd791xIlk="
 script:
-  - ant -f travis.build.xml 
+  - ant -f travis.build.xml
   # other script steps might be done before running the actual analysis
   - sonar-scanner
-
-
-
 
