@@ -6,13 +6,10 @@ import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
 import org.usfirst.frc.team5493.robot.commands.SolenoidForward;
 import org.usfirst.frc.team5493.robot.commands.SolenoidReverse;
 import org.usfirst.frc.team5493.robot.commands.Stop;
-import org.usfirst.frc.team5493.robot.subsystems.Climber;
-import org.usfirst.frc.team5493.robot.subsystems.Solenoid;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -52,24 +49,7 @@ public class OI {
     	solenoidForward.whenPressed(new SolenoidForward());
     	solenoidReverse.whenPressed(new SolenoidReverse());
     	stop.whenPressed(new Stop());
-    	
-    	
-    	//JoystickButton triggerButton = new JoystickButton(joy, RobotMap.JOYBTN_TRIGGER);
-    	
-    	//SmartDashboard.putData(null);
-       
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-    
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-    
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
-    	
+    	    	
     }
     
 }
