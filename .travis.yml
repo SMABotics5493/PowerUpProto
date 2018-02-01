@@ -11,7 +11,7 @@ addons:
       secure: "J/8Nfpja5f5TIcffONGWkH6v4Xo/s5GIrBiKf/eeEg0FVHmodIBMJ4xQRIrGCSRBqu4Qkj7eFFvKeyhZQ3ZlAtiS3C3evdyglM3yBNlr+ncVx0AZeiyyj7t0MgH6PhEUD7t03IhosSLarXl6EEaTwMiNE752GTyV7//ne4cF7fQ="
 
 script:
-  - ant compile
+  - ant
   # other script steps might be done before running the actual analysis
   - sonar-scanner
 
