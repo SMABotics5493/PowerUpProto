@@ -9,7 +9,7 @@
 	
 	<property name="travis.ctre-plugin-version" value="5.2.1.1" />
 	<property name="travis.ctre-plugin-url"
-		value="http://www.ctr-electronics.com/downloads/lib/CTRE_Phoenix_FRCLibs_NON-WINDOWS_v${travis.frc-plugin-version}.zip" />
+		value="http://www.ctr-electronics.com/downloads/lib/CTRE_Phoenix_FRCLibs_NON-WINDOWS_v${travis.ctre-plugin-version}.zip" />
 	<!--
 http://www.ctr-electronics.com/downloads/lib/CTRE_Phoenix_FRCLibs_NON-WINDOWS_v5.2.1.1.zip
 	-->
