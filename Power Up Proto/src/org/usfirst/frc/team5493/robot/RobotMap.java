@@ -8,8 +8,8 @@ package org.usfirst.frc.team5493.robot;
  */
 public class RobotMap {
 
-	public final static int Joystick_Drive_Port = 0;
-	public final static int Joystick_Port = 1;
+	public final static int JOYSTICK_DRIVE_PORT = 0;
+	public final static int JOYSTICK_PORT = 1;
 	
 	public final static int JOYBTN_A = 4;
 	public final static int JOYBTN_B = 2;
@@ -23,23 +23,23 @@ public class RobotMap {
 	public final static int RIGHTYAXIS = 5;
 	public final static int LEFTYAXIS = 1;
 	
-	public static int leftFront = 7;
-	public static int leftBack = 6;
-	public static int rightFront = 2;
-	public static int rightBack = 5;
+	public final static int LEFT_FRONT = 7;
+	public final static int LEFT_BACK = 6;
+	public final static int RIGHT_FRONT = 2;
+	public final static int RIGHT_BACK = 5;
 
-	public static int intakeLeft = 3;
-	public static int intakeRight = 1;
+	public final static int INTAKE_LEFT = 3;
+	public final static int INTAKE_RIGHT = 1;
 	
-	public static int climber = 4; 
+	public final static int CLIMBER = 4; 
 	
-	public static int leftEncoderA;
-	public static int leftEncoderB;
-	public static int rightEncoderA;
-	public static int rightEncoderB;
+	public final static int LEFT_ENCODER_A = 1;
+	public final static int LEFT_ENCODER_B = 2;  //THESE ARE NOT THE CORRECT PORTS
+	public final static int RIGHT_ENCODER_A = 3;
+	public final static int RIGHT_ENCODER_B = 4;
 	
-	public static int solenoidForward = 1;
-	public static int solenoidReverse = 9;
+	public final static int SOLENOID_FORWARD = 1;
+	public final static int SOLENOID_REVERSE = 9;
 	
 	//public static int gyro;
 	

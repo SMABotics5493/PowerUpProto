@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Solenoid extends Subsystem {
 	
-	DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.solenoidForward, RobotMap.solenoidReverse);
+	DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.SOLENOID_FORWARD, RobotMap.SOLENOID_REVERSE);
 	
-	public void open() {
+	public void forward() {
 		if (solenoid.get() == DoubleSolenoid.Value.kForward) {
 			DriverStation.reportError("Pnuematics Releases: Forward", false);
 		} else if (solenoid.get() == DoubleSolenoid.Value.kReverse) {
@@ -24,7 +24,7 @@ public class Solenoid extends Subsystem {
 		solenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 	
-	public void close(){
+	public void reverse(){
 		if (solenoid.get() == DoubleSolenoid.Value.kReverse) {
 			DriverStation.reportError("Pnuematics Releases: Reverse", false);
 		} else if (solenoid.get() == DoubleSolenoid.Value.kForward) {

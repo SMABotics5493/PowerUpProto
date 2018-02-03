@@ -5,7 +5,6 @@ import org.usfirst.frc.team5493.robot.commands.CubeIntake;
 import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
 import org.usfirst.frc.team5493.robot.commands.SolenoidForward;
 import org.usfirst.frc.team5493.robot.commands.SolenoidReverse;
-import org.usfirst.frc.team5493.robot.commands.Stop;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.Solenoid;
 
@@ -21,9 +20,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class OI {
     
-    private Joystick driveJoystick = new Joystick(RobotMap.Joystick_Drive_Port);
-    private Joystick joystick = new Joystick(RobotMap.Joystick_Port);
-    DriverStation ds = DriverStation.getInstance();
+    private Joystick driveJoystick = new Joystick(RobotMap.JOYSTICK_DRIVE_PORT);
+    private Joystick joystick = new Joystick(RobotMap.JOYSTICK_PORT);
+   // DriverStation ds = DriverStation.getInstance();
  
     JoystickButton cubeIntake = new JoystickButton(joystick, RobotMap.JOYBTN_LT);
 	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_RT);
@@ -31,7 +30,7 @@ public class OI {
 	JoystickButton climbDown = new JoystickButton(joystick, RobotMap.JOYBTN_A);
 	JoystickButton solenoidForward = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
 	JoystickButton solenoidReverse = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
-	JoystickButton stop = new JoystickButton(joystick, RobotMap.JOYBTN_B);
+	
    
     public Joystick getDriveJoystick(){
     	return driveJoystick;
@@ -51,7 +50,6 @@ public class OI {
     	climbDown.whileHeld(new ClimbDown());
     	solenoidForward.whenPressed(new SolenoidForward());
     	solenoidReverse.whenPressed(new SolenoidReverse());
-    	stop.whenPressed(new Stop());
     	
     	
     	//JoystickButton triggerButton = new JoystickButton(joy, RobotMap.JOYBTN_TRIGGER);
