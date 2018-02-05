@@ -46,26 +46,26 @@ public class DriveBase extends Subsystem {
 		leftBackMotor.configOpenloopRamp(.5,1);
 		rightFrontMotor.configOpenloopRamp(.5,1);
 		rightBackMotor.configOpenloopRamp(.5,1);
-		//leftEncoder = new Encoder(RobotMap.leftEncoderA, RobotMap.leftEncoderB);
-		//rightEncoder = new Encoder(RobotMap.rightEncoderA,RobotMap.rightEncoderB);
+		leftEncoder = new Encoder(RobotMap.LEFT_ENCODER_A, RobotMap.LEFT_ENCODER_B);
+		rightEncoder = new Encoder(RobotMap.RIGHT_ENCODER_A,RobotMap.RIGHT_ENCODER_B);
 		//leftBackMotor = (assigning a port on the joystick for controlling the left back motor)
 		drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor, rightBackMotor);
 		drive.setExpiration(0.1); 
 		
-		//leftEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
-		//rightEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
+		leftEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
+		rightEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
 		
-		//LiveWindow.addActuator(DRIVE_SYSTEM, LEFT_FRONT, (LiveWindowSendable) leftFrontMotor);
-		//LiveWindow.addActuator("Drive Base", "Left Encoder", leftEncoder);
-		//LiveWindow.addActuator("Drive Base", "Right Encoder", rightEncoder);
+		LiveWindow.addActuator(DRIVE_SYSTEM, LEFT_FRONT, (LiveWindowSendable) leftFrontMotor);
+		LiveWindow.addActuator("Drive Base", "Left Encoder", leftEncoder);
+		LiveWindow.addActuator("Drive Base", "Right Encoder", rightEncoder);
 	}
-	//public void resetEncoder(){
-		//leftEncoder.reset();
-		//rightEncoder.reset();
-	//}
-	//public double averageDistance(){
-		//return Math.abs((leftEncoder.getDistance() + rightEncoder.getDistance())/2.0);
-	//}
+	public void resetEncoder(){
+		leftEncoder.reset();
+		rightEncoder.reset();
+	}
+	public double averageDistance(){
+		return Math.abs((leftEncoder.getDistance() + rightEncoder.getDistance())/2.0);
+	}
 
     public void initDefaultCommand() {
         setDefaultCommand(new JoystickDrive());
@@ -87,8 +87,8 @@ public class DriveBase extends Subsystem {
     	DriverStation.getInstance().reportWarning("Drive Heading", true);
     }
     public void log(){
-    	//SmartDashboard.putNumber("Left Distance", this.leftEncoder.get());
-    	//SmartDashboard.putNumber("Right Distance", this.rightEncoder.get());
+    	SmartDashboard.putNumber("Left Distance", this.leftEncoder.get());
+    	SmartDashboard.putNumber("Right Distance", this.rightEncoder.get());
     }
     
     public void reset(){

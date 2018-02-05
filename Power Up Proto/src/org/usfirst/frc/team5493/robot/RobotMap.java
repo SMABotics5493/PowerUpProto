@@ -8,13 +8,13 @@ package org.usfirst.frc.team5493.robot;
  */
 public class RobotMap {
 
-	public final static int JOYSTICK_DRIVE_PORT = 0;
+	public final static int JOYSTICK_DRIVE_PORT = 5;
 	public final static int JOYSTICK_PORT = 1;
 	
-	public final static int JOYBTN_A = 4;
+	public final static int JOYBTN_A = 1;
 	public final static int JOYBTN_B = 2;
 	public final static int JOYBTN_X = 3;
-	public final static int JOYBTN_Y = 1; 
+	public final static int JOYBTN_Y = 4; 
 	public final static int JOYBTN_LB = 5;
 	public final static int JOYBTN_RB = 6;
 	public final static int JOYBTN_RT = 6;
@@ -38,8 +38,8 @@ public class RobotMap {
 	public final static int RIGHT_ENCODER_A = 3;
 	public final static int RIGHT_ENCODER_B = 4;
 	
-	public final static int SOLENOID_FORWARD = 1;
-	public final static int SOLENOID_REVERSE = 9;
+	public final static int SOLENOID_FORWARD = 0;
+	public final static int SOLENOID_REVERSE = 7;
 	
 	//public static int gyro;
 	

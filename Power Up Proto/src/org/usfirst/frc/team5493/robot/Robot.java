@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
-import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
-import org.usfirst.frc.team5493.robot.subsystems.Solenoid;
+import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
+import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import com.ctre.CANTalon.TalonControlMode;
@@ -19,9 +19,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final DriveBase driveBase = new DriveBase();
-	public static Climber climber;
+	public static OneClimbyBoi climber;
 	public static OI oi;
-	public static Solenoid solenoid;
+	public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
 	public static CubeControls cubeControls;
  
 	
@@ -35,10 +35,11 @@ public class Robot extends IterativeRobot {
     
     public void robotInit() {
     	
-    	climber = new Climber();
+    	climber = new OneClimbyBoi();
     	cubeControls = new CubeControls();
+    	throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		oi = new OI();
-//		solenoid = new Solenoid();
+//		throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		
         chooser = new SendableChooser();
         chooser.addDefault("Tank Drive", new JoystickDrive());

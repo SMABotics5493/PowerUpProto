@@ -1,12 +1,13 @@
 package org.usfirst.frc.team5493.robot;
 import org.usfirst.frc.team5493.robot.commands.ClimbDown;
+import org.usfirst.frc.team5493.robot.commands.ClimbHold;
 import org.usfirst.frc.team5493.robot.commands.ClimbUp;
 import org.usfirst.frc.team5493.robot.commands.CubeIntake;
 import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
-import org.usfirst.frc.team5493.robot.commands.SolenoidForward;
-import org.usfirst.frc.team5493.robot.commands.SolenoidReverse;
-import org.usfirst.frc.team5493.robot.subsystems.Climber;
-import org.usfirst.frc.team5493.robot.subsystems.Solenoid;
+import org.usfirst.frc.team5493.robot.commands.TransmissionForward;
+import org.usfirst.frc.team5493.robot.commands.TransmissionReverse;
+import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
+import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
@@ -27,10 +28,10 @@ public class OI {
 	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_RT);
 	JoystickButton climbUp = new JoystickButton(joystick, RobotMap.JOYBTN_Y);
 	JoystickButton climbDown = new JoystickButton(joystick, RobotMap.JOYBTN_A);
-	JoystickButton solenoidForward = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
-	JoystickButton solenoidReverse = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
+	JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
+	JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
+	JoystickButton climbHold = new JoystickButton(joystick, RobotMap.JOYBTN_X);
 	
-   
     public Joystick getDriveJoystick(){
     	return driveJoystick;
     }
@@ -47,9 +48,9 @@ public class OI {
     	cubeOuttake.whileHeld(new CubeOuttake());
     	climbUp.whileHeld(new ClimbUp());
     	climbDown.whileHeld(new ClimbDown());
-    	solenoidForward.whenPressed(new SolenoidForward());
-    	solenoidReverse.whenPressed(new SolenoidReverse());
-    	
+    	solenoidForward.whenPressed(new TransmissionForward());
+    	solenoidReverse.whenPressed(new TransmissionReverse());
+    	climbHold.whenActive(new ClimbHold());
     	
     	//JoystickButton triggerButton = new JoystickButton(joy, RobotMap.JOYBTN_TRIGGER);
     	

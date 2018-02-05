@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5493.robot.commands;
 
 import org.usfirst.frc.team5493.robot.Robot;
+import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -32,6 +33,7 @@ public class ClimbUp extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.climber.end();
     }
 
     // Called when another command which requires one or more of the same

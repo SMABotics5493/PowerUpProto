@@ -10,12 +10,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Climber extends Subsystem {
+public class OneClimbyBoi extends Subsystem {
 
-	private WPI_TalonSRX climbMotor;
+	public WPI_TalonSRX climbMotor;
 	public Object climbDown;
 	
-	public Climber() {
+	public OneClimbyBoi() {
 	super();
 	
 	climbMotor = new WPI_TalonSRX(RobotMap.CLIMBER);
@@ -27,10 +27,13 @@ public class Climber extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void climbUp() {
-    	Robot.climber.climbMotor.set(0.5);
+    	Robot.climber.climbMotor.set(0.8);
     }
     public void climbDown(){
-    	Robot.climber.climbMotor.set(-0.5);
+    	Robot.climber.climbMotor.set(-0.4);
+    }
+    public void climbHold(){
+    	Robot.climber.climbMotor.set(0.1);
     }
     public void end(){
     	Robot.climber.climbMotor.set(0.0);
