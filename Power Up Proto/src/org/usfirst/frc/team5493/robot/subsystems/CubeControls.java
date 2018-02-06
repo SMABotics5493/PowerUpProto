@@ -6,6 +6,8 @@ import org.usfirst.frc.team5493.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -18,6 +20,9 @@ public class CubeControls extends Subsystem {
 	private WPI_TalonSRX rightIntakeMotor;
 	private double intakeSpeed;
 	private double outtakeSpeed;
+
+	private DigitalInput cubelimitSwitch = new DigitalInput(RobotMap.LIMIT_SWITCH_CUBE_CONTROLS);
+	private Counter cubecounter = new Counter(cubelimitSwitch);
 
 	public CubeControls() {
 		super();
@@ -59,5 +64,13 @@ public class CubeControls extends Subsystem {
 	public void end() {
 		Robot.cubeControls.leftIntakeMotor.set(0.0);
 		Robot.cubeControls.rightIntakeMotor.set(0.0);
+	}
+
+	public boolean isSwitchSet() {
+		return cubecounter.get() > 0;
+	}
+
+	public void initializeCounter() {
+		cubecounter.reset();
 	}
 }
