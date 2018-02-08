@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5493.robot;
 
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -24,6 +26,12 @@ public class Robot extends IterativeRobot {
 	public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
 	public static CubeControls cubeControls;
  
+	Encoder encoder = new Encoder(4, 5, true, EncodingType.k2X);
+	static double distancePerRevolution = 480.66;
+	static double pulsesPerRevolution = 1440;
+	static double countsPerRevolution = 360;
+	static double distancePerPulse = distancePerRevolution / pulsesPerRevolution;
+	static double distancePerCount = distancePerRevolution / countsPerRevolution;
 	
  Command autonomousCommand;
     SendableChooser chooser;
@@ -40,6 +48,9 @@ public class Robot extends IterativeRobot {
     	throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		oi = new OI();
 //		throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
+		encoder.setDistancePerPulse(distancePerPulse);
+		
+		encoder.reset();
 		
         chooser = new SendableChooser();
         chooser.addDefault("Tank Drive", new JoystickDrive());
@@ -54,7 +65,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-
+    	encoder.reset();
     }
 	
 	public void disabledPeriodic() {
@@ -110,6 +121,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+       // drive.arcadeDrive(speed, rotation);
     }
     
     /**
