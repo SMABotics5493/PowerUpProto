@@ -52,6 +52,7 @@ public class DriveBase extends Subsystem {
 		} else {
 			DriverStation.reportWarning("Sensor Present", false);
 		}
+
 		drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor, rightBackMotor);
 		drive.setExpiration(0.1);
 
@@ -67,11 +68,6 @@ public class DriveBase extends Subsystem {
 		rightFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 		leftBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 		rightBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
-
-		// LiveWindow.addActuator(DRIVE_SYSTEM, LEFT_FRONT, (LiveWindowSendable)
-		// leftFrontMotor);
-		// LiveWindow.addActuator("Drive Base", "Left Encoder", leftEncoder);
-		// LiveWindow.addActuator("Drive Base", "Right Encoder", rightEncoder);
 	}
 
 	public void initDefaultCommand() {

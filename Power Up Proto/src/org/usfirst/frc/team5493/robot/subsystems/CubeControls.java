@@ -41,7 +41,6 @@ public class CubeControls extends Subsystem {
 		rightIntakeMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 	}
 
-
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
