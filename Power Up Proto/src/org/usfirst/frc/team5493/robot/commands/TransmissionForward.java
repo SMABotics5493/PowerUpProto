@@ -7,14 +7,14 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class SolenoidReverse extends Command {
+public class TransmissionForward extends Command {
 
-	boolean isFinished;
-	
-    public SolenoidReverse() {
-    	requires(Robot.solenoid);
-    	isFinished = true;
-        // Use requires() here to declare subsystem dependencies
+	 private boolean isFinished;
+	 
+    public TransmissionForward() {
+    	requires(Robot.throwDaggersInBensEyes);
+    	isFinished = true; 
+         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
@@ -24,7 +24,8 @@ public class SolenoidReverse extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.solenoid.reverse(null);
+    	Robot.throwDaggersInBensEyes.forward(null);
+    	isFinished = false;
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,7 +36,6 @@ public class SolenoidReverse extends Command {
     // Called once after isFinished returns true
     protected void end() {
     }
-
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {

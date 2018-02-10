@@ -15,26 +15,18 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
  */
 public class DriveStraightWithGyro extends TimedCommand {
 
-//	private RobotDrive gyroDrive;
 	private ADXRS450_Gyro gyro;
 	double Kp = 0.03;
     public DriveStraightWithGyro() {
     	super(10);
         gyro = new ADXRS450_Gyro();
         gyro.reset();
-        //gyro = new RobotDrive(1,2);
-        //Robot.driveBase.setExpiration(0.1);
+       
     }
     public void autonomous() {
     	
-       // while (Autonomous()) {
             double angle = gyro.getAngle();
-            //Robot.driveBase.driveHeading(0.1, -angle*Kp);
-            // get current heading
-            //gyroDrive.drive(-1.0, -angle*Kp); // drive towards heading 0
             Timer.delay(0.004);
-        //}
-        //gyroDrive.drive(0.0, 0.0);
     }
     private boolean Autonomous() {
 		// TODO Auto-generated method stub

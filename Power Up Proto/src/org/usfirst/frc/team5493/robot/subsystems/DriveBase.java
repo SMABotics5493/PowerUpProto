@@ -4,6 +4,8 @@ import org.usfirst.frc.team5493.robot.RobotMap;
 import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -12,6 +14,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveBase extends Subsystem {
 	double wheelDiameter = 6.0;
@@ -38,14 +41,18 @@ public class DriveBase extends Subsystem {
 		leftBackMotor.set(ControlMode.Follower, RobotMap.LEFT_FRONT);
 		rightBackMotor.set(ControlMode.Follower, RobotMap.RIGHT_FRONT);
 
-		leftFrontMotor.configOpenloopRamp(.5, 1);
-		leftBackMotor.configOpenloopRamp(.5, 1);
-		rightFrontMotor.configOpenloopRamp(.5, 1);
-		rightBackMotor.configOpenloopRamp(.5, 1);
-		// leftEncoder = new Encoder(RobotMap.leftEncoderA, RobotMap.leftEncoderB);
-		// rightEncoder = new Encoder(RobotMap.rightEncoderA,RobotMap.rightEncoderB);
-		// leftBackMotor = (assigning a port on the joystick for controlling the left
-		// back motor)
+		((TalonSRX) leftFrontMotor).configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 1);
+		((TalonSRX) rightFrontMotor).configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 1);
+
+		int leftStatus = ((TalonSRX) leftFrontMotor).getSensorCollection().getPulseWidthRiseToRiseUs();
+		int rightStatus = ((TalonSRX) rightFrontMotor).getSensorCollection().getPulseWidthRiseToRiseUs();
+
+		if (leftStatus == 0 && rightStatus == 0) {
+			DriverStation.reportWarning("Sensor Not Present", false);
+		} else {
+			DriverStation.reportWarning("Sensor Present", false);
+		}
+
 		drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor, rightBackMotor);
 		drive.setExpiration(0.1);
 
@@ -61,30 +68,43 @@ public class DriveBase extends Subsystem {
 		rightFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 		leftBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 		rightBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
-
-		// leftEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
-		// rightEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
-
-		// LiveWindow.addActuator(DRIVE_SYSTEM, LEFT_FRONT, (LiveWindowSendable)
-		// leftFrontMotor);
-		// LiveWindow.addActuator("Drive Base", "Left Encoder", leftEncoder);
-		// LiveWindow.addActuator("Drive Base", "Right Encoder", rightEncoder);
 	}
-	// public void resetEncoder(){
-	// leftEncoder.reset();
-	// rightEncoder.reset();
-	// }
-	// public double averageDistance(){
-	// return Math.abs((leftEncoder.getDistance() +
-	// rightEncoder.getDistance())/2.0);
-	// }
 
 	public void initDefaultCommand() {
 		setDefaultCommand(new JoystickDrive());
 	}
 
 	public void drive(Joystick j) {
+		int leftStatus = ((TalonSRX) leftFrontMotor).getSensorCollection().getPulseWidthRiseToRiseUs();
+		int rightStatus = ((TalonSRX) rightFrontMotor).getSensorCollection().getPulseWidthRiseToRiseUs();
+
+		if (leftStatus == 0 && rightStatus == 0) {
+			DriverStation.reportWarning("Sensor Not Present", false);
+		} else {
+			DriverStation.reportWarning("Sensor Present", false);
+
+		}
 		drive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
+
+		leftStatus = ((TalonSRX) leftFrontMotor).getSensorCollection().getPulseWidthRiseToRiseUs();
+		rightStatus = ((TalonSRX) rightFrontMotor).getSensorCollection().getPulseWidthRiseToRiseUs();
+
+		if (leftStatus == 0 && rightStatus == 0) {
+			DriverStation.reportWarning("aft Sensor Not Present", false);
+		} else {
+			DriverStation.reportWarning("aft Sensor Present", false);
+
+		}
+
+		leftStatus = ((TalonSRX) leftBackMotor).getSensorCollection().getPulseWidthRiseToRiseUs();
+		rightStatus = ((TalonSRX) rightBackMotor).getSensorCollection().getPulseWidthRiseToRiseUs();
+
+		if (leftStatus == 0 && rightStatus == 0) {
+			DriverStation.reportWarning("lb aft Sensor Not Present", false);
+		} else {
+			DriverStation.reportWarning("lb aft Sensor Present", false);
+
+		}
 	}
 
 	public void drive(double left, double right) {
@@ -100,13 +120,11 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void log() {
-		// SmartDashboard.putNumber("Left Distance", this.leftEncoder.get());
-		// SmartDashboard.putNumber("Right Distance", this.rightEncoder.get());
+		SmartDashboard.putNumber("Left Distance", this.leftEncoder.get());
+		SmartDashboard.putNumber("Right Distance", this.rightEncoder.get());
 	}
 
 	public void reset() {
 		drive(0.0, 0.0);
 	}
 }
-
-// LETS WRITE SOME CODE!!!!

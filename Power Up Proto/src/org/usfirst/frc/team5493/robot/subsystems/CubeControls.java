@@ -17,7 +17,6 @@ public class CubeControls extends Subsystem {
 	private WPI_TalonSRX leftIntakeMotor;
 	private WPI_TalonSRX rightIntakeMotor;
 	private double intakeSpeed;
-	// private RobotDrive intake;
 	private double outtakeSpeed;
 
 	public CubeControls() {
@@ -35,13 +34,12 @@ public class CubeControls extends Subsystem {
 
 		secondsFromNeutral = prefs.getDouble("RampRateCube", 0.25);
 		timeoutMs = prefs.getInt("RampRateCubeTimeout", 1);
-		intakeSpeed = prefs.getDouble("IntakeSpeed", 0.5);
-		outtakeSpeed = prefs.getDouble("OuttakeSpeed", -0.5);
+		intakeSpeed = prefs.getDouble("IntakeSpeed", 1);
+		outtakeSpeed = prefs.getDouble("OuttakeSpeed", -1);
 
 		leftIntakeMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 		rightIntakeMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 	}
-	// here. Call these from Commands.
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
@@ -62,5 +60,4 @@ public class CubeControls extends Subsystem {
 		Robot.cubeControls.leftIntakeMotor.set(0.0);
 		Robot.cubeControls.rightIntakeMotor.set(0.0);
 	}
-
 }

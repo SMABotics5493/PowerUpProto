@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5493.robot;
 
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -8,10 +10,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
-import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
-import org.usfirst.frc.team5493.robot.subsystems.Solenoid;
+import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
+import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import com.ctre.CANTalon.TalonControlMode;
@@ -19,11 +21,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final DriveBase driveBase = new DriveBase();
-	public static Climber climber;
+	public static OneClimbyBoi climber;
 	public static OI oi;
-	public static Solenoid solenoid;
+	public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
 	public static CubeControls cubeControls;
  
+	//Encoder encoder = new Encoder(4, 5, true, EncodingType.k2X);
+	static double distancePerRevolution = 480.66;
+	static double pulsesPerRevolution = 1440;
+	static double countsPerRevolution = 360;
+	static double distancePerPulse = distancePerRevolution / pulsesPerRevolution;
+	static double distancePerCount = distancePerRevolution / countsPerRevolution;
 	
  Command autonomousCommand;
     SendableChooser chooser;
@@ -35,10 +43,11 @@ public class Robot extends IterativeRobot {
     
     public void robotInit() {
     	
-    	climber = new Climber();
+    	climber = new OneClimbyBoi();
     	cubeControls = new CubeControls();
+    	throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		oi = new OI();
-//		solenoid = new Solenoid();
+//		throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		
         chooser = new SendableChooser();
         chooser.addDefault("Tank Drive", new JoystickDrive());
@@ -53,7 +62,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-
+    	//encoder.reset();
     }
 	
 	public void disabledPeriodic() {
@@ -109,6 +118,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+       // drive.arcadeDrive(speed, rotation);
     }
     
     /**

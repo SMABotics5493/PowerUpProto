@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Solenoid extends Subsystem {
+public class ThrowDaggersInBensEyes extends Subsystem {
 	
 	DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.SOLENOID_FORWARD, RobotMap.SOLENOID_REVERSE);
 	
-	public void forward() {
+	public void forward(String commandname) {
 		if (solenoid.get() == DoubleSolenoid.Value.kForward) {
 			DriverStation.reportError("Pnuematics Releases: Forward", false);
 		} else if (solenoid.get() == DoubleSolenoid.Value.kReverse) {
@@ -24,7 +24,7 @@ public class Solenoid extends Subsystem {
 		solenoid.set(DoubleSolenoid.Value.kReverse);
 	}
 	
-	public void reverse(){
+	public void reverse(String commandname){
 		if (solenoid.get() == DoubleSolenoid.Value.kReverse) {
 			DriverStation.reportError("Pnuematics Releases: Reverse", false);
 		} else if (solenoid.get() == DoubleSolenoid.Value.kForward) {
@@ -44,14 +44,14 @@ public class Solenoid extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 
-	public void reverse(Object object) {
+	//public void reverse(Object object) {
 		// TODO Auto-generated method stub
 		
-	}
+	//}
 
-	public void forward(Object object) {
+	//public void forward(Object object) {
 		// TODO Auto-generated method stub
 		
-	}
+	//}
 }
 
