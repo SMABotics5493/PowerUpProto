@@ -48,9 +48,7 @@ public class Robot extends IterativeRobot {
     	throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		oi = new OI();
 //		throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
-		//encoder.setDistancePerPulse(distancePerPulse);
-		
-		//encoder.reset();
+
 		
         chooser = new SendableChooser();
         chooser.addDefault("Tank Drive", new JoystickDrive());

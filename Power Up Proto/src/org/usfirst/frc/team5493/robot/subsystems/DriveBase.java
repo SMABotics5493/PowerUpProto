@@ -14,6 +14,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveBase extends Subsystem {
@@ -37,10 +41,10 @@ public class DriveBase extends Subsystem {
 		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK);
 		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT);
 		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK);
-
-		leftBackMotor.set(ControlMode.Follower, RobotMap.LEFT_FRONT);
+		
+		leftBackMotor.set(ControlMode.Follower,RobotMap.LEFT_FRONT);
 		rightBackMotor.set(ControlMode.Follower, RobotMap.RIGHT_FRONT);
-
+		
 		((TalonSRX)leftFrontMotor).configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 1);
 		((TalonSRX)rightFrontMotor).configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 1);
 		
@@ -60,10 +64,15 @@ public class DriveBase extends Subsystem {
 		rightBackMotor.configOpenloopRamp(.5,1);
 		//leftEncoder = new Encoder(RobotMap.LEFT_ENCODER_A, RobotMap.LEFT_ENCODER_B);
 		//rightEncoder = new Encoder(RobotMap.RIGHT_ENCODER_A,RobotMap.RIGHT_ENCODER_B);
+
 		//leftBackMotor = (assigning a port on the joystick for controlling the left back motor)
 		drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor, rightBackMotor);
-		drive.setExpiration(0.1);
+		drive.setExpiration(0.1); 
+		
+		leftEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
+		rightEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
 
+		
 		double secondsFromNeutral = 0;
 		int timeoutMs = 0;
 
@@ -77,21 +86,10 @@ public class DriveBase extends Subsystem {
 		leftBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 		rightBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 
-		// leftEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
-		// rightEncoder.setDistancePerPulse((wheelDiameter*Math.PI)/pulsesPerRevolution);
-
-		// LiveWindow.addActuator(DRIVE_SYSTEM, LEFT_FRONT, (LiveWindowSendable)
-		// leftFrontMotor);
-		// LiveWindow.addActuator("Drive Base", "Left Encoder", leftEncoder);
-		// LiveWindow.addActuator("Drive Base", "Right Encoder", rightEncoder);
-	}
-
-	public void resetEncoder(){
-		leftEncoder.reset();
-		rightEncoder.reset();
-	}
-	public double averageDistance(){
-		return Math.abs((leftEncoder.getDistance() + rightEncoder.getDistance())/2.0);
+		
+		LiveWindow.addActuator(DRIVE_SYSTEM, LEFT_FRONT, (LiveWindowSendable) leftFrontMotor);
+		LiveWindow.addActuator("Drive Base", "Left Encoder", leftEncoder);
+		LiveWindow.addActuator("Drive Base", "Right Encoder", rightEncoder);
 	}
 
     public void initDefaultCommand() {
@@ -99,6 +97,7 @@ public class DriveBase extends Subsystem {
     }
     
     public void drive(Joystick j){
+
 		int leftStatus = ((TalonSRX)leftFrontMotor).getSensorCollection().getPulseWidthRiseToRiseUs(); 
 		int rightStatus = ((TalonSRX)rightFrontMotor).getSensorCollection().getPulseWidthRiseToRiseUs(); 
 		
@@ -150,8 +149,4 @@ public class DriveBase extends Subsystem {
     public void reset(){
     	drive(0.0, 0.0);
     }
-	public void tankDrive(double speed, double speed2, int i, int j) {
-		// TODO Auto-generated method stub
-		
-	}
 }

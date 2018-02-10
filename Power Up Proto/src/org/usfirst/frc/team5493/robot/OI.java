@@ -51,7 +51,6 @@ public class OI {
     	climbDown.whileHeld(new ClimbDown());
     	solenoidForward.whenPressed(new TransmissionForward());
     	solenoidReverse.whenPressed(new TransmissionReverse());
-    	//climbHold.whenActive(new ClimbHold());
     	
     	//JoystickButton triggerButton = new JoystickButton(joy, RobotMap.JOYBTN_TRIGGER);
     	
