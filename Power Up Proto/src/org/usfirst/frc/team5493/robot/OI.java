@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5493.robot;
 import org.usfirst.frc.team5493.robot.commands.ClimbDown;
-import org.usfirst.frc.team5493.robot.commands.ClimbHold;
+//import org.usfirst.frc.team5493.robot.commands.ClimbHold;
 import org.usfirst.frc.team5493.robot.commands.ClimbUp;
 import org.usfirst.frc.team5493.robot.commands.CubeIntake;
 import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
@@ -51,7 +51,7 @@ public class OI {
     	climbDown.whileHeld(new ClimbDown());
     	solenoidForward.whenPressed(new TransmissionForward());
     	solenoidReverse.whenPressed(new TransmissionReverse());
-    	climbHold.whenActive(new ClimbHold());
+    	//climbHold.whenActive(new ClimbHold());
     	
     	//JoystickButton triggerButton = new JoystickButton(joy, RobotMap.JOYBTN_TRIGGER);
     	
