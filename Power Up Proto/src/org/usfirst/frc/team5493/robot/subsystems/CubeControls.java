@@ -40,12 +40,12 @@ public class CubeControls extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void intake(){
-    	Robot.cubeControls.leftIntakeMotor.set(-0.5);
-    	Robot.cubeControls.rightIntakeMotor.set(0.5);
+    	Robot.cubeControls.leftIntakeMotor.set(-1);
+    	Robot.cubeControls.rightIntakeMotor.set(1);
     }
     public void outtake() {
-    	Robot.cubeControls.leftIntakeMotor.set(0.5);
-    	Robot.cubeControls.rightIntakeMotor.set(-0.5);
+    	Robot.cubeControls.leftIntakeMotor.set(1);
+    	Robot.cubeControls.rightIntakeMotor.set(-1);
     }
     public void end() {
     	Robot.cubeControls.leftIntakeMotor.set(0.0);

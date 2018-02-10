@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot {
 	public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
 	public static CubeControls cubeControls;
  
-	Encoder encoder = new Encoder(4, 5, true, EncodingType.k2X);
+	//Encoder encoder = new Encoder(4, 5, true, EncodingType.k2X);
 	static double distancePerRevolution = 480.66;
 	static double pulsesPerRevolution = 1440;
 	static double countsPerRevolution = 360;
@@ -48,9 +48,9 @@ public class Robot extends IterativeRobot {
     	throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		oi = new OI();
 //		throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
-		encoder.setDistancePerPulse(distancePerPulse);
+		//encoder.setDistancePerPulse(distancePerPulse);
 		
-		encoder.reset();
+		//encoder.reset();
 		
         chooser = new SendableChooser();
         chooser.addDefault("Tank Drive", new JoystickDrive());
@@ -65,7 +65,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-    	encoder.reset();
+    	//encoder.reset();
     }
 	
 	public void disabledPeriodic() {

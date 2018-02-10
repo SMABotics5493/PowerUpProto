@@ -24,11 +24,11 @@ public class OneClimbyBoi extends Subsystem {
 	//Encoder numbers to be added
 	//Encoder A Channel -> DIO 1, Module 1;
 	
-	private Encoder encoder = new Encoder(1, 2, false, EncodingType.k2X);
+	//private Encoder encoder = new Encoder(1, 2, false, EncodingType.k2X);
 	
 	
 	public void robotInit() {
-		encoder.setDistancePerPulse(kDistancePerPulse);
+		//encoder.setDistancePerPulse(kDistancePerPulse);
 		
 		//encoder.start();
 		
@@ -57,13 +57,13 @@ public class OneClimbyBoi extends Subsystem {
     	Robot.climber.climbMotor.set(0.1);
     }
     
-    private double getAverageEncoderPosition() {
-    	return (encoder.getDistance()) / 2;
+    //private double getAverageEncoderPosition() {
+    	//return (encoder.getDistance()) / 2;
 
-    }
+    //}
     
     private void resetEncoders() {
-    	encoder.reset();
+    	//encoder.reset();
     }
     
 }
