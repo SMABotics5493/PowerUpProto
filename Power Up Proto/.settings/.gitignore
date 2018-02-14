@@ -1,0 +1,4 @@
+/.settings
+build
+dist
+/org.sonarlint.eclipse.core.prefs
