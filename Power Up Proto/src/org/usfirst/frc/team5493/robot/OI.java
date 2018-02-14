@@ -31,6 +31,8 @@ public class OI {
 	JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
 	JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
 	JoystickButton climbHold = new JoystickButton(joystick, RobotMap.JOYBTN_X);
+	JoystickButton CubeThingGoUp = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
+	JoystickButton CubeThingGoDown = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
 	
     public Joystick getDriveJoystick(){
     	return driveJoystick;
