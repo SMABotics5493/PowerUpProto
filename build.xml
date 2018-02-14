@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Travis FRC Deployment" default="travis-init">
+
+	<!-- http://first.wpi.edu/FRC/roborio/release/EclipsePluginsV2018.2.2.zip -->
+	<property name="travis.frc-plugin-version" value="2018.2.2" />
+	<property name="travis.frc-plugin-url"
+		value="http://first.wpi.edu/FRC/roborio/release/EclipsePluginsV${travis.frc-plugin-version}.zip" />
+	
+	<property name="travis.ctre-plugin-version" value="5.2.1.1" />
+	<property name="travis.ctre-plugin-url"
+		value="http://www.ctr-electronics.com/downloads/lib/CTRE_Phoenix_FRCLibs_NON-WINDOWS_v${travis.ctre-plugin-version}.zip" />
+	<!--
+http://www.ctr-electronics.com/downloads/lib/CTRE_Phoenix_FRCLibs_NON-WINDOWS_v5.2.1.1.zip
+	-->
+	
+	<target name="getFRC">
+		<get src="${travis.frc-plugin-url}" dest="${user.home}/frcplugin.zip" />
+		
+		<mkdir dir="${user.home}/wpilib"/>
+
+		<unzip src="${user.home}/frcplugin.zip" dest="${user.home}/wpilib" overwrite="true">
+		</unzip>
+		<!-- ${user.home}/wpilib/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}/resources -->
+	        <!-- edu.wpi.first.wpilib.plugins.java_2018.2.2.jar -->	
+		 
+		<unzip src="${user.home}/wpilib/eclipse/plugins/edu.wpi.first.wpilib.plugins.java_${travis.frc-plugin-version}.jar" dest="${user.home}/wpilib"
+			overwrite="true">
+		</unzip>
+		
+		<unzip src="${user.home}/wpilib/resources/java.zip" dest="${user.home}/wpilib/java/current"
+			overwrite="true">
+		</unzip>	
+	</target>
+
+	<target name="getCTRE">
+		<get src="${travis.ctre-plugin-url}" dest="${user.home}/ctreplugin.zip" />
+		
+		<mkdir dir="${user.home}/wpilib/user/java/lib"/>
+
+		<unzip src="${user.home}/ctreplugin.zip" dest="${user.home}/wpilib/user/java/lib" overwrite="true">
+			<patternset>
+				<include name="java/lib/*"/>
+			</patternset>
+			<mapper type="flatten"/>
+		</unzip>
+		
+	</target>
+	
+	<target name="travis-init" depends="getFRC,getCTRE">
+		
+	</target>
+</project>
+
+

@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5493.robot;
 import org.usfirst.frc.team5493.robot.commands.ClimbDown;
-import org.usfirst.frc.team5493.robot.commands.ClimbHold;
+//import org.usfirst.frc.team5493.robot.commands.ClimbHold;
 import org.usfirst.frc.team5493.robot.commands.ClimbUp;
 import org.usfirst.frc.team5493.robot.commands.CubeIntake;
 import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
+ * Test a build trigger.
  */
 public class OI {
     
@@ -52,7 +53,6 @@ public class OI {
     	climbDown.whileHeld(new ClimbDown());
     	solenoidForward.whenPressed(new TransmissionForward());
     	solenoidReverse.whenPressed(new TransmissionReverse());
-    	climbHold.whenActive(new ClimbHold());
     	
     	//JoystickButton triggerButton = new JoystickButton(joy, RobotMap.JOYBTN_TRIGGER);
     	
