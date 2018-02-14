@@ -8,7 +8,7 @@ package org.usfirst.frc.team5493.robot;
  */
 public class RobotMap {
 
-	public final static int JOYSTICK_DRIVE_PORT = 5;
+	public final static int JOYSTICK_DRIVE_PORT = 0;
 	public final static int JOYSTICK_PORT = 1;
 	
 	public final static int JOYBTN_A = 1;

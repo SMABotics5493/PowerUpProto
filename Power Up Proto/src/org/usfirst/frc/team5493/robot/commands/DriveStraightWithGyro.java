@@ -23,15 +23,7 @@ public class DriveStraightWithGyro extends TimedCommand {
         gyro.reset();
        
     }
-    public void autonomous() {
-    	
-            double angle = gyro.getAngle();
-            Timer.delay(0.004);
-    }
-    private boolean Autonomous() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 	// Called just before this Command runs the first time
     protected void initialize() {
     }
@@ -39,8 +31,7 @@ public class DriveStraightWithGyro extends TimedCommand {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	 double angle = gyro.getAngle();
-         Robot.driveBase.driveHeading(-0.5, -angle*Kp);
-    	
+         Robot.driveBase.driveHeading(0.23, -angle*Kp);
     }
 
     // Make this return true when this Command no longer needs to run execute()
