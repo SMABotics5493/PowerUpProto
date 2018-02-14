@@ -13,7 +13,7 @@ import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
 import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
-import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
+//import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import com.ctre.CANTalon.TalonControlMode;
@@ -23,7 +23,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveBase driveBase = new DriveBase();
 	public static OneClimbyBoi climber;
 	public static OI oi;
-	public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
+//	public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
 	public static CubeControls cubeControls;
  
 	//Encoder encoder = new Encoder(4, 5, true, EncodingType.k2X);
@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
     	
     	climber = new OneClimbyBoi();
     	cubeControls = new CubeControls();
-    	throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
+//    	throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		oi = new OI();
 //		throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		

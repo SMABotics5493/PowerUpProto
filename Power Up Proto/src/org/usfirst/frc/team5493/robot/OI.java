@@ -7,7 +7,7 @@ import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
 import org.usfirst.frc.team5493.robot.commands.TransmissionForward;
 import org.usfirst.frc.team5493.robot.commands.TransmissionReverse;
 import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
-import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
+//import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
@@ -32,6 +32,8 @@ public class OI {
 	JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
 	JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
 	JoystickButton climbHold = new JoystickButton(joystick, RobotMap.JOYBTN_X);
+	JoystickButton CubeThingGoUp = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
+	JoystickButton CubeThingGoDown = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
 	
     public Joystick getDriveJoystick(){
     	return driveJoystick;
@@ -49,8 +51,8 @@ public class OI {
     	cubeOuttake.whileHeld(new CubeOuttake());
     	climbUp.whileHeld(new ClimbUp());
     	climbDown.whileHeld(new ClimbDown());
-    	solenoidForward.whenPressed(new TransmissionForward());
-    	solenoidReverse.whenPressed(new TransmissionReverse());
+//    	solenoidForward.whenPressed(new TransmissionForward());
+//    	solenoidReverse.whenPressed(new TransmissionReverse());
     	
     	//JoystickButton triggerButton = new JoystickButton(joy, RobotMap.JOYBTN_TRIGGER);
     	
