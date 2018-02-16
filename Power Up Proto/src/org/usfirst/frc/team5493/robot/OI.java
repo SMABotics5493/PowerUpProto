@@ -1,18 +1,11 @@
 package org.usfirst.frc.team5493.robot;
 import org.usfirst.frc.team5493.robot.commands.ClimbDown;
-//import org.usfirst.frc.team5493.robot.commands.ClimbHold;
 import org.usfirst.frc.team5493.robot.commands.ClimbUp;
 import org.usfirst.frc.team5493.robot.commands.CubeIntake;
 import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
-import org.usfirst.frc.team5493.robot.commands.TransmissionForward;
-import org.usfirst.frc.team5493.robot.commands.TransmissionReverse;
-import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
-//import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -23,7 +16,6 @@ public class OI {
     
     private Joystick driveJoystick = new Joystick(RobotMap.JOYSTICK_DRIVE_PORT);
     private Joystick joystick = new Joystick(RobotMap.JOYSTICK_PORT);
-   // DriverStation ds = DriverStation.getInstance();
  
     JoystickButton cubeIntake = new JoystickButton(joystick, RobotMap.JOYBTN_LT);
 	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_RT);
@@ -32,8 +24,8 @@ public class OI {
 	JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
 	JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
 	JoystickButton climbHold = new JoystickButton(joystick, RobotMap.JOYBTN_X);
-	JoystickButton CubeThingGoUp = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
-	JoystickButton CubeThingGoDown = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
+	JoystickButton cubeThingGoUp = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
+	JoystickButton cubeThingGoDown = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
 	
     public Joystick getDriveJoystick(){
     	return driveJoystick;
