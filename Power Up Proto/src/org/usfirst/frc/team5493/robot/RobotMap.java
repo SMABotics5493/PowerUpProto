@@ -51,4 +51,14 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
+	
+	public static class EncoderDistances {
+		
+		private EncoderDistances() {
+			//Intentional empty constructor
+		}
+		
+		public static final int DRIVE_BASE_LEFT = 0;
+		public static final int DRIVE_BASE_RIGHT = 1;
+	}
 }
