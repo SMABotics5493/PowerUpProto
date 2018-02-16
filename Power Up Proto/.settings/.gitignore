@@ -1,7 +1,1 @@
-<<<<<<< Upstream, based on origin/master
-/.settings
-build
-dist
-=======
->>>>>>> 044f6e0 start merging mengs code
 /org.sonarlint.eclipse.core.prefs
