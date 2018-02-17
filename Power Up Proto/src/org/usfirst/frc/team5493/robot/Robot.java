@@ -20,7 +20,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import com.ctre.CANTalon.TalonControlMode;
 
 public class Robot extends IterativeRobot {
-
+	
+	public static boolean isShifted = false; 
 	public static final DriveBase driveBase = new DriveBase();
 	public static Cascade cascade;
 	public static OI oi;
@@ -107,10 +108,6 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 	}
@@ -119,6 +116,7 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control
 	 */
 	public void teleopPeriodic() {
+		driveBase.drive(0.025, 0.025);
 		Scheduler.getInstance().run();
 		// drive.arcadeDrive(speed, rotation);
 	}
