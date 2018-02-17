@@ -15,20 +15,22 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class CubeControls extends Subsystem {
-
+	
+	private WPI_TalonSRX intakeLift;
 	private WPI_TalonSRX leftIntakeMotor;
 	private WPI_TalonSRX rightIntakeMotor;
 	private double intakeSpeed;
 	private double outtakeSpeed;
 
-	private DigitalInput cubelimitSwitch = new DigitalInput(RobotMap.LIMIT_SWITCH_CUBE_CONTROLS);
-	private Counter cubecounter = new Counter(cubelimitSwitch);
+	//private DigitalInput cubelimitSwitch = new DigitalInput(RobotMap.LIMIT_SWITCH_CUBE_CONTROLS);
+	//private Counter cubecounter = new Counter(cubelimitSwitch);
 
 	public CubeControls() {
 		super();
 
 		leftIntakeMotor = new WPI_TalonSRX(RobotMap.INTAKE_LEFT);
 		rightIntakeMotor = new WPI_TalonSRX(RobotMap.INTAKE_RIGHT);
+		intakeLift = new WPI_TalonSRX(RobotMap.INTAKE_LIFT);
 
 		rightIntakeMotor.set(ControlMode.Follower, RobotMap.INTAKE_LEFT);
 
@@ -66,11 +68,23 @@ public class CubeControls extends Subsystem {
 		Robot.cubeControls.rightIntakeMotor.set(0.0);
 	}
 
-	public boolean isSwitchSet() {
-		return cubecounter.get() > 0;
-	}
+	//public boolean isSwitchSet() {
+	//	return cubecounter.get() > 0;
+	//}
 
-	public void initializeCounter() {
-		cubecounter.reset();
+	//public void initializeCounter() {
+		//cubecounter.reset();
+	//}
+	
+	public void raiseUp() {
+		Robot.cubeControls.intakeLift.set(0.4);
+	}
+	
+	public void raiseDown() {
+		Robot.cubeControls.intakeLift.set(-0.4);
+	}
+	
+	public void end2() {
+		Robot.cubeControls.intakeLift.set(0.0);
 	}
 }

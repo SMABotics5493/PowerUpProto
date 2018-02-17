@@ -1,16 +1,20 @@
 package org.usfirst.frc.team5493.robot;
 
-import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
-import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
-import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
-import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
-import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
-
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-//import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
+
+import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
+import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
+import org.usfirst.frc.team5493.robot.subsystems.Candycane;
+import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
+import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
+import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
+import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import com.ctre.CANTalon.TalonControlMode;
@@ -20,8 +24,9 @@ public class Robot extends IterativeRobot {
 	public static final DriveBase driveBase = new DriveBase();
 	public static OneClimbyBoi climber;
 	public static OI oi;
-	// public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
+	public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
 	public static CubeControls cubeControls;
+	public static Candycane candycane;
 
 	// Encoder encoder = new Encoder(4, 5, true, EncodingType.k2X);
 	static double distancePerRevolution = 480.66;
@@ -29,21 +34,22 @@ public class Robot extends IterativeRobot {
 	static double countsPerRevolution = 360;
 	static double distancePerPulse = distancePerRevolution / pulsesPerRevolution;
 	static double distancePerCount = distancePerRevolution / countsPerRevolution;
+	
+ Command autonomousCommand;
+    SendableChooser chooser;
 
-	Command autonomousCommand;
-	SendableChooser chooser;
-
-	/**
-	 * This function is run when the robot is first started up and should be used
-	 * for any initialization code.
-	 */
-
-	public void robotInit() {
-
-		climber = new OneClimbyBoi();
-		cubeControls = new CubeControls();
-		// throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
+    /**
+     * This function is run when the robot is first started up and should be
+     * used for any initialization code.
+     */
+    
+    public void robotInit() {
+    	
+    	climber = new OneClimbyBoi();
+    	cubeControls = new CubeControls();
+    	throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		oi = new OI();
+		candycane = new Candycane();
 		// throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 
 		chooser = new SendableChooser();
