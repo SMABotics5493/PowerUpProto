@@ -44,8 +44,8 @@ public class CubeControls extends Subsystem {
 		intakeSpeed = prefs.getDouble("IntakeSpeed", 1);
 		outtakeSpeed = prefs.getDouble("OuttakeSpeed", -1);
 
-		leftIntakeMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
-		rightIntakeMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		//leftIntakeMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		//rightIntakeMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 	}
 
 	public void initDefaultCommand() {

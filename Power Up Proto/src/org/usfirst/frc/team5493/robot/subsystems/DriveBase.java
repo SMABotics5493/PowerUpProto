@@ -38,8 +38,8 @@ public class DriveBase extends Subsystem {
 		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT);
 		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK);
 
-		leftFrontMotor = new WPI_TalonSRX(0);
-		rightFrontMotor = new WPI_TalonSRX(1);
+		//leftFrontMotor = new WPI_TalonSRX(0);
+		//rightFrontMotor = new WPI_TalonSRX(1);
 
 		leftBackMotor.set(ControlMode.Follower, RobotMap.LEFT_FRONT);
 		rightBackMotor.set(ControlMode.Follower, RobotMap.RIGHT_FRONT);
@@ -58,7 +58,7 @@ public class DriveBase extends Subsystem {
 
 		drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor,
 		rightBackMotor);
-		drive = new RobotDrive(leftFrontMotor, rightFrontMotor);
+		//drive = new RobotDrive(leftFrontMotor, rightFrontMotor);
 		drive.setExpiration(0.1);
 
 		double secondsFromNeutral = 0;
@@ -69,10 +69,10 @@ public class DriveBase extends Subsystem {
 		secondsFromNeutral = prefs.getDouble("RampRateDriveBase", 0.25);
 		timeoutMs = prefs.getInt("RampRateDriveBaseTimeout", 1);
 
-		leftFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
-		rightFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
-		leftBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
-		rightBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		//leftFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		//rightFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		//leftBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		//rightBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 	}
 
 	public void initDefaultCommand() {

@@ -19,19 +19,17 @@ public class ClimbDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	setTimeout(.25);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	isFinished = true; 
     	Robot.climber.pullDown();
-    	isFinished = false;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true

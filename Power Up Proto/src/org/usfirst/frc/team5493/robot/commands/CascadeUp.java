@@ -31,9 +31,9 @@ public class CascadeUp extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		//DriverStation.reportError("up  timeout is = "+ isTimedOut(), false);
-		//return isTimedOut();
-		return true; 
+		DriverStation.reportError("up  timeout is = "+ isTimedOut(), false);
+		return isTimedOut();
+		// true; 
 //		return Robot.cascade.hasClimbedDown();
 	}
 

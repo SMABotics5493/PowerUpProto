@@ -15,7 +15,6 @@ public class AutoLeftRight extends CommandGroup {
     	//addSequential(new TurnWithGyro());
     	addSequential(new DriveStraightWithGyro());
     	addSequential(new CascadeUp());
-    	addSequential(new CascadeHold());
     	addSequential(new DriveStraightWithGyro());
     	addSequential(new CubeOuttake());
     	//addSequential(new DriveStraightBack());

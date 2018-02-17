@@ -21,6 +21,7 @@ public class CubeOuttake extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		setTimeout(.25);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -32,7 +33,7 @@ public class CubeOuttake extends Command {
 	protected boolean isFinished() {
 		// TODO - Meng... I think this needs to gets something back from cubeControls to
 		// know it's done - i.e. a time expiration or something like that.
-		return isFinished;
+		return isTimedOut();
 	}
 
 	// Called once after isFinished returns true

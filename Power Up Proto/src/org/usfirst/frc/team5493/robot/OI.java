@@ -27,15 +27,15 @@ public class OI {
     private Joystick joystick = new Joystick(RobotMap.JOYSTICK_PORT);
    // DriverStation ds = DriverStation.getInstance();
  
-    JoystickButton cubeIntake = new JoystickButton(joystick, RobotMap.JOYBTN_LT);
-	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_RT);
+    JoystickButton cubeIntake = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
+	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
 	JoystickButton climbUp = new JoystickButton(joystick, RobotMap.JOYBTN_Y);
 	JoystickButton climbDown = new JoystickButton(joystick, RobotMap.JOYBTN_A);
 	JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
 	JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
 	JoystickButton climbHold = new JoystickButton(joystick, RobotMap.JOYBTN_X);
-	JoystickButton tiltyBoiUp = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
-	JoystickButton tiltyBoiDown = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
+	JoystickButton tiltyBoiUp = new JoystickButton(driveJoystick, RobotMap.JOYBTN_LB);
+	JoystickButton tiltyBoiDown = new JoystickButton(driveJoystick, RobotMap.JOYBTN_RB);
 	JoystickButton pullUp = new JoystickButton(driveJoystick, RobotMap.JOYBTN_Y);
 	JoystickButton pullDown = new JoystickButton(driveJoystick, RobotMap.JOYBTN_A);
 	JoystickButton solenoidEndgame = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
