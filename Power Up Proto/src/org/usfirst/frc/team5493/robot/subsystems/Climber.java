@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Candycane extends Subsystem {
+public class Climber extends Subsystem {
 
 	private WPI_TalonSRX candycane;
 	
-	public Candycane() {
+	public Climber() {
 		candycane = new WPI_TalonSRX(RobotMap.CLIMBER);
 	}
     // Put methods for controlling this subsystem
@@ -24,13 +24,13 @@ public class Candycane extends Subsystem {
     }
 
     	public void pullUp() {
-    		Robot.candycane.candycane.set(1.0);
+    		Robot.climber.candycane.set(0.8);
        	}
     	public void pullDown() {
-    		Robot.candycane.candycane.set(-0.4);
+    		Robot.climber.candycane.set(-0.4);
     	}
     	public void end() {
-    		Robot.candycane.candycane.set(0.0);
+    		Robot.climber.candycane.set(0.0);
     		
     	}
 }

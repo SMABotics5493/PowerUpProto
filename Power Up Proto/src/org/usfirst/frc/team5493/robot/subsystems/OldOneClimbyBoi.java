@@ -42,16 +42,16 @@
 //        
 //    }
 //    public void climbUp() {
-//    	Robot.climber.climbMotor.set(0.8);
+//    	Robot.cascade.climbMotor.set(0.8);
 //    }
 //    public void climbDown(){
-//    	Robot.climber.climbMotor.set(-0.4);
+//    	Robot.cascade.climbMotor.set(-0.4);
 //    }
 //    public void climbHold(){
-//    	Robot.climber.climbMotor.set(0.1);
+//    	Robot.cascade.climbMotor.set(0.1);
 //    }
 //    public void end(){
-//    	Robot.climber.climbMotor.set(0.1);
+//    	Robot.cascade.climbMotor.set(0.1);
 //    }
 //    
 //    //private double getAverageEncoderPosition() {

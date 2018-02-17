@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class OneClimbyBoi extends Subsystem {
+public class Cascade extends Subsystem {
 
 	//TODO: Hold can be removed when PID is integrated.
 	
@@ -39,7 +39,7 @@ public class OneClimbyBoi extends Subsystem {
 	public static final double kDistancePerPulse = kDistancePerRevolution / kPulsesPerRevolution;
 
 
-	public OneClimbyBoi() {
+	public Cascade() {
 		super();
 
 		climbMotor = new WPI_TalonSRX(RobotMap.CASCADE);
@@ -73,15 +73,15 @@ public class OneClimbyBoi extends Subsystem {
 	}
 
 	public void climbUp() {
-		Robot.climber.climbMotor.set(upSpeed);
+		Robot.cascade.climbMotor.set(upSpeed);
 	}
 
 	public void climbDown() {
-		Robot.climber.climbMotor.set(downSpeed);
+		Robot.cascade.climbMotor.set(downSpeed);
 	}
 
 	public void end() {
-		Robot.climber.climbMotor.set(holdSpeed);
+		Robot.cascade.climbMotor.set(holdSpeed);
 	}
 
 //	public void initializeCounterUp() {
@@ -101,7 +101,7 @@ public class OneClimbyBoi extends Subsystem {
 //	}
 	
 	public void climbHold(){
-    	Robot.climber.climbMotor.set(holdSpeed);
+    	Robot.cascade.climbMotor.set(holdSpeed);
     }
 	
     private void resetEncoders() {

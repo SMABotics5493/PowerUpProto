@@ -22,17 +22,15 @@ public class TiltyBoiDown extends Command {
     }
 
     
-    protected void execute() {
-    	
-    	isFinished = true; 
+    protected void execute() { 
     	Robot.cubeControls.raiseDown();
-    	isFinished = false;
+    	
     	
     }
 
     
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     
@@ -42,5 +40,6 @@ public class TiltyBoiDown extends Command {
 
     
     protected void interrupted() {
+    	end();
     }
 }

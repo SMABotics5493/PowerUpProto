@@ -1,13 +1,13 @@
 package org.usfirst.frc.team5493.robot;
 
-import org.usfirst.frc.team5493.robot.commands.ClimbDown;
-//import org.usfirst.frc.team5493.robot.commands.ClimbHold;
-import org.usfirst.frc.team5493.robot.commands.ClimbUp;
+import org.usfirst.frc.team5493.robot.commands.CascadeDown;
+//import org.usfirst.frc.team5493.robot.commands.CascadeHold;
+import org.usfirst.frc.team5493.robot.commands.CascadeUp;
 import org.usfirst.frc.team5493.robot.commands.CubeIntake;
 import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
 import org.usfirst.frc.team5493.robot.commands.Endgame;
-import org.usfirst.frc.team5493.robot.commands.PullDown;
-import org.usfirst.frc.team5493.robot.commands.PullUp;
+import org.usfirst.frc.team5493.robot.commands.ClimbDown;
+import org.usfirst.frc.team5493.robot.commands.ClimbUp;
 import org.usfirst.frc.team5493.robot.commands.TiltyBoiDown;
 import org.usfirst.frc.team5493.robot.commands.TiltyBoiUp;
 import org.usfirst.frc.team5493.robot.commands.TransmissionForward;
@@ -54,12 +54,12 @@ public class OI {
     	
     	cubeIntake.whileHeld(new CubeIntake());
     	cubeOuttake.whileHeld(new CubeOuttake());
-    	climbUp.whileHeld(new ClimbUp());
-    	climbDown.whileHeld(new ClimbDown());
+    	climbUp.whileHeld(new CascadeUp());
+    	climbDown.whileHeld(new CascadeDown());
     	solenoidForward.whenPressed(new TransmissionForward());
     	solenoidReverse.whenPressed(new TransmissionReverse());
-    	pullUp.whileHeld(new PullUp());
-    	pullDown.whileHeld(new PullDown());
+    	pullUp.whileHeld(new ClimbUp());
+    	pullDown.whileHeld(new ClimbDown());
     	tiltyBoiUp.whileHeld(new TiltyBoiUp());
     	tiltyBoiDown.whileHeld(new TiltyBoiDown());    	
     	solenoidEndgame.whenPressed(new Endgame());

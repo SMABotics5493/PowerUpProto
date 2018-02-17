@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
-import org.usfirst.frc.team5493.robot.subsystems.Candycane;
+import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
-import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
+import org.usfirst.frc.team5493.robot.subsystems.Cascade;
 import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -22,11 +22,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final DriveBase driveBase = new DriveBase();
-	public static OneClimbyBoi climber;
+	public static Cascade cascade;
 	public static OI oi;
 	public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
 	public static CubeControls cubeControls;
-	public static Candycane candycane;
+	public static Climber climber;
 
 	// Encoder encoder = new Encoder(4, 5, true, EncodingType.k2X);
 	static double distancePerRevolution = 480.66;
@@ -45,10 +45,10 @@ public class Robot extends IterativeRobot {
     
     public void robotInit() {
     	
-    	climber = new OneClimbyBoi();
+    	cascade = new Cascade();
     	cubeControls = new CubeControls();
     	throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
-    	candycane = new Candycane();
+    	climber = new Climber();
 		oi = new OI();
 		
 		

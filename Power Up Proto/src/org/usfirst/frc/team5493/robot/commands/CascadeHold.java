@@ -7,35 +7,34 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class PullDown extends Command {
-
-	private boolean isFinished;
+public class CascadeHold extends Command {
 	
-    public PullDown() {
-    	requires(Robot.candycane);
+	boolean isFinished;
+    public CascadeHold() {
+    	requires(Robot.cascade);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	isFinished = true;
+    	Robot.cascade.climbHold();
+    	isFinished = false; 
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	isFinished = true; 
-    	Robot.candycane.pullDown();
-    	isFinished = false;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.candycane.end();
+    	Robot.cascade.end();
     }
 
     // Called when another command which requires one or more of the same
