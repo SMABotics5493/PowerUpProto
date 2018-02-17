@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
+import org.usfirst.frc.team5493.robot.subsystems.Candycane;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
 import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
@@ -25,6 +26,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
 	public static CubeControls cubeControls;
+	public static Candycane candycane;
  
 	//Encoder encoder = new Encoder(4, 5, true, EncodingType.k2X);
 	static double distancePerRevolution = 480.66;
@@ -47,6 +49,7 @@ public class Robot extends IterativeRobot {
     	cubeControls = new CubeControls();
     	throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		oi = new OI();
+		candycane = new Candycane();
 //		throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
 		
         chooser = new SendableChooser();

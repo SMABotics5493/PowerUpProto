@@ -13,7 +13,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class CubeControls extends Subsystem {
-
+	
+	private WPI_TalonSRX intakeLift;
 	private WPI_TalonSRX leftIntakeMotor;
 	private WPI_TalonSRX rightIntakeMotor;
 	private double intakeSpeed;
@@ -24,6 +25,7 @@ public class CubeControls extends Subsystem {
 
 		leftIntakeMotor = new WPI_TalonSRX(RobotMap.INTAKE_LEFT);
 		rightIntakeMotor = new WPI_TalonSRX(RobotMap.INTAKE_RIGHT);
+		intakeLift = new WPI_TalonSRX(RobotMap.INTAKE_LIFT);
 
 		rightIntakeMotor.set(ControlMode.Follower, RobotMap.INTAKE_LEFT);
 
@@ -59,5 +61,14 @@ public class CubeControls extends Subsystem {
 	public void end() {
 		Robot.cubeControls.leftIntakeMotor.set(0.0);
 		Robot.cubeControls.rightIntakeMotor.set(0.0);
+	}
+	public void raiseUp() {
+		Robot.cubeControls.intakeLift.set(0.4);
+	}
+	public void raiseDown() {
+		Robot.cubeControls.intakeLift.set(-0.4);
+	}
+	public void end2() {
+		Robot.cubeControls.intakeLift.set(0.0);
 	}
 }

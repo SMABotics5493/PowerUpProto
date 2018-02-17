@@ -25,7 +25,7 @@ public class TiltyBoiUp extends Command {
     protected void execute() {
     	
     	isFinished = true;
-    	Robot.cubeControls.intake();
+    	Robot.cubeControls.raiseUp();
     	isFinished = false;
     	
     }
@@ -36,6 +36,7 @@ public class TiltyBoiUp extends Command {
     }
     
     protected void end() {
+    	Robot.cubeControls.end();
     }
 
     

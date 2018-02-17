@@ -28,10 +28,14 @@ public class RobotMap {
 	public final static int RIGHT_FRONT = 2;
 	public final static int RIGHT_BACK = 5;
 
-	public final static int INTAKE_LEFT = 3;
-	public final static int INTAKE_RIGHT = 1;
+	public final static int INTAKE_LEFT = 5;
+	public final static int INTAKE_RIGHT = 4;
 	
-	public final static int CLIMBER = 4; 
+	public final static int INTAKE_LIFT = 3;
+	
+	public final static int ENDGAME = 0;
+	
+	public final static int CLIMBER = 2; 
 	
 	public final static int LEFT_ENCODER_A = 1;
 	public final static int LEFT_ENCODER_B = 2;  //THESE ARE NOT THE CORRECT PORTS
