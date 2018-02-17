@@ -15,7 +15,7 @@ public class Candycane extends Subsystem {
 	private WPI_TalonSRX candycane;
 	
 	public Candycane() {
-		candycane = new WPI_TalonSRX(RobotMap.CANDYCANE);
+		candycane = new WPI_TalonSRX(RobotMap.CLIMBER);
 	}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -24,7 +24,7 @@ public class Candycane extends Subsystem {
     }
 
     	public void pullUp() {
-    		Robot.candycane.candycane.set(1);
+    		Robot.candycane.candycane.set(1.0);
        	}
     	public void pullDown() {
     		Robot.candycane.candycane.set(-0.4);

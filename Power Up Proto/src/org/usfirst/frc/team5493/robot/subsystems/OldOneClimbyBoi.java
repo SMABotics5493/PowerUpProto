@@ -35,7 +35,7 @@
 //	public OldOneClimbyBoi() {
 //	super();
 //	
-//	climbMotor = new WPI_TalonSRX(RobotMap.CLIMBER);
+//	climbMotor = new WPI_TalonSRX(RobotMap.CASCADE);
 //    
 //	 }
 //    public void initDefaultCommand() {

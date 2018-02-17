@@ -33,11 +33,10 @@ public class RobotMap {
 	
 	public final static int INTAKE_LIFT = 7;
 	
-	public final static int ENDGAME = 0;
 	
-	public final static int CLIMBER = 6; 
+	public final static int CASCADE = 6; 
 	
-	public final static int CANDYCANE = 10;
+	public final static int CLIMBER = 10;
 
 	public static final int LEFT_ENCODER_A = 1;
 	public static final int LEFT_ENCODER_B = 2;  //THESE ARE NOT THE CORRECT PORTS
