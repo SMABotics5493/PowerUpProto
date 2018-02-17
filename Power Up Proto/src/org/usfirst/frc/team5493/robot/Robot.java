@@ -48,9 +48,10 @@ public class Robot extends IterativeRobot {
     	climber = new OneClimbyBoi();
     	cubeControls = new CubeControls();
     	throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
+    	candycane = new Candycane();
 		oi = new OI();
-		candycane = new Candycane();
-		// throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
+		
+		
 
 		chooser = new SendableChooser();
 		chooser.addDefault("Tank Drive", new JoystickDrive());

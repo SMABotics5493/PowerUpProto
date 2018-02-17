@@ -8,7 +8,7 @@ package org.usfirst.frc.team5493.robot;
  */
 public class RobotMap {
 
-	public static final int JOYSTICK_DRIVE_PORT = 0;
+	public static final int JOYSTICK_DRIVE_PORT = 5;
 	public static final int JOYSTICK_PORT = 1;
 	
 	public static final int JOYBTN_A = 1;
@@ -23,19 +23,21 @@ public class RobotMap {
 	public static final int RIGHTYAXIS = 5;
 	public static final int LEFTYAXIS = 1;
 	
-	public static final int LEFT_FRONT = 7;
-	public static final int LEFT_BACK = 6;
+	public static final int LEFT_FRONT = 3;
+	public static final int LEFT_BACK = 5;
 	public static final int RIGHT_FRONT = 2;
-	public static final int RIGHT_BACK = 5;
+	public static final int RIGHT_BACK = 4;
 
-	public final static int INTAKE_LEFT = 5;
-	public final static int INTAKE_RIGHT = 4;
+	public final static int INTAKE_LEFT = 8;
+	public final static int INTAKE_RIGHT = 9;
 	
-	public final static int INTAKE_LIFT = 3;
+	public final static int INTAKE_LIFT = 7;
 	
 	public final static int ENDGAME = 0;
 	
-	public final static int CLIMBER = 2; 
+	public final static int CLIMBER = 6; 
+	
+	public final static int CANDYCANE = 10;
 
 	public static final int LEFT_ENCODER_A = 1;
 	public static final int LEFT_ENCODER_B = 2;  //THESE ARE NOT THE CORRECT PORTS

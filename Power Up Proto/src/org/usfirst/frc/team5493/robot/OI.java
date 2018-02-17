@@ -12,14 +12,9 @@ import org.usfirst.frc.team5493.robot.commands.TiltyBoiDown;
 import org.usfirst.frc.team5493.robot.commands.TiltyBoiUp;
 import org.usfirst.frc.team5493.robot.commands.TransmissionForward;
 import org.usfirst.frc.team5493.robot.commands.TransmissionReverse;
-import org.usfirst.frc.team5493.robot.subsystems.Candycane;
-import org.usfirst.frc.team5493.robot.subsystems.OneClimbyBoi;
-import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator

@@ -4,6 +4,7 @@ import org.usfirst.frc.team5493.robot.RobotMap;
 import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
 
 import com.ctre.phoenix.ErrorCode;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -20,8 +21,8 @@ public class DriveBase extends Subsystem {
 
 	double pulsesPerRevolution = 1440.0;
 	double averageDistance;
-	// WPI_TalonSRX leftBackMotor;
-	// WPI_TalonSRX rightBackMotor;;
+	WPI_TalonSRX leftBackMotor;
+	WPI_TalonSRX rightBackMotor;;
 	WPI_TalonSRX rightFrontMotor;
 	WPI_TalonSRX leftFrontMotor;
 	private RobotDrive drive;
@@ -32,16 +33,16 @@ public class DriveBase extends Subsystem {
 	public DriveBase() {
 		super();
 
-		// leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT);
-		// leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK);
-		// rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT);
-		// rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK);
+		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT);
+		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK);
+		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT);
+		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK);
 
 		leftFrontMotor = new WPI_TalonSRX(0);
 		rightFrontMotor = new WPI_TalonSRX(1);
 
-		// leftBackMotor.set(ControlMode.Follower, RobotMap.LEFT_FRONT);
-		// rightBackMotor.set(ControlMode.Follower, RobotMap.RIGHT_FRONT);
+		leftBackMotor.set(ControlMode.Follower, RobotMap.LEFT_FRONT);
+		rightBackMotor.set(ControlMode.Follower, RobotMap.RIGHT_FRONT);
 
 		ErrorCode lcode = ((TalonSRX) leftFrontMotor).configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 1);
 		
@@ -55,8 +56,8 @@ public class DriveBase extends Subsystem {
 			DriverStation.reportWarning("Right Encoder Quad Sensor Okay", false);
 		}
 
-		// drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor,
-		// rightBackMotor);
+		drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor,
+		rightBackMotor);
 		drive = new RobotDrive(leftFrontMotor, rightFrontMotor);
 		drive.setExpiration(0.1);
 
@@ -70,8 +71,8 @@ public class DriveBase extends Subsystem {
 
 		leftFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 		rightFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
-		// leftBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
-		// rightBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		leftBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		rightBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 	}
 
 	public void initDefaultCommand() {
