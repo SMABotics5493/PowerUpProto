@@ -34,8 +34,6 @@ public class DriveStraightWithGyro extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 
-		double angle = Robot.gyro.getAngle();
-		// Robot.driveBase.driveHeading(0.23, -angle*Kp);
 		distance(10);
 
 	}
@@ -60,10 +58,11 @@ public class DriveStraightWithGyro extends Command {
 	protected void distance(double targetPositionRotations) {
 		if (!isStarted) {
 			startingPosition = Robot.driveBase.getEncoderPosition();
-			/* 10 Rotations * 1440 u/rev in either direction */
-			targetPositionRotations = targetPositionRotations * _encoderPulses;
 
-			Robot.driveBase.drivePosition(targetPositionRotations);
+
+			double angle = Robot.gyro.getAngle();
+			Robot.driveBase.driveHeading(0.23, -angle*Kp);
+
 			isStarted = true;
 			DriverStation.reportWarning("distance", false);
 			// _talon.set(ControlMode.Position, targetPositionRotations);
@@ -75,6 +74,8 @@ public class DriveStraightWithGyro extends Command {
 			
 			isFinished = current - startingPosition > targetPositionRotations * _encoderPulses;
 			DriverStation.reportWarning("waiting finished? " + isFinished, false);
+			double angle = Robot.gyro.getAngle();
+			Robot.driveBase.driveHeading(0.23, -angle*Kp);
 		}
 	}
 }
