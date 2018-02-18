@@ -34,7 +34,7 @@ public class DriveStraightWithGyro extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 
-		distance(10);
+		distance(2250);
 
 	}
 
@@ -72,7 +72,7 @@ public class DriveStraightWithGyro extends Command {
 			DriverStation.reportWarning("waiting start " + startingPosition, false);
 			DriverStation.reportWarning("waiting curre " + current, false);
 			
-			isFinished = current - startingPosition > targetPositionRotations * _encoderPulses;
+			isFinished = current - startingPosition > targetPositionRotations ;
 			DriverStation.reportWarning("waiting finished? " + isFinished, false);
 			double angle = Robot.gyro.getAngle();
 			Robot.driveBase.driveHeading(0.23, -angle*Kp);
