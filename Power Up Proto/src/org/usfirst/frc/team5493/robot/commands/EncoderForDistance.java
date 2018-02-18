@@ -12,6 +12,10 @@ public class EncoderForDistance extends Command {
 	private double target;
 	private double speed;
 	private boolean goForward;
+	
+	//TODO: What the _encoderPulses are for the encoders we're using.
+	private int _encoderPulses = 1440;
+	private double _diameter = 6;
 
     public EncoderForDistance(double distance, boolean forward) {
           requires(Robot.driveBase);
@@ -45,5 +49,14 @@ public class EncoderForDistance extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    }
+    
+    
+    protected void distance(double targetPositionRotations) {
+		/* 10 Rotations * 4096 u/rev in either direction */
+		targetPositionRotations = targetPositionRotations * _encoderPulses;
+		
+		Robot.driveBase.drivePosition(targetPositionRotations);
+//		_talon.set(ControlMode.Position, targetPositionRotations);
     }
 }

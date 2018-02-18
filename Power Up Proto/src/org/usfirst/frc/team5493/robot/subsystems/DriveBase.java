@@ -25,10 +25,17 @@ public class DriveBase extends Subsystem {
 	WPI_TalonSRX rightBackMotor;;
 	WPI_TalonSRX rightFrontMotor;
 	WPI_TalonSRX leftFrontMotor;
+
+	WPI_TalonSRX[] encoderTalons;
+	WPI_TalonSRX[] allTalons;
+
 	private RobotDrive drive;
 	private Encoder leftEncoder, rightEncoder;
 	private final String DRIVE_SYSTEM = "Tank Drive System";
 	private final String LEFT_FRONT = "Left Front Motor";
+
+	private final int kPIDLoopIdx = 0;
+	private final int kTimeoutMs = 0;
 
 	public DriveBase() {
 		super();
@@ -38,27 +45,29 @@ public class DriveBase extends Subsystem {
 		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT);
 		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK);
 
-		//leftFrontMotor = new WPI_TalonSRX(0);
-		//rightFrontMotor = new WPI_TalonSRX(1);
+		// leftFrontMotor = new WPI_TalonSRX(0);
+		// rightFrontMotor = new WPI_TalonSRX(1);
 
-		leftBackMotor.set(ControlMode.Follower, RobotMap.LEFT_FRONT);
-		rightBackMotor.set(ControlMode.Follower, RobotMap.RIGHT_FRONT);
+		leftFrontMotor.set(ControlMode.Follower, RobotMap.LEFT_BACK);
+		rightFrontMotor.set(ControlMode.Follower, RobotMap.RIGHT_BACK);
 
-		ErrorCode lcode = ((TalonSRX) leftFrontMotor).configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 1);
+		encoderTalons = new WPI_TalonSRX[2];
+		encoderTalons[0] = leftBackMotor;
+		//encoderTalons[RobotMap.LEFT_BACK] = leftBackMotor;
+		encoderTalons[1] = rightBackMotor;
+		//encoderTalons[RobotMap.RIGHT_BACK] = rightBackMotor;
+
+		this.initializeTalonsForEncoder();
 		
-		if (lcode == ErrorCode.OK) {
-			DriverStation.reportWarning("Left Encoder Quad Sensor Okay", false);
-		}
-		
-		ErrorCode rcode = ((TalonSRX) rightFrontMotor).configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 1);
+		allTalons = new WPI_TalonSRX[4];
+		allTalons[0] = leftBackMotor;
+		allTalons[1] = leftFrontMotor;
+		allTalons[2] = rightBackMotor;
+		allTalons[3] = rightFrontMotor;
 
-		if (rcode == ErrorCode.OK) {
-			DriverStation.reportWarning("Right Encoder Quad Sensor Okay", false);
-		}
 
-		drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor,
-		rightBackMotor);
-		//drive = new RobotDrive(leftFrontMotor, rightFrontMotor);
+		drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor, rightBackMotor);
+		// drive = new RobotDrive(leftFrontMotor, rightFrontMotor);
 		drive.setExpiration(0.1);
 
 		double secondsFromNeutral = 0;
@@ -69,10 +78,10 @@ public class DriveBase extends Subsystem {
 		secondsFromNeutral = prefs.getDouble("RampRateDriveBase", 0.25);
 		timeoutMs = prefs.getInt("RampRateDriveBaseTimeout", 1);
 
-		//leftFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
-		//rightFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
-		//leftBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
-		//rightBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		// leftFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		// rightFrontMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		// leftBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
+		// rightBackMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 	}
 
 	public void initDefaultCommand() {
@@ -80,10 +89,9 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void drive(Joystick j) {
-		
+
 		drive(j.getRawAxis(RobotMap.LEFTYAXIS), j.getRawAxis(RobotMap.RIGHTYAXIS));
 
-		
 		// leftStatus = ((TalonSRX)
 		// leftBackMotor).getSensorCollection().getPulseWidthRiseToRiseUs();
 		// rightStatus = ((TalonSRX)
@@ -109,6 +117,59 @@ public class DriveBase extends Subsystem {
 		DriverStation.getInstance().reportWarning("Drive Heading", true);
 	}
 
+	private void initializeTalonsForEncoder() {
+		for (int talIdx = 0; talIdx < encoderTalons.length; talIdx++) {
+
+			TalonSRX talon = (TalonSRX) encoderTalons[talIdx];
+
+			ErrorCode lcode = (talon).configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, kPIDLoopIdx, kTimeoutMs);
+
+			if (lcode == ErrorCode.OK) {
+				DriverStation.reportWarning(talon.getDeviceID() + " Encoder Quad Sensor Okay", false);
+			}
+
+			// /* choose to ensure sensor is positive when output is positive */
+			// talon.setSensorPhase(Constants.kSensorPhase);
+			//
+			// /* choose based on what direction you want forward/positive to
+			// be.
+			// * This does not affect sensor phase. */
+			// talon.setInverted(Constants.kMotorInvert);
+
+			/* set the peak and nominal outputs, 12V means full */
+			talon.configNominalOutputForward(0, kTimeoutMs);
+			talon.configNominalOutputReverse(0, kTimeoutMs);
+			talon.configPeakOutputForward(.25, kTimeoutMs);
+			talon.configPeakOutputReverse(-.25, kTimeoutMs);
+			/*
+			 * set the allowable closed-loop error, Closed-Loop output will be
+			 * neutral within this range. See Table in Section 17.2.1 for native
+			 * units per rotation.
+			 */
+			talon.configAllowableClosedloopError(0, kPIDLoopIdx, kTimeoutMs);
+
+			/* set closed loop gains in slot0, typically kF stays zero. */
+			talon.config_kF(kPIDLoopIdx, 0.0, kTimeoutMs);
+			talon.config_kP(kPIDLoopIdx, 0.1, kTimeoutMs);
+			talon.config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
+			talon.config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
+
+			/*
+			 * lets grab the 360 degree position of the MagEncoder's absolute
+			 * position, and intitally set the relative sensor to match.
+			 */
+			int absolutePosition = talon.getSensorCollection().getPulseWidthPosition();
+			/* mask out overflows, keep bottom 12 bits */
+			absolutePosition &= 0xFFF;
+			// if (Constants.kSensorPhase)
+			// absolutePosition *= -1;
+			// if (Constants.kMotorInvert)
+			// absolutePosition *= -1;
+			/* set the quadrature (relative) sensor to match absolute */
+			talon.setSelectedSensorPosition(absolutePosition, kPIDLoopIdx, kTimeoutMs);
+		}
+	}
+
 	public void log() {
 		// SmartDashboard.putNumber("Left Distance", this.leftEncoder.get());
 		// SmartDashboard.putNumber("Right Distance", this.rightEncoder.get());
@@ -117,4 +178,28 @@ public class DriveBase extends Subsystem {
 	public void reset() {
 		drive(0.0, 0.0);
 	}
+
+	public void drivePosition(double targetPositionRotations) {
+
+		for (int talIdx = 0; talIdx < allTalons.length; talIdx++) {
+
+			TalonSRX talon = (TalonSRX) allTalons[talIdx];
+			talon.set(ControlMode.Position, targetPositionRotations);
+			
+			DriverStation.reportWarning("Set talon " + talIdx, false);
+		}
+		
+	}
+
+	public double getEncoderPosition() {
+		double total = 0;
+		for (int talIdx = 0; talIdx < encoderTalons.length; talIdx++) {
+
+			TalonSRX talon = (TalonSRX) encoderTalons[talIdx];
+			total += talon.getSelectedSensorPosition(kPIDLoopIdx);
+		}
+		
+		return total / encoderTalons.length;
+	}
+	
 }

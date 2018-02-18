@@ -2,49 +2,79 @@ package org.usfirst.frc.team5493.robot.commands;
 
 import org.usfirst.frc.team5493.robot.Robot;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.TimedCommand;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
  *
  */
-public class DriveStraightWithGyro extends TimedCommand {
+public class DriveStraightWithGyro extends Command {
 
-	private ADXRS450_Gyro gyro;
 	double Kp = 0.03;
-    public DriveStraightWithGyro() {
-    	super(10);
-        gyro = new ADXRS450_Gyro();
-        gyro.reset();
-       
-    }
+	private int _encoderPulses = 1440;
+	private boolean isFinished = false;
+
+	private double startingPosition;
+	
+	private boolean isStarted = false;
+
+	public DriveStraightWithGyro() {
+		// super(10);
+
+		requires(Robot.driveBase);
+	}
 
 	// Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	protected void initialize() {
+		Robot.gyro.reset();
+		isStarted = false;
+		startingPosition = 0;
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	 double angle = gyro.getAngle();
-         Robot.driveBase.driveHeading(0.23, -angle*Kp);
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return isTimedOut();
-    }
+		double angle = Robot.gyro.getAngle();
+		// Robot.driveBase.driveHeading(0.23, -angle*Kp);
+		distance(10);
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		DriverStation.reportWarning("finished? " + isFinished, false);
+		return isFinished;
+	}
+
+	// Called once after isFinished returns true
+	protected void end() {
+		DriverStation.reportWarning("end", false);
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		DriverStation.reportWarning("interrupt", false);
+	}
+
+	protected void distance(double targetPositionRotations) {
+		if (!isStarted) {
+			startingPosition = Robot.driveBase.getEncoderPosition();
+			/* 10 Rotations * 1440 u/rev in either direction */
+			targetPositionRotations = targetPositionRotations * _encoderPulses;
+
+			Robot.driveBase.drivePosition(targetPositionRotations);
+			isStarted = true;
+			DriverStation.reportWarning("distance", false);
+			// _talon.set(ControlMode.Position, targetPositionRotations);
+		} else {
+			DriverStation.reportWarning("waiting", false);
+			double current = Robot.driveBase.getEncoderPosition();
+			DriverStation.reportWarning("waiting start " + startingPosition, false);
+			DriverStation.reportWarning("waiting curre " + current, false);
+			
+			isFinished = current - startingPosition > targetPositionRotations * _encoderPulses;
+			DriverStation.reportWarning("waiting finished? " + isFinished, false);
+		}
+	}
 }
