@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveBase extends Subsystem {
 	double wheelDiameter = 6.0;
@@ -53,18 +54,17 @@ public class DriveBase extends Subsystem {
 
 		encoderTalons = new WPI_TalonSRX[2];
 		encoderTalons[0] = leftBackMotor;
-		//encoderTalons[RobotMap.LEFT_BACK] = leftBackMotor;
+		// encoderTalons[RobotMap.LEFT_BACK] = leftBackMotor;
 		encoderTalons[1] = rightBackMotor;
-		//encoderTalons[RobotMap.RIGHT_BACK] = rightBackMotor;
+		// encoderTalons[RobotMap.RIGHT_BACK] = rightBackMotor;
 
 		this.initializeTalonsForEncoder();
-		
+
 		allTalons = new WPI_TalonSRX[4];
 		allTalons[0] = leftBackMotor;
 		allTalons[1] = leftFrontMotor;
 		allTalons[2] = rightBackMotor;
 		allTalons[3] = rightFrontMotor;
-
 
 		drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor, rightBackMotor);
 		// drive = new RobotDrive(leftFrontMotor, rightFrontMotor);
@@ -139,8 +139,8 @@ public class DriveBase extends Subsystem {
 			/* set the peak and nominal outputs, 12V means full */
 			talon.configNominalOutputForward(0, kTimeoutMs);
 			talon.configNominalOutputReverse(0, kTimeoutMs);
-			talon.configPeakOutputForward(.25, kTimeoutMs);
-			talon.configPeakOutputReverse(-.25, kTimeoutMs);
+			talon.configPeakOutputForward(.1, kTimeoutMs);
+			talon.configPeakOutputReverse(-.1, kTimeoutMs);
 			/*
 			 * set the allowable closed-loop error, Closed-Loop output will be
 			 * neutral within this range. See Table in Section 17.2.1 for native
@@ -154,6 +154,14 @@ public class DriveBase extends Subsystem {
 			talon.config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
 			talon.config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
 
+		}
+		resetEncoder();
+	}
+
+	public void resetEncoder() {
+		for (int talIdx = 0; talIdx < encoderTalons.length; talIdx++) {
+
+			TalonSRX talon = (TalonSRX) encoderTalons[talIdx];
 			/*
 			 * lets grab the 360 degree position of the MagEncoder's absolute
 			 * position, and intitally set the relative sensor to match.
@@ -171,8 +179,8 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void log() {
-		// SmartDashboard.putNumber("Left Distance", this.leftEncoder.get());
-		// SmartDashboard.putNumber("Right Distance", this.rightEncoder.get());
+		//SmartDashboard.putNumber("Left Distance", this.leftEncoder.get());
+		//SmartDashboard.putNumber("Right Distance", this.rightEncoder.get());
 	}
 
 	public void reset() {
@@ -185,10 +193,10 @@ public class DriveBase extends Subsystem {
 
 			TalonSRX talon = (TalonSRX) allTalons[talIdx];
 			talon.set(ControlMode.Position, targetPositionRotations);
-			
+
 			DriverStation.reportWarning("Set talon " + talIdx, false);
 		}
-		
+
 	}
 
 	public double getEncoderPosition() {
@@ -198,8 +206,8 @@ public class DriveBase extends Subsystem {
 			TalonSRX talon = (TalonSRX) encoderTalons[talIdx];
 			total += talon.getSelectedSensorPosition(kPIDLoopIdx);
 		}
-		
+
 		return total / encoderTalons.length;
 	}
-	
+
 }

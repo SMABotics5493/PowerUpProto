@@ -1,7 +1,8 @@
 package org.usfirst.frc.team5493.robot;
 
+import org.usfirst.frc.team5493.robot.commands.AutoLeftLeft;
 import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
-import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
+import org.usfirst.frc.team5493.robot.commands.OldDriveStraight;
 import org.usfirst.frc.team5493.robot.subsystems.Cascade;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
@@ -9,6 +10,7 @@ import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
 import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -52,7 +54,11 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 
 		chooser = new SendableChooser();
-		chooser.addDefault("Tank Drive", new JoystickDrive());
+		chooser.addDefault("AutoLeftLeft", new AutoLeftLeft());
+		chooser.addDefault("AutoStraight", new DriveStraightWithGyro(-.23, 40, 900));
+		chooser.addDefault("OldAutoStraight", new OldDriveStraight());
+
+
 		SmartDashboard.putData("Auto mode", chooser);
 		SmartDashboard.putData("Drive Base", driveBase);
 
@@ -84,13 +90,18 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousInit() {
 		autonomousCommand = (Command) chooser.getSelected();
-		autonomousCommand = new DriveStraightWithGyro();
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
+
+		String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		if (gameData.length() > 0) {
+			if (gameData.charAt(0) == 'L') {
+				// Put left auto code here
+				autonomousCommand = new OldDriveStraight();
+			} else {
+				// Put right auto code here
+				autonomousCommand = null;
+			}
+		}
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)

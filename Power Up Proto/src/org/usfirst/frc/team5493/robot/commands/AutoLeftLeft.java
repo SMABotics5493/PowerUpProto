@@ -9,15 +9,15 @@ public class AutoLeftLeft extends CommandGroup {
 
     public AutoLeftLeft() {
     	//addSequential(new IntakeRelease());
-    	addSequential(new CubeIntake());
-    	addSequential(new DriveStraightWithGyro());
+    	//addSequential(new CubeIntake());
+    	//addSequential(new DriveStraightWithGyro(-0.5, 40, 0));
     	//addSequential(new TurnWithGyro());
-    	addSequential(new DriveStraightWithGyro());
-    	addSequential(new CascadeUp());
-    	addSequential(new DriveStraightWithGyro());
-    	addSequential(new CubeOuttake());
+    	addSequential(new DriveStraightWithGyro(-0.5, 20, 90));
+    	//addSequential(new CascadeUp());
+    	//addSequential(new DriveStraightWithGyro(-0.5, 35, 0));
+    	//addSequential(new CubeOuttake());
     	//addSequential(new DriveStraightBack());
-    	addSequential(new CascadeDown());
+    	//addSequential(new CascadeDown());
        
     }
 }

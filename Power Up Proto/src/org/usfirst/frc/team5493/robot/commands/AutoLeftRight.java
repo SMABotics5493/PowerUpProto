@@ -9,13 +9,13 @@ public class AutoLeftRight extends CommandGroup {
 
     public AutoLeftRight() {
        //addSequential(new IntakeRelease());
-    	addSequential(new DriveStraightWithGyro());
+    	addSequential(new DriveStraightWithGyro(0, 0, 0));
     	//addSequential(new TurnWithGyro());
-    	addSequential(new DriveStraightWithGyro());
+    	addSequential(new DriveStraightWithGyro(0, 0, 0));
     	//addSequential(new TurnWithGyro());
-    	addSequential(new DriveStraightWithGyro());
+    	addSequential(new DriveStraightWithGyro(0, 0, 0));
     	addSequential(new CascadeUp());
-    	addSequential(new DriveStraightWithGyro());
+    	addSequential(new DriveStraightWithGyro(0, 0, 0));
     	addSequential(new CubeOuttake());
     	//addSequential(new DriveStraightBack());
     	addSequential(new CascadeDown());

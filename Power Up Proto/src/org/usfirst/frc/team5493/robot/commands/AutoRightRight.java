@@ -10,11 +10,11 @@ public class AutoRightRight extends CommandGroup {
     public AutoRightRight() {
     	//addSequential(new IntakeRelease());
     	addSequential(new CubeIntake());
-    	addSequential(new DriveStraightWithGyro());
+    	addSequential(new DriveStraightWithGyro(0, 0, 0));
     	//addSequential(new TurnWithGyro());
-    	addSequential(new DriveStraightWithGyro());
+    	addSequential(new DriveStraightWithGyro(0, 0, 0));
     	addSequential(new CascadeUp());
-    	addSequential(new DriveStraightWithGyro());
+    	addSequential(new DriveStraightWithGyro(0, 0, 0));
     	addSequential(new CubeOuttake());
     	//addSequential(new DriveStraightBack());
     	addSequential(new CascadeDown());

@@ -10,18 +10,26 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveStraightWithGyro extends Command {
 
+	private static final double UNITS = 3;
 	double Kp = 0.03;
 	private int _encoderPulses = 1440;
 	private boolean isFinished = false;
 
 	private double startingPosition;
-	
-	private boolean isStarted = false;
 
-	public DriveStraightWithGyro() {
+	private boolean isStarted = false;
+	private double _direction;
+	private double _distance;
+	private double _speed;
+	private double targetHeading;
+
+	public DriveStraightWithGyro(double speed, double distance, double direction) {
 		// super(10);
 
 		requires(Robot.driveBase);
+		_distance = distance;
+		_direction = direction;
+		_speed = speed;
 	}
 
 	// Called just before this Command runs the first time
@@ -34,7 +42,8 @@ public class DriveStraightWithGyro extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 
-		distance(2250);
+		distance();
+		// 35 to turn 90 degrees
 
 	}
 
@@ -55,27 +64,33 @@ public class DriveStraightWithGyro extends Command {
 		DriverStation.reportWarning("interrupt", false);
 	}
 
-	protected void distance(double targetPositionRotations) {
+	protected void distance() {
+
+		double currentHeading = Robot.gyro.getAngle();
 		if (!isStarted) {
+			// initialize();
+			Robot.driveBase.resetEncoder();
 			startingPosition = Robot.driveBase.getEncoderPosition();
 
-
-			double angle = Robot.gyro.getAngle();
-			Robot.driveBase.driveHeading(0.23, -angle*Kp);
-
 			isStarted = true;
-			DriverStation.reportWarning("distance", false);
-			// _talon.set(ControlMode.Position, targetPositionRotations);
+			targetHeading = currentHeading + _direction;
+
 		} else {
-			DriverStation.reportWarning("waiting", false);
+
 			double current = Robot.driveBase.getEncoderPosition();
 			DriverStation.reportWarning("waiting start " + startingPosition, false);
 			DriverStation.reportWarning("waiting curre " + current, false);
-			
-			isFinished = current - startingPosition > targetPositionRotations ;
+
+			isFinished = Math.abs(current) - Math.abs(startingPosition) > _distance;// UNITS;
 			DriverStation.reportWarning("waiting finished? " + isFinished, false);
-			double angle = Robot.gyro.getAngle();
-			Robot.driveBase.driveHeading(0.23, -angle*Kp);
 		}
+
+		double setHeading = -currentHeading * Kp;
+		if (_direction != 0) {
+			setHeading = targetHeading;
+		}
+
+		Robot.driveBase.driveHeading(_speed, setHeading);
+
 	}
 }
