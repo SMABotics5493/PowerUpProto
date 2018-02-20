@@ -44,16 +44,18 @@ public class ThrowDaggersInBensEyes extends Subsystem {
 		solenoid.set(DoubleSolenoid.Value.kForward);
 		Robot.isShifted = false;
 	}
-	/*public void endgame(String commandname) {
-		if (solenoid.get() == DoubleSolenoid.Value.kForward) {
+	public void endgame(String commandname) {
+		/*if (solenoid.get() == DoubleSolenoid.Value.kForward) {
 			DriverStation.reportError("Pnuematics Releases: Forward", false);
 		} else if (solenoid.get() == DoubleSolenoid.Value.kReverse) {
 			DriverStation.reportError("Pnuematics Release: Reverse", false);
 		} else if (solenoid.get() == DoubleSolenoid.Value.kOff) {
 			DriverStation.reportError("Pnuematics Release: Off", false);
-		}
+		}*/
+		DriverStation.reportError("Endgame was called", false);
 		solenoid.set(DoubleSolenoid.Value.kReverse);
-	}*/
+		Robot.isShifted = true;
+	}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

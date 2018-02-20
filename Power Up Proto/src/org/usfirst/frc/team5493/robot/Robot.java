@@ -96,7 +96,7 @@ public class Robot extends IterativeRobot {
 		if (gameData.length() > 0) {
 			if (gameData.charAt(0) == 'L') {
 				// Put left auto code here
-				autonomousCommand = new OldDriveStraight();
+				autonomousCommand = new DriveStraightWithGyro(0.5, 40, 0);
 			} else {
 				// Put right auto code here
 				autonomousCommand = null;

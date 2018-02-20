@@ -34,7 +34,7 @@ public class OldDriveStraight extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 
-		distance(60);
+		distance(40);
 		//35 to turn 90 degrees
 
 	}
@@ -62,7 +62,7 @@ public class OldDriveStraight extends Command {
 
 			isStarted = true;
 			DriverStation.reportWarning("distance", false);
-			// _talon.set(ControlMode.Position, targetPositionRotations);
+			//_talon.set(ControlMode.Position, targetPositionRotations);
 		} else {
 			DriverStation.reportWarning("waiting", false);
 			double current = Robot.driveBase.getEncoderPosition();

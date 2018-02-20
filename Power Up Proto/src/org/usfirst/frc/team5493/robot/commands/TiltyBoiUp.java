@@ -11,35 +11,23 @@ public class TiltyBoiUp extends Command {
 	
 	private boolean isFinished;
 
-    public TiltyBoiUp() {
-    	
-    	requires(Robot.cubeControls);
-        
-    }
-
-    
+    public TiltyBoiUp() {    	
+    	requires(Robot.cubeControls);   
+    }    
     protected void initialize() {
-    }
-
-    
-    protected void execute() {
-    	
-    	isFinished = true;
-    	Robot.cubeControls.raiseUp();
     	isFinished = false;
-    	
-    }
-
-    
+    	setTimeout(.25);
+    }    
+    protected void execute() {
+    	Robot.cubeControls.raiseUp();    	
+    }    
     protected boolean isFinished() {
-        return false;
-    }
-    
+        return isTimedOut();
+    }    
     protected void end() {
-    	Robot.cubeControls.end();
-    }
-
-    
+    	Robot.cubeControls.end2();
+    }  
     protected void interrupted() {
+    	end();
     }
 }

@@ -85,7 +85,7 @@ public class DriveStraightWithGyro extends Command {
 			DriverStation.reportWarning("waiting finished? " + isFinished, false);
 		}
 
-		double setHeading = -currentHeading * Kp;
+		double setHeading = -currentHeading * UNITS;
 		if (_direction != 0) {
 			setHeading = targetHeading;
 		}

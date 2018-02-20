@@ -21,6 +21,7 @@ public class CubeOuttake extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		isFinished = false;
 		setTimeout(.25);
 	}
 
@@ -28,7 +29,6 @@ public class CubeOuttake extends Command {
 	protected void execute() {
 		Robot.cubeControls.outtake();
 	}
-
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		// TODO - Meng... I think this needs to gets something back from cubeControls to

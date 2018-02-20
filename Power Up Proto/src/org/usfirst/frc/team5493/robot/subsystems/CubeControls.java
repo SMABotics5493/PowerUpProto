@@ -47,27 +47,22 @@ public class CubeControls extends Subsystem {
 		//leftIntakeMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 		//rightIntakeMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
 	}
-
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
-
 	public void intake() {
 		Robot.cubeControls.leftIntakeMotor.set(-intakeSpeed);
 		Robot.cubeControls.rightIntakeMotor.set(intakeSpeed);
 	}
-
 	public void outtake() {
 		Robot.cubeControls.leftIntakeMotor.set(outtakeSpeed);
 		Robot.cubeControls.rightIntakeMotor.set(-outtakeSpeed);
 	}
-
 	public void end() {
 		Robot.cubeControls.leftIntakeMotor.set(0.0);
 		Robot.cubeControls.rightIntakeMotor.set(0.0);
 	}
-
 	//public boolean isSwitchSet() {
 	//	return cubecounter.get() > 0;
 	//}
@@ -77,11 +72,11 @@ public class CubeControls extends Subsystem {
 	//}
 	
 	public void raiseUp() {
-		Robot.cubeControls.intakeLift.set(0.4);
+		Robot.cubeControls.intakeLift.set(0.8);
 	}
 	
 	public void raiseDown() {
-		Robot.cubeControls.intakeLift.set(-0.4);
+		Robot.cubeControls.intakeLift.set(-0.8);
 	}
 	
 	public void end2() {
