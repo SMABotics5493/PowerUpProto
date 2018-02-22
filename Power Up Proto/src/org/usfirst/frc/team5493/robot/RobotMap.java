@@ -8,7 +8,7 @@ package org.usfirst.frc.team5493.robot;
  */
 public class RobotMap {
 
-	public static final int JOYSTICK_DRIVE_PORT = 5;
+	public static final int JOYSTICK_DRIVE_PORT = 0;
 	public static final int JOYSTICK_PORT = 1;
 	
 	public static final int JOYBTN_A = 1;
@@ -45,6 +45,9 @@ public class RobotMap {
 	
 	public static final int SOLENOID_FORWARD = 0;
 	public static final int SOLENOID_REVERSE = 7;
+	
+	public static final int ENDGAME_ENGAGED = 1;
+	public static final int ENDGAME_DISENGAGED = 6;
 	
 	public static final int LIMIT_SWITCH_CUBE_CONTROLS = 1; //port on DIO
 	public static final int LIMIT_SWITH_UP_CLIMBER = 2; 

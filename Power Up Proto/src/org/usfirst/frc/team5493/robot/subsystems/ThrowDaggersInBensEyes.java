@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class ThrowDaggersInBensEyes extends Subsystem {
 	
 	DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.SOLENOID_FORWARD, RobotMap.SOLENOID_REVERSE);
+	DoubleSolenoid endgame = new DoubleSolenoid(RobotMap.ENDGAME_ENGAGED, RobotMap.ENDGAME_DISENGAGED);
 	
 	public ThrowDaggersInBensEyes() {
 		solenoid.set(DoubleSolenoid.Value.kForward);
@@ -53,7 +54,7 @@ public class ThrowDaggersInBensEyes extends Subsystem {
 			DriverStation.reportError("Pnuematics Release: Off", false);
 		}*/
 		DriverStation.reportError("Endgame was called", false);
-		solenoid.set(DoubleSolenoid.Value.kReverse);
+		endgame.set(DoubleSolenoid.Value.kReverse);
 		Robot.isShifted = true;
 	}
     // Put methods for controlling this subsystem

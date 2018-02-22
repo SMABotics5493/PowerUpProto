@@ -40,10 +40,10 @@ public class DriveBase extends Subsystem {
 
 	public DriveBase() {
 		super();
-
-		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT);
-		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK);
-		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT);
+		
+		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT);		//		(._.)   (._.)	(._.)
+		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK);		//		<) )/	\( )/	\( (>
+		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT);	// 	 	 / \	 / \	 / \
 		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK);
 
 		// leftFrontMotor = new WPI_TalonSRX(0);
@@ -177,16 +177,13 @@ public class DriveBase extends Subsystem {
 			talon.setSelectedSensorPosition(absolutePosition, kPIDLoopIdx, kTimeoutMs);
 		}
 	}
-
 	public void log() {
 		//SmartDashboard.putNumber("Left Distance", this.leftEncoder.get());
 		//SmartDashboard.putNumber("Right Distance", this.rightEncoder.get());
 	}
-
 	public void reset() {
 		drive(0.0, 0.0);
 	}
-
 	public void drivePosition(double targetPositionRotations) {
 
 		for (int talIdx = 0; talIdx < allTalons.length; talIdx++) {
@@ -196,9 +193,7 @@ public class DriveBase extends Subsystem {
 
 			DriverStation.reportWarning("Set talon " + talIdx, false);
 		}
-
 	}
-
 	public double getEncoderPosition() {
 		double total = 0;
 		for (int talIdx = 0; talIdx < encoderTalons.length; talIdx++) {
@@ -206,7 +201,6 @@ public class DriveBase extends Subsystem {
 			TalonSRX talon = (TalonSRX) encoderTalons[talIdx];
 			total += talon.getSelectedSensorPosition(kPIDLoopIdx);
 		}
-
 		return total / encoderTalons.length;
 	}
 

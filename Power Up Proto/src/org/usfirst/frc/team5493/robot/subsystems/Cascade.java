@@ -27,8 +27,6 @@ public class Cascade extends Subsystem {
 
 	private double downSpeed;
 	private double upSpeed;
-	private double holdSpeed;
-
 //	private DigitalInput climbuplimitSwitch = new DigitalInput(RobotMap.LIMIT_SWITH_UP_CLIMBER);
 //	private Counter climbupCounter = new Counter(climbuplimitSwitch);
 //	private DigitalInput climbdownlimitSwitch = new DigitalInput(RobotMap.LIMIT_SWITH_DOWN_CLIMBER);
@@ -53,7 +51,6 @@ public class Cascade extends Subsystem {
 		secondsFromNeutral = prefs.getDouble("RampRateClimber", 0.25);
 		upSpeed = prefs.getDouble("ClimberUpSpeed", 0.8);
 		downSpeed = prefs.getDouble("ClimberDownSpeed", -0.4);
-		holdSpeed = prefs.getDouble("ClimberHoldSpeed", 0.00000001);
 		timeoutMs = prefs.getInt("RampRateClimberTimeout", 1);
 
 		climbMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
@@ -81,7 +78,7 @@ public class Cascade extends Subsystem {
 	}
 
 	public void end() {
-		Robot.cascade.climbMotor.set(holdSpeed);
+		Robot.cascade.climbMotor.set(0.0);
 	}
 
 //	public void initializeCounterUp() {
@@ -99,11 +96,6 @@ public class Cascade extends Subsystem {
 //	public boolean hasClimbedDown() {
 //		return climbdownCounter.get() > 0;
 //	}
-	
-	public void climbHold(){
-    	Robot.cascade.climbMotor.set(holdSpeed);
-    }
-	
     private void resetEncoders() {
     	//encoder.reset();
     }
