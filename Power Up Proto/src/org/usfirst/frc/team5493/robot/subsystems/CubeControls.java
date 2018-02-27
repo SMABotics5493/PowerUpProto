@@ -52,8 +52,8 @@ public class CubeControls extends Subsystem {
 		// setDefaultCommand(new MySpecialCommand());
 	}
 	public void intake() {
-		Robot.cubeControls.leftIntakeMotor.set(-intakeSpeed);
-		Robot.cubeControls.rightIntakeMotor.set(intakeSpeed);
+		Robot.cubeControls.leftIntakeMotor.set(intakeSpeed);
+		Robot.cubeControls.rightIntakeMotor.set(-intakeSpeed);
 	}
 	public void outtake() {
 		Robot.cubeControls.leftIntakeMotor.set(outtakeSpeed);

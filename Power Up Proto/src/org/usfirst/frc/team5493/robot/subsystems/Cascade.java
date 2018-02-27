@@ -49,7 +49,7 @@ public class Cascade extends Subsystem {
 		Preferences prefs = Preferences.getInstance();
 
 		secondsFromNeutral = prefs.getDouble("RampRateClimber", 0.25);
-		upSpeed = prefs.getDouble("ClimberUpSpeed", 0.8);
+		upSpeed = prefs.getDouble("ClimberUpSpeed", 1);
 		downSpeed = prefs.getDouble("ClimberDownSpeed", -0.4);
 		timeoutMs = prefs.getInt("RampRateClimberTimeout", 1);
 

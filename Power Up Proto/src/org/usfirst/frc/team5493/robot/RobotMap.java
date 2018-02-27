@@ -17,11 +17,16 @@ public class RobotMap {
 	public static final int JOYBTN_Y = 4; 
 	public static final int JOYBTN_LB = 5;
 	public static final int JOYBTN_RB = 6;
+	public static final int JOYBTN_BACK = 7;
+	public static final int JOYBTN_START = 8;
 	//public static final int JOYBTN_RT = 6;
 	//public static final int JOYBTN_LT = 5;
 	
 	public static final int RIGHTYAXIS = 5;
 	public static final int LEFTYAXIS = 1;
+	
+	public static final int LEFT_TRIGGER = 2;
+	public static final int RIGHT_TRIGGER = 3;
 	
 	public static final int LEFT_FRONT = 3;
 	public static final int LEFT_BACK = 5;

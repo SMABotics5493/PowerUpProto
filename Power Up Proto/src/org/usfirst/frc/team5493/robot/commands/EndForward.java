@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Endgame extends Command {
+public class EndForward extends Command {
 
 	 private boolean isFinished;
 	 
-	    public Endgame() {
+	    public EndForward() {
 	    	requires(Robot.throwDaggersInBensEyes);
 	    	isFinished = true; 
 	         // Use requires() here to declare subsystem dependencies
@@ -24,7 +24,7 @@ public class Endgame extends Command {
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	Robot.throwDaggersInBensEyes.endgame(null);
+	    	Robot.throwDaggersInBensEyes.endForward(null);
 	    	isFinished = false;
 	    }
 

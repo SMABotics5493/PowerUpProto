@@ -23,7 +23,7 @@ public class DriveBase extends Subsystem {
 	double pulsesPerRevolution = 1440.0;
 	double averageDistance;
 	WPI_TalonSRX leftBackMotor;
-	WPI_TalonSRX rightBackMotor;;
+	WPI_TalonSRX rightBackMotor;
 	WPI_TalonSRX rightFrontMotor;
 	WPI_TalonSRX leftFrontMotor;
 

@@ -5,17 +5,19 @@ import org.usfirst.frc.team5493.robot.commands.CascadeDown;
 import org.usfirst.frc.team5493.robot.commands.CascadeUp;
 import org.usfirst.frc.team5493.robot.commands.CubeIntake;
 import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
-import org.usfirst.frc.team5493.robot.commands.Endgame;
+import org.usfirst.frc.team5493.robot.commands.EndForward;
+import org.usfirst.frc.team5493.robot.commands.EndReverse;
 import org.usfirst.frc.team5493.robot.commands.ClimbDown;
 import org.usfirst.frc.team5493.robot.commands.ClimbUp;
 import org.usfirst.frc.team5493.robot.commands.TiltyBoiDown;
 import org.usfirst.frc.team5493.robot.commands.TiltyBoiUp;
 import org.usfirst.frc.team5493.robot.commands.TransmissionForward;
 import org.usfirst.frc.team5493.robot.commands.TransmissionReverse;
+import org.usfirst.frc.team5493.robot.commands.EndgameRaise;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
+  
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -33,12 +35,13 @@ public class OI {
 	JoystickButton climbDown = new JoystickButton(joystick, RobotMap.JOYBTN_A);
 	JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
 	JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
-	JoystickButton climbHold = new JoystickButton(joystick, RobotMap.JOYBTN_X);
 	JoystickButton tiltyBoiUp = new JoystickButton(driveJoystick, RobotMap.JOYBTN_LB);
 	JoystickButton tiltyBoiDown = new JoystickButton(driveJoystick, RobotMap.JOYBTN_RB);
-	JoystickButton pullUp = new JoystickButton(driveJoystick, RobotMap.JOYBTN_Y);
-	JoystickButton pullDown = new JoystickButton(driveJoystick, RobotMap.JOYBTN_A);
-	JoystickButton solenoidEndgame = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
+	JoystickButton pullUp = new JoystickButton(joystick, RobotMap.JOYBTN_X);
+	JoystickButton pullDown = new JoystickButton(joystick, RobotMap.JOYBTN_B);
+	JoystickButton solenoidEndForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_Y);
+	JoystickButton solenoidEndReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_A); 
+	JoystickButton endgameRelease = new JoystickButton(joystick, RobotMap.JOYBTN_START);
 	
     public Joystick getDriveJoystick(){
     	return driveJoystick;
@@ -62,7 +65,9 @@ public class OI {
     	pullDown.whileHeld(new ClimbDown());
     	tiltyBoiUp.whileHeld(new TiltyBoiUp());
     	tiltyBoiDown.whileHeld(new TiltyBoiDown());    	
-    	solenoidEndgame.whenPressed(new Endgame());
+    	solenoidEndForward.whenPressed(new EndForward());
+    	solenoidEndReverse.whenPressed(new EndReverse());
+    	endgameRelease.whileHeld(new EndgameRaise());
     	
     	
     }
