@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5493.robot.commands;
 
-import org.usfirst.frc.team5493.robot.ButtonMonitor;
 import org.usfirst.frc.team5493.robot.Robot;
+import org.usfirst.frc.team5493.robot.utils.ButtonMonitor;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
