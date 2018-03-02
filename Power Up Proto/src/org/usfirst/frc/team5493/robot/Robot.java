@@ -92,17 +92,17 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		autonomousCommand = (Command) chooser.getSelected();
 
-		String gameData;
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		if (gameData.length() > 0) {
-			if (gameData.charAt(0) == 'L') {
-				// Put left auto code here
-				autonomousCommand = new DriveStraightWithGyro(0.5, 40, 0);
-			} else {
-				// Put right auto code here
-				autonomousCommand = null;
-			}
-		}
+//		String gameData;
+//		gameData = DriverStation.getInstance().getGameSpecificMessage();
+//		if (gameData.length() > 0) {
+//			if (gameData.charAt(0) == 'L') {
+//				// Put left auto code here
+//				autonomousCommand = new DriveStraightWithGyro(0.5, 40, 0);
+//			} else {
+//				// Put right auto code here
+//				autonomousCommand = null;
+//			}
+//		}
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
