@@ -11,7 +11,6 @@ import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
 import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
