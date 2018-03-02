@@ -45,6 +45,11 @@ public class ThrowDaggersInBensEyes extends Subsystem {
 		solenoid.set(DoubleSolenoid.Value.kForward);
 		Robot.isShifted = false;
 	}
+	public void off(String commandname){
+		DriverStation.reportError("Transmission Off",false);
+		solenoid.set(DoubleSolenoid.Value.kOff);
+		Robot.isShifted = false;
+	}
 	public void endForward(String commandname) {
 		/*if (solenoid.get() == DoubleSolenoid.Value.kForward) {
 			DriverStation.reportError("Pnuematics Releases: Forward", false);

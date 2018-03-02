@@ -26,7 +26,7 @@ public class Climber extends Subsystem {
     }
 
     	public void pullUp() {
-    		Robot.climber.candycane.set(0.8);
+    		Robot.climber.candycane.set(1);
        	}
     	public void pullDown() {
     		Robot.climber.candycane.set(-0.4);
