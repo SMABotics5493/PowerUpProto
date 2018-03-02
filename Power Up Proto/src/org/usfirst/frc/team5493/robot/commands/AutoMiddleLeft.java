@@ -9,7 +9,7 @@ public class AutoMiddleLeft extends CommandGroup {
 
     public AutoMiddleLeft() {
     	//addSequential(new IntakeRelease());
-    	addSequential(new CubeIntake());
+    	addSequential(new CubeIntake(null));
     	addSequential(new DriveStraightWithGyro(0, 0, 0));
     	//addSequential(new TurnLeftWithGyro());
     	addSequential(new DriveStraightWithGyro(0, 0, 0));
@@ -17,7 +17,7 @@ public class AutoMiddleLeft extends CommandGroup {
     	addSequential(new DriveStraightWithGyro(0, 0, 0));
     	addSequential(new CascadeUp());
     	addSequential(new DriveStraightWithGyro(0, 0, 0));
-    	addSequential(new CubeOuttake());
+    	addSequential(new CubeOuttake(null));
     	//addSequential(new DriveStraightBack());
     	addSequential(new CascadeDown());
     }

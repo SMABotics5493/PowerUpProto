@@ -53,8 +53,8 @@ public class OI {
 
 	public OI() {
 
-		cubeIntake.whileHeld(new CubeIntake());
-		cubeOuttake.whileHeld(new CubeOuttake());
+		cubeIntake.whileHeld(new CubeIntake(cubeIntake));
+		cubeOuttake.whileHeld(new CubeOuttake(cubeOuttake));
 		climbUp.whileHeld(new CascadeUp());
 		climbDown.whileHeld(new CascadeDown());
 		solenoidForward.whenPressed(new TransmissionForward());

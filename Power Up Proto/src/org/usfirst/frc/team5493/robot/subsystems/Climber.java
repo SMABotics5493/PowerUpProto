@@ -14,34 +14,37 @@ public class Climber extends Subsystem {
 
 	private WPI_TalonSRX candycane;
 	private WPI_TalonSRX climbMotor;
-	
+
 	public Climber() {
 		candycane = new WPI_TalonSRX(RobotMap.CLIMBER);
 		climbMotor = new WPI_TalonSRX(RobotMap.CASCADE);
 	}
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 
-    public void initDefaultCommand() {
-    }
+	public void initDefaultCommand() {
+	}
 
-    	public void pullUp() {
-    		Robot.climber.candycane.set(1);
-       	}
-    	public void pullDown() {
-    		Robot.climber.candycane.set(-0.4);
-    	}
-    	public void endgameRaise() {
-    		Robot.climber.candycane.set(-0.25);
-    		Robot.climber.climbMotor.set(1);
-    	}
-    	public void end() {
-    		Robot.climber.candycane.set(0.0);
-    		
-    	}
-    	public void end3(){
-    		Robot.climber.candycane.set(0.0);
-    		Robot.climber.climbMotor.set(0.0);
-    	}
+	public void pullUp() {
+		Robot.climber.candycane.set(1);
+	}
+
+	public void pullDown() {
+		Robot.climber.candycane.set(-0.4);
+	}
+
+	public void endgameRaise() {
+		Robot.climber.candycane.set(-0.25);
+		Robot.climber.climbMotor.set(1);
+	}
+
+	public void end() {
+		Robot.climber.candycane.set(0.0);
+
+	}
+
+	public void end3() {
+		Robot.climber.candycane.set(0.0);
+		Robot.climber.climbMotor.set(0.0);
+	}
 }
-
