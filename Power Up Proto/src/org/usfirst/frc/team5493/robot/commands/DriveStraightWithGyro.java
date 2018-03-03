@@ -24,9 +24,10 @@ public class DriveStraightWithGyro extends Command {
 	private double targetHeading;
 
 	public DriveStraightWithGyro(double speed, double distance, double direction) {
-		// super(10);
+		super(5);
 
 		requires(Robot.driveBase);
+		requires(Robot.throwDaggersInBensEyes);
 		_distance = distance;
 		_direction = direction;
 		_speed = speed;
@@ -50,7 +51,7 @@ public class DriveStraightWithGyro extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		DriverStation.reportWarning("finished? " + isFinished, false);
-		return isFinished;
+		return isTimedOut();
 	}
 
 	// Called once after isFinished returns true
@@ -71,6 +72,8 @@ public class DriveStraightWithGyro extends Command {
 			// initialize();
 			Robot.driveBase.resetEncoder();
 			startingPosition = Robot.driveBase.getEncoderPosition();
+			
+//			Robot.throwDaggersInBensEyes.reverse(null);
 
 			isStarted = true;
 			targetHeading = currentHeading + _direction;

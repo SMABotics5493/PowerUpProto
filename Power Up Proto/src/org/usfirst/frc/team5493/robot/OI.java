@@ -1,8 +1,6 @@
 package org.usfirst.frc.team5493.robot;
 
-import org.usfirst.frc.team5493.robot.commands.CascadeDown;
-//import org.usfirst.frc.team5493.robot.commands.CascadeHold;
-import org.usfirst.frc.team5493.robot.commands.CascadeUp;
+import org.usfirst.frc.team5493.robot.commands.CascadeBySpeed;
 import org.usfirst.frc.team5493.robot.commands.ClimbDown;
 import org.usfirst.frc.team5493.robot.commands.ClimbUp;
 import org.usfirst.frc.team5493.robot.commands.CubeIntake;
@@ -12,8 +10,6 @@ import org.usfirst.frc.team5493.robot.commands.EndReverse;
 import org.usfirst.frc.team5493.robot.commands.EndgameRaise;
 import org.usfirst.frc.team5493.robot.commands.TiltyBoiDown;
 import org.usfirst.frc.team5493.robot.commands.TiltyBoiUp;
-import org.usfirst.frc.team5493.robot.commands.TransmissionForward;
-import org.usfirst.frc.team5493.robot.commands.TransmissionReverse;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -31,10 +27,10 @@ public class OI {
 
 	JoystickButton cubeIntake = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
 	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
-	JoystickButton climbUp = new JoystickButton(joystick, RobotMap.JOYBTN_Y);
-	JoystickButton climbDown = new JoystickButton(joystick, RobotMap.JOYBTN_A);
-	JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
-	JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
+	JoystickButton cascadeLock = new JoystickButton(joystick, RobotMap.CASCADE_LOCK);
+	JoystickButton cascadeSpeed = new JoystickButton(joystick, RobotMap.CASCADE_JOYSTICK);
+	//JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
+	//JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
 	JoystickButton tiltyBoiUp = new JoystickButton(driveJoystick, RobotMap.JOYBTN_LB);
 	JoystickButton tiltyBoiDown = new JoystickButton(driveJoystick, RobotMap.JOYBTN_RB);
 	JoystickButton pullUp = new JoystickButton(joystick, RobotMap.JOYBTN_X);
@@ -53,12 +49,14 @@ public class OI {
 
 	public OI() {
 
+		cascadeSpeed.whileActive(new CascadeBySpeed(cascadeLock));
+		cascadeLock.whileActive(new CascadeBySpeed(cascadeLock));
 		cubeIntake.whileHeld(new CubeIntake(cubeIntake));
 		cubeOuttake.whileHeld(new CubeOuttake(cubeOuttake));
-		climbUp.whileHeld(new CascadeUp());
-		climbDown.whileHeld(new CascadeDown());
-		solenoidForward.whenPressed(new TransmissionForward());
-		solenoidReverse.whenPressed(new TransmissionReverse());
+//		cascadeLock.whileHeld(new CascadeBySpeed(cascadeLock));
+//		cascadeSpeed.whileHeld(new CascadeDown(cascadeSpeed));
+//		solenoidForward.whenPressed(new TransmissionForward());
+//		solenoidReverse.whenPressed(new TransmissionReverse());
 		pullUp.whileHeld(new ClimbUp(pullUp));
 		pullDown.whileHeld(new ClimbDown(pullDown));
 		tiltyBoiUp.whileHeld(new TiltyBoiUp());

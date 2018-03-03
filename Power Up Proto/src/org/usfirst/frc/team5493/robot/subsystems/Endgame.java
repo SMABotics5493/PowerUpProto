@@ -10,16 +10,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class ThrowDaggersInBensEyes extends Subsystem {
+public class Endgame extends Subsystem {
 	
-	DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.SOLENOID_FORWARD, RobotMap.SOLENOID_REVERSE);
+	DoubleSolenoid endgame = new DoubleSolenoid(RobotMap.ENDGAME_ENGAGED, RobotMap.ENDGAME_DISENGAGED);
 	
-	public ThrowDaggersInBensEyes() {
-		solenoid.set(DoubleSolenoid.Value.kForward);
-		Robot.isShifted = false;
+	public Endgame() {
 	}
-	
-	public void forward(String commandname) {
+	public void endForward(String commandname) {
 		/*if (solenoid.get() == DoubleSolenoid.Value.kForward) {
 			DriverStation.reportError("Pnuematics Releases: Forward", false);
 		} else if (solenoid.get() == DoubleSolenoid.Value.kReverse) {
@@ -27,26 +24,12 @@ public class ThrowDaggersInBensEyes extends Subsystem {
 		} else if (solenoid.get() == DoubleSolenoid.Value.kOff) {
 			DriverStation.reportError("Pnuematics Release: Off", false);
 		}*/
-		DriverStation.reportError("Forward was called",false);
-		solenoid.set(DoubleSolenoid.Value.kReverse);
+		endgame.set(DoubleSolenoid.Value.kReverse);
 		Robot.isShifted = true;
 	}
 	
-	public void reverse(String commandname){
-		/*if (solenoid.get() == DoubleSolenoid.Value.kReverse) {
-			DriverStation.reportError("Pnuematics Releases: Reverse", false);
-		} else if (solenoid.get() == DoubleSolenoid.Value.kForward) {
-			DriverStation.reportError("Pnuematics Release: Forward", false);
-		} else if (solenoid.get() == DoubleSolenoid.Value.kOff) {
-			DriverStation.reportError("Pnuematics Release: Off", false);
-		}*/
-		DriverStation.reportError("Reverse was called",false);
-		solenoid.set(DoubleSolenoid.Value.kForward);
-		Robot.isShifted = false;
-	}
-	public void off(String commandname){
-		DriverStation.reportError("Transmission Off",false);
-		solenoid.set(DoubleSolenoid.Value.kOff);
+	public void endReverse(String commandname) {
+		endgame.set(DoubleSolenoid.Value.kForward);
 		Robot.isShifted = false;
 	}
     // Put methods for controlling this subsystem

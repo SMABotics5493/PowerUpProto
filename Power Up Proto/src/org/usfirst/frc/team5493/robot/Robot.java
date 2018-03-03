@@ -2,12 +2,14 @@ package org.usfirst.frc.team5493.robot;
 
 import org.usfirst.frc.team5493.robot.commands.AutoDoNothing;
 import org.usfirst.frc.team5493.robot.commands.AutoLeftLeft;
+import org.usfirst.frc.team5493.robot.commands.CascadeBySpeed;
 import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5493.robot.commands.OldDriveStraight;
 import org.usfirst.frc.team5493.robot.subsystems.Cascade;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
+import org.usfirst.frc.team5493.robot.subsystems.Endgame;
 import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
@@ -26,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static Cascade cascade;
 	public static OI oi;
 	public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
+	public static Endgame endgame;
 	public static CubeControls cubeControls;
 	public static Climber climber;
 
@@ -50,13 +53,14 @@ public class Robot extends IterativeRobot {
 		cascade = new Cascade();
 		cubeControls = new CubeControls();
 		throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
+		endgame = new Endgame();
 		climber = new Climber();
 		oi = new OI();
 
 		chooser = new SendableChooser();
 		chooser.addObject("AutoDoNothing", new AutoDoNothing());
 		chooser.addObject("AutoLeftLeft", new AutoLeftLeft());
-		chooser.addDefault("AutoStraightOverLine", new DriveStraightWithGyro(.5, 40, 0));
+		chooser.addDefault("AutoStraightOverLine", new DriveStraightWithGyro(-.3, 200, 0));
 		chooser.addObject("OldAutoStraight", new OldDriveStraight());
 
 		SmartDashboard.putData("Auto mode", chooser);
@@ -126,6 +130,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		// drive.arcadeDrive(speed, rotation);
+
 	}
 
 	/**

@@ -31,4 +31,7 @@ public class ButtonMonitor {
 		return _state;
 		
 	}
+	public Button getButton(){
+		return _button;
+	}
 }

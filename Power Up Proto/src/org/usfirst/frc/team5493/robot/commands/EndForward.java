@@ -12,7 +12,7 @@ public class EndForward extends Command {
 	 private boolean isFinished;
 	 
 	    public EndForward() {
-	    	requires(Robot.throwDaggersInBensEyes);
+	    	requires(Robot.endgame);
 	    	isFinished = true; 
 	         // Use requires() here to declare subsystem dependencies
 	        // eg. requires(chassis);
@@ -24,7 +24,7 @@ public class EndForward extends Command {
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	Robot.throwDaggersInBensEyes.endForward(null);
+	    	Robot.endgame.endForward(null);
 	    	isFinished = false;
 	    }
 

@@ -1,8 +1,9 @@
 package org.usfirst.frc.team5493.robot.commands;
 
 import org.usfirst.frc.team5493.robot.Robot;
+import org.usfirst.frc.team5493.robot.utils.ButtonMonitor;
 
-import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -10,31 +11,30 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CascadeDown extends Command {
 
-	private boolean isFinished;
-	
-	public CascadeDown() {
-		super(0.25);
+	private ButtonMonitor buttonMonitor;
+
+	public CascadeDown(Button cmdButton) {
 		requires(Robot.cascade);
+		buttonMonitor = new ButtonMonitor(cmdButton);
+		//super(0.25);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		isFinished = false;
-		
-		setTimeout(.25);
-		
-//		Robot.cascade.initializeCounterDown();
+		//	Robot.cascade.initializeCounterUp();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.cascade.climbDown();
+		if (buttonMonitor.checkButtonState() == ButtonMonitor.ButtonState.Active) {
+			Robot.cascade.climbDown();
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		DriverStation.reportError("down timeout is = "+ isTimedOut(), false);
-		return isTimedOut();
+		return buttonMonitor.checkButtonState() == ButtonMonitor.ButtonState.Inactive;
+		// true; 
 //		return Robot.cascade.hasClimbedDown();
 	}
 
@@ -48,4 +48,5 @@ public class CascadeDown extends Command {
 	protected void interrupted() {
 		end();
 	}
-}
+	}
+

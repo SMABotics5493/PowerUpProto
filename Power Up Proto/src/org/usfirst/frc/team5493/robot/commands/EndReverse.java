@@ -12,7 +12,7 @@ public class EndReverse extends Command {
 	private boolean isFinished;
 	 
     public EndReverse() {
-    	requires(Robot.throwDaggersInBensEyes);
+    	requires(Robot.endgame);
     	isFinished = true; 
          // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,7 +24,7 @@ public class EndReverse extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.throwDaggersInBensEyes.endReverse(null);
+    	Robot.endgame.endReverse(null);
     	isFinished = false;
     }
 

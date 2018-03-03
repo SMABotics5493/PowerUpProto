@@ -15,11 +15,11 @@ public class AutoMiddleRight extends CommandGroup {
     	addSequential(new DriveStraightWithGyro(0, 0, 0));
     	//addSequential(new TurnWithGyro());
     	addSequential(new DriveStraightWithGyro(0, 0, 0));
-    	addSequential(new CascadeUp());
+    	addSequential(new CascadeUp(null));
     	addSequential(new DriveStraightWithGyro(0, 0, 0));
     	addSequential(new CubeOuttake(null));
     	//addSequential(new DriveStraightBack());
-    	addSequential(new CascadeDown());
+    	addSequential(new CascadeDown(null));
 
     }
 }

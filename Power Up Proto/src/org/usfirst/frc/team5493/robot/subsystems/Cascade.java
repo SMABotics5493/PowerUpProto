@@ -80,6 +80,10 @@ public class Cascade extends Subsystem {
 	public void end() {
 		Robot.cascade.climbMotor.set(0.0);
 	}
+	public void climbBySpeed(double speed) {
+		Robot.cascade.climbMotor.set(speed);
+		
+	}
 
 //	public void initializeCounterUp() {
 //		climbupCounter.reset();
