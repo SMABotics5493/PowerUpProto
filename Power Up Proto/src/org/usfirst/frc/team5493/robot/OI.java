@@ -10,6 +10,8 @@ import org.usfirst.frc.team5493.robot.commands.EndReverse;
 import org.usfirst.frc.team5493.robot.commands.EndgameRaise;
 import org.usfirst.frc.team5493.robot.commands.TiltyBoiDown;
 import org.usfirst.frc.team5493.robot.commands.TiltyBoiUp;
+import org.usfirst.frc.team5493.robot.commands.TransmissionForward;
+import org.usfirst.frc.team5493.robot.commands.TransmissionReverse;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -29,8 +31,8 @@ public class OI {
 	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
 	JoystickButton cascadeLock = new JoystickButton(joystick, RobotMap.CASCADE_LOCK);
 	JoystickButton cascadeSpeed = new JoystickButton(joystick, RobotMap.CASCADE_JOYSTICK);
-	//JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
-	//JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
+	JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
+	JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
 	JoystickButton tiltyBoiUp = new JoystickButton(driveJoystick, RobotMap.JOYBTN_LB);
 	JoystickButton tiltyBoiDown = new JoystickButton(driveJoystick, RobotMap.JOYBTN_RB);
 	JoystickButton pullUp = new JoystickButton(joystick, RobotMap.JOYBTN_X);
@@ -55,8 +57,8 @@ public class OI {
 		cubeOuttake.whileHeld(new CubeOuttake(cubeOuttake));
 //		cascadeLock.whileHeld(new CascadeBySpeed(cascadeLock));
 //		cascadeSpeed.whileHeld(new CascadeDown(cascadeSpeed));
-//		solenoidForward.whenPressed(new TransmissionForward());
-//		solenoidReverse.whenPressed(new TransmissionReverse());
+		solenoidForward.whenPressed(new TransmissionForward());
+		solenoidReverse.whenPressed(new TransmissionReverse());
 		pullUp.whileHeld(new ClimbUp(pullUp));
 		pullDown.whileHeld(new ClimbDown(pullDown));
 		tiltyBoiUp.whileHeld(new TiltyBoiUp());

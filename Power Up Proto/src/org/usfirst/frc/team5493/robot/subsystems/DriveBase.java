@@ -15,7 +15,10 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveBase extends Subsystem {
@@ -31,7 +34,7 @@ public class DriveBase extends Subsystem {
 	WPI_TalonSRX[] encoderTalons;
 	WPI_TalonSRX[] allTalons;
 
-	private RobotDrive drive;
+	private DifferentialDrive drive;
 	private Encoder leftEncoder, rightEncoder;
 	private final String DRIVE_SYSTEM = "Tank Drive System";
 	private final String LEFT_FRONT = "Left Front Motor";
@@ -66,8 +69,12 @@ public class DriveBase extends Subsystem {
 		allTalons[1] = leftFrontMotor;
 		allTalons[2] = rightBackMotor;
 		allTalons[3] = rightFrontMotor;
+		
+		SpeedControllerGroup leftSide = new SpeedControllerGroup(leftBackMotor, leftFrontMotor);
+		SpeedControllerGroup rightSide = new SpeedControllerGroup(rightBackMotor, rightFrontMotor);
+		drive = new DifferentialDrive(leftSide, rightSide);
 
-		drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor, rightBackMotor);
+		//drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor, rightBackMotor);
 		// drive = new RobotDrive(leftFrontMotor, rightFrontMotor);
 		drive.setExpiration(0.1);
 
@@ -107,14 +114,16 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void drive(double left, double right) {
+		DriverStation.getInstance().reportWarning("Driving: " + left + " " + right, false);
 		drive.tankDrive(left, right);
 	}
 
 	public void driveHeading(double direction, double arc) {
-		drive.setSafetyEnabled(false);
+//		drive.setSafetyEnabled(false);
 		// drive.tankDrive(-.6, -.6);
-		drive.drive(direction, arc);
-		drive.setSafetyEnabled(true);
+		drive.curvatureDrive(direction, arc, false);
+//		drive.drive(direction, arc);
+//		drive.setSafetyEnabled(true);
 		DriverStation.getInstance().reportWarning("Drive Heading", true);
 	}
 
@@ -179,8 +188,9 @@ public class DriveBase extends Subsystem {
 		}
 	}
 	public void log() {
-		//SmartDashboard.putNumber("Left Distance", this.leftEncoder.get());
-		//SmartDashboard.putNumber("Right Distance", this.rightEncoder.get());
+		SmartDashboard.putNumber("Left Distance", this.leftEncoder.get());
+		SmartDashboard.putNumber("Right Distance", this.rightEncoder.get());
+		
 	}
 	public void reset() {
 		drive(0.0, 0.0);
@@ -195,6 +205,7 @@ public class DriveBase extends Subsystem {
 			DriverStation.reportWarning("Set talon " + talIdx, false);
 		}
 	}
+	
 	public double getEncoderPosition() {
 		double total = 0;
 		for (int talIdx = 0; talIdx < encoderTalons.length; talIdx++) {

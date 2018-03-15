@@ -24,7 +24,7 @@ public class DriveStraightWithGyro extends Command {
 	private double targetHeading;
 
 	public DriveStraightWithGyro(double speed, double distance, double direction) {
-		super(5);
+		super(10);
 
 		requires(Robot.driveBase);
 		requires(Robot.throwDaggersInBensEyes);
@@ -93,7 +93,9 @@ public class DriveStraightWithGyro extends Command {
 			setHeading = targetHeading;
 		}
 
-		Robot.driveBase.driveHeading(_speed, setHeading);
+		//Robot.driveBase.driveHeading(_speed, setHeading);
+		Robot.driveBase.driveHeading(_speed, 0);
+		//Robot.driveBase.drive(_speed, _speed);
 
 	}
 }
