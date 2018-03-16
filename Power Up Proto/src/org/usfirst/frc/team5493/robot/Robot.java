@@ -2,9 +2,9 @@ package org.usfirst.frc.team5493.robot;
 
 import org.usfirst.frc.team5493.robot.commands.AutoDoNothing;
 import org.usfirst.frc.team5493.robot.commands.AutoLeftLeft;
-import org.usfirst.frc.team5493.robot.commands.CascadeBySpeed;
 import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5493.robot.commands.OldDriveStraight;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftRightLeft;
 import org.usfirst.frc.team5493.robot.subsystems.Cascade;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
@@ -13,6 +13,7 @@ import org.usfirst.frc.team5493.robot.subsystems.Endgame;
 import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -65,7 +66,6 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Auto mode", chooser);
 		SmartDashboard.putData("Drive Base", driveBase);
-		
 
 	}
 
@@ -96,22 +96,27 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		autonomousCommand = (Command) chooser.getSelected();
 
-//		String gameData;
-//		gameData = DriverStation.getInstance().getGameSpecificMessage();
-//		if (gameData.length() > 0) {
+		int startingPosition = 1;
+	String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		if (gameData.length() > 0) {
+			if (gameData.equals("LRL")) {
+				autonomousCommand = new LeftRightLeft(startingPosition);
+			}
 //			if (gameData.charAt(0) == 'L') {
+//			}
 //				// Put left auto code here
 //				autonomousCommand = new DriveStraightWithGyro(0.5, 40, 0);
 //			} else {
 //				// Put right auto code here
 //				autonomousCommand = null;
 //			}
-//		}
+		}
 
-		autonomousCommand = new DriveStraightWithGyro(-.6, 20, 0);
-		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+//	autonomousCommand=new DriveStraightWithGyro(-.6,20,0);
+	// schedule the autonomous command (example)
+	if(autonomousCommand!=null)autonomousCommand.start();
+
 	}
 
 	/**

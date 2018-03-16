@@ -59,7 +59,8 @@ public class RobotMap {
 	
 	public static final int LIMIT_SWITCH_CUBE_CONTROLS = 1; //port on DIO
 	public static final int LIMIT_SWITH_UP_CLIMBER = 2; 
-	public static final int LIMIT_SWITH_DOWN_CLIMBER = 3; 
+	public static final int LIMIT_SWITH_DOWN_CLIMBER = 3;
+	public static final double SwitchHeight = .75; 
 	
 	//public static int gyro;
 	
