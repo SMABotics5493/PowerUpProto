@@ -9,20 +9,21 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LeftRightLeft extends CommandGroup {
+public class RightLeftRight extends CommandGroup {
 
-    public LeftRightLeft(int startingPosition) {
+    public RightLeftRight(int startingPosition) {
     	switch (startingPosition) {
 		case 1:
-			//Left Position
+			//Right
 			addSequential(new DriveStraightWithGyro(-.6,20,0));
 			addSequential(new CascadeUpByTime(RobotMap.SwitchHeight));
 			addSequential(new TiltyBoiDown());
-			addSequential(new DriveStraightWithGyro(-.3,20,90));
+			addSequential(new DriveStraightWithGyro(-.3,20,-90));
 			addSequential(new CubeOuttakeAuto(.5));
-			addSequential(new CascadeDownByTime(RobotMap.SwitchHeight)); 
-		    addSequential(new DriveStraightWithGyro(.3, 20,0));
+			addSequential(new CascadeDownByTime(RobotMap.SwitchHeight));
+			addSequential(new DriveStraightWithGyro(.3, 20,0));
 			break;
+			
 		case 2:
 			//Middle Position
 			addSequential(new DriveStraightWithGyro(-.6,20,0));
@@ -34,7 +35,7 @@ public class LeftRightLeft extends CommandGroup {
 		    //addSequential(new DriveStraightWithGyro(.3, 20,0));
 			break;
 		case 3:
-			//Right Position
+			//Left Position
 			addSequential(new DriveStraightWithGyro(-.6,40,0));
 			addSequential(new CascadeUpByTime(RobotMap.ScaleHeight));
 			addSequential(new TiltyBoiDown());
