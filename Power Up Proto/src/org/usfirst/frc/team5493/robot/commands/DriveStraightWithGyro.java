@@ -24,8 +24,6 @@ public class DriveStraightWithGyro extends Command {
 	private double targetHeading;
 
 	public DriveStraightWithGyro(double speed, double distance, double direction) {
-		super(10);
-
 		requires(Robot.driveBase);
 		requires(Robot.throwDaggersInBensEyes);
 		_distance = distance;
@@ -38,6 +36,7 @@ public class DriveStraightWithGyro extends Command {
 		Robot.gyro.reset();
 		isStarted = false;
 		startingPosition = 0;
+		isFinished = false;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -51,12 +50,13 @@ public class DriveStraightWithGyro extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		DriverStation.reportWarning("finished? " + isFinished, false);
-		return isTimedOut();
+		return isFinished;
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
 		DriverStation.reportWarning("end", false);
+		end();
 	}
 
 	// Called when another command which requires one or more of the same
@@ -69,8 +69,12 @@ public class DriveStraightWithGyro extends Command {
 
 		double currentHeading = Robot.gyro.getAngle();
 		if (!isStarted) {
+			DriverStation.reportWarning(" distance starting " , false);
 			// initialize();
 			Robot.driveBase.resetEncoder();
+			startingPosition = 0;
+			isFinished = false;
+
 			startingPosition = Robot.driveBase.getEncoderPosition();
 			
 //			Robot.throwDaggersInBensEyes.reverse(null);
@@ -84,7 +88,7 @@ public class DriveStraightWithGyro extends Command {
 			DriverStation.reportWarning("waiting start " + startingPosition, false);
 			DriverStation.reportWarning("waiting curre " + current, false);
 
-			isFinished = Math.abs(current) - Math.abs(startingPosition) > _distance;// UNITS;
+			isFinished = Math.abs(current) - Math.abs(startingPosition) > Math.abs(_distance);// UNITS;
 			DriverStation.reportWarning("waiting finished? " + isFinished, false);
 		}
 

@@ -61,7 +61,7 @@ public class Robot extends IterativeRobot {
 		chooser = new SendableChooser();
 		chooser.addObject("AutoDoNothing", new AutoDoNothing());
 		chooser.addObject("AutoLeftLeft", new AutoLeftLeft());
-		chooser.addDefault("AutoStraightOverLine", new DriveStraightWithGyro(-.3, 20, 0));
+//		chooser.addDefault("AutoStraightOverLine", new DriveStraightWithGyro(-.3, 40, 20));
 		chooser.addObject("OldAutoStraight", new OldDriveStraight());
 
 		SmartDashboard.putData("Auto mode", chooser);
@@ -113,7 +113,7 @@ public class Robot extends IterativeRobot {
 //			}
 		}
 
-//	autonomousCommand=new DriveStraightWithGyro(-.6,20,0);
+	autonomousCommand=new DriveStraightWithGyro(-.3, 8300, 0);
 	// schedule the autonomous command (example)
 	if(autonomousCommand!=null)autonomousCommand.start();
 

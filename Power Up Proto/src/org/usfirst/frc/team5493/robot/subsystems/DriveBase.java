@@ -82,6 +82,7 @@ public class DriveBase extends Subsystem {
 		int timeoutMs = 0;
 
 		Preferences prefs = Preferences.getInstance();
+		log();
 
 		secondsFromNeutral = prefs.getDouble("RampRateDriveBase", 0.25);
 		timeoutMs = prefs.getInt("RampRateDriveBaseTimeout", 1);
@@ -116,6 +117,7 @@ public class DriveBase extends Subsystem {
 	public void drive(double left, double right) {
 		DriverStation.getInstance().reportWarning("Driving: " + left + " " + right, false);
 		drive.tankDrive(left, right);
+		log();
 	}
 
 	public void driveHeading(double direction, double arc) {
@@ -137,6 +139,7 @@ public class DriveBase extends Subsystem {
 			if (lcode == ErrorCode.OK) {
 				DriverStation.reportWarning(talon.getDeviceID() + " Encoder Quad Sensor Okay", false);
 			}
+			talon.setSensorPhase(true);
 
 			// /* choose to ensure sensor is positive when output is positive */
 			// talon.setSensorPhase(Constants.kSensorPhase);
@@ -188,8 +191,8 @@ public class DriveBase extends Subsystem {
 		}
 	}
 	public void log() {
-		SmartDashboard.putNumber("Left Distance", this.leftEncoder.get());
-		SmartDashboard.putNumber("Right Distance", this.rightEncoder.get());
+		SmartDashboard.putNumber("Left Distance", encoderTalons[0].getSelectedSensorPosition(kPIDLoopIdx));
+		SmartDashboard.putNumber("Right Distance", encoderTalons[1].getSelectedSensorPosition(kPIDLoopIdx));
 		
 	}
 	public void reset() {
@@ -211,7 +214,7 @@ public class DriveBase extends Subsystem {
 		for (int talIdx = 0; talIdx < encoderTalons.length; talIdx++) {
 
 			TalonSRX talon = (TalonSRX) encoderTalons[talIdx];
-			total += talon.getSelectedSensorPosition(kPIDLoopIdx);
+			total += Math.abs(talon.getSelectedSensorPosition(kPIDLoopIdx));
 		}
 		return total / encoderTalons.length;
 	}
