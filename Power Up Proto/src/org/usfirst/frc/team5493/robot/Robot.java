@@ -114,6 +114,7 @@ public class Robot extends IterativeRobot {
 		}
 
 	autonomousCommand=new DriveStraightWithGyro(-.3, 8300, 0);
+	//autonomousCommand = new AutoLeftLeft();
 	// schedule the autonomous command (example)
 	if(autonomousCommand!=null)autonomousCommand.start();
 

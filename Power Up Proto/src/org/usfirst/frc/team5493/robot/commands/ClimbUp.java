@@ -23,7 +23,7 @@ public class ClimbUp extends Command {
 
 	protected void execute() {
 		if (buttonMonitor.checkButtonState() == ButtonMonitor.ButtonState.Active) {
-			Robot.climber.pullUp();
+			Robot.climber.pullDown();
 		}
 	}
 

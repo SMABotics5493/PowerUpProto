@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5493.robot.commands;
 
 import org.usfirst.frc.team5493.robot.Robot;
+import org.usfirst.frc.team5493.robot.RobotMap;
 import org.usfirst.frc.team5493.robot.utils.ButtonMonitor;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -11,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class CascadeUp extends Command {
-	
+
 	private ButtonMonitor buttonMonitor;
 
 	public CascadeUp(Button cmdButton) {
@@ -49,4 +50,5 @@ public class CascadeUp extends Command {
 	protected void interrupted() {
 		end();
 	}
-}
+	}
+

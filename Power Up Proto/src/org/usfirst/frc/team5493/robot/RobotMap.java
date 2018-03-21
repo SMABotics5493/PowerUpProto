@@ -28,8 +28,8 @@ public class RobotMap {
 	public static final int LEFT_TRIGGER = 2;
 	public static final int RIGHT_TRIGGER = 3;
 	
-	public static final int CASCADE_LOCK = 2;
-	public static final int CASCADE_JOYSTICK = 1;
+	//public static final int CASCADE_LOCK = 2;
+	//public static final int CASCADE_JOYSTICK = 1;
 	
 	public static final int LEFT_FRONT = 3;
 	public static final int LEFT_BACK = 5;

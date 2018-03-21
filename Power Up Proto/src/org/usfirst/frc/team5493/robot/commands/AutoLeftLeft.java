@@ -1,5 +1,8 @@
 package org.usfirst.frc.team5493.robot.commands;
 
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.CascadeUpByTime;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.CubeOuttakeAuto;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -8,16 +11,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoLeftLeft extends CommandGroup {
 
     public AutoLeftLeft() {
-    	//addSequential(new IntakeRelease());
-    	//addSequential(new CubeIntake());
-    	//addSequential(new DriveStraightWithGyro(-0.5, 40, 0));
-    	//addSequential(new TurnWithGyro());
-    	addSequential(new DriveStraightWithGyro(-0.5, 20, 90));
-    	//addSequential(new CascadeUp());
-    	//addSequential(new DriveStraightWithGyro(-0.5, 35, 0));
-    	//addSequential(new CubeOuttake());
-    	//addSequential(new DriveStraightBack());
-    	//addSequential(new CascadeDown());
-       
+    	addSequential(new DriveStraightWithGyro(-0.5,8300 ,0));
+    	addSequential(new DriveStraightWithGyro(-0.5, 8000, -90));
+    	addSequential(new CascadeUpByTime(5));
+    	addSequential(new CubeOuttakeAuto(3));
+    	//addSequential(new DriveStraightWithGyro(-0.5, -4000, 0))
     }
 }

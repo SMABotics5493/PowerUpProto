@@ -50,7 +50,7 @@ public class Cascade extends Subsystem {
 
 		secondsFromNeutral = prefs.getDouble("RampRateClimber", 0.25);
 		upSpeed = prefs.getDouble("ClimberUpSpeed", 1);
-		downSpeed = prefs.getDouble("ClimberDownSpeed", -0.4);
+		downSpeed = prefs.getDouble("ClimberDownSpeed", -1);
 		timeoutMs = prefs.getInt("RampRateClimberTimeout", 1);
 
 		climbMotor.configOpenloopRamp(secondsFromNeutral, timeoutMs);
