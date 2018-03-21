@@ -1,5 +1,5 @@
 
- package org.usfirst.frc.team5493.robot.subsystems;
+package org.usfirst.frc.team5493.robot.subsystems;
 
 import org.usfirst.frc.team5493.robot.RobotMap;
 import org.usfirst.frc.team5493.robot.commands.JoystickDrive;
@@ -11,31 +11,28 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveBase extends Subsystem {
-	double wheelDiameter = 6.0;
+	final static double kDriveWheelDiameterInches = 6.0;
 
-	double pulsesPerRevolution = 1440.0;
+	final static double cyclesPerRevolution = 360.0;
+	final static double unitsPerRotation = 1440.0;
 	double averageDistance;
 	WPI_TalonSRX leftBackMotor;
 	WPI_TalonSRX rightBackMotor;
-	WPI_TalonSRX rightFrontMotor;
-	WPI_TalonSRX leftFrontMotor;
+	// WPI_TalonSRX rightFrontMotor;
+	// WPI_TalonSRX leftFrontMotor;
 
 	WPI_TalonSRX[] encoderTalons;
 	WPI_TalonSRX[] allTalons;
 
 	private DifferentialDrive drive;
-	private Encoder leftEncoder, rightEncoder;
 	private final String DRIVE_SYSTEM = "Tank Drive System";
 	private final String LEFT_FRONT = "Left Front Motor";
 
@@ -44,17 +41,17 @@ public class DriveBase extends Subsystem {
 
 	public DriveBase() {
 		super();
-		
-		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT);		//		(._.)   (._.)	(._.)
-		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK);		//		<) )/	\( )/	\( (>
-		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT);	// 	 	 / \	 / \	 / \
+
+		// leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT); // (._.) (._.) (._.)
+		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK); // <) )/ \( )/ \( (>
+		// rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT); // / \ / \ / \
 		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK);
 
 		// leftFrontMotor = new WPI_TalonSRX(0);
 		// rightFrontMotor = new WPI_TalonSRX(1);
 
-		leftFrontMotor.set(ControlMode.Follower, RobotMap.LEFT_BACK);
-		rightFrontMotor.set(ControlMode.Follower, RobotMap.RIGHT_BACK);
+		// leftFrontMotor.set(ControlMode.Follower, RobotMap.LEFT_BACK);
+		// rightFrontMotor.set(ControlMode.Follower, RobotMap.RIGHT_BACK);
 
 		encoderTalons = new WPI_TalonSRX[2];
 		encoderTalons[0] = leftBackMotor;
@@ -64,17 +61,20 @@ public class DriveBase extends Subsystem {
 
 		this.initializeTalonsForEncoder();
 
-		allTalons = new WPI_TalonSRX[4];
+		allTalons = new WPI_TalonSRX[2];
 		allTalons[0] = leftBackMotor;
-		allTalons[1] = leftFrontMotor;
-		allTalons[2] = rightBackMotor;
-		allTalons[3] = rightFrontMotor;
-		
-		SpeedControllerGroup leftSide = new SpeedControllerGroup(leftBackMotor, leftFrontMotor);
-		SpeedControllerGroup rightSide = new SpeedControllerGroup(rightBackMotor, rightFrontMotor);
-		drive = new DifferentialDrive(leftSide, rightSide);
+		// allTalons[1] = leftFrontMotor;
+		allTalons[1] = rightBackMotor;
+		// allTalons[3] = rightFrontMotor;
 
-		//drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor, rightBackMotor);
+		// SpeedControllerGroup leftSide = new SpeedControllerGroup(leftBackMotor,
+		// leftFrontMotor);
+		// SpeedControllerGroup rightSide = new SpeedControllerGroup(rightBackMotor,
+		// rightFrontMotor);
+		drive = new DifferentialDrive(leftBackMotor, rightBackMotor);
+
+		// drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor,
+		// rightBackMotor);
 		// drive = new RobotDrive(leftFrontMotor, rightFrontMotor);
 		drive.setExpiration(0.1);
 
@@ -121,18 +121,18 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void driveHeading(double direction, double arc) {
-//		drive.setSafetyEnabled(false);
+		// drive.setSafetyEnabled(false);
 		// drive.tankDrive(-.6, -.6);
 		drive.curvatureDrive(direction, arc, false);
-//		drive.drive(direction, arc);
-//		drive.setSafetyEnabled(true);
+		// drive.drive(direction, arc);
+		// drive.setSafetyEnabled(true);
 		DriverStation.getInstance().reportWarning("Drive Heading", true);
 	}
 
 	private void initializeTalonsForEncoder() {
 		for (int talIdx = 0; talIdx < encoderTalons.length; talIdx++) {
 
-			TalonSRX talon = (TalonSRX) encoderTalons[talIdx];
+			WPI_TalonSRX talon = encoderTalons[talIdx];
 
 			ErrorCode lcode = (talon).configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, kPIDLoopIdx, kTimeoutMs);
 
@@ -152,12 +152,11 @@ public class DriveBase extends Subsystem {
 			/* set the peak and nominal outputs, 12V means full */
 			talon.configNominalOutputForward(0, kTimeoutMs);
 			talon.configNominalOutputReverse(0, kTimeoutMs);
-			talon.configPeakOutputForward(.1, kTimeoutMs);
-			talon.configPeakOutputReverse(-.1, kTimeoutMs);
+			talon.configPeakOutputForward(1, kTimeoutMs);
+			talon.configPeakOutputReverse(-1, kTimeoutMs);
 			/*
-			 * set the allowable closed-loop error, Closed-Loop output will be
-			 * neutral within this range. See Table in Section 17.2.1 for native
-			 * units per rotation.
+			 * set the allowable closed-loop error, Closed-Loop output will be neutral
+			 * within this range. See Table in Section 17.2.1 for native units per rotation.
 			 */
 			talon.configAllowableClosedloopError(0, kPIDLoopIdx, kTimeoutMs);
 
@@ -174,30 +173,35 @@ public class DriveBase extends Subsystem {
 	public void resetEncoder() {
 		for (int talIdx = 0; talIdx < encoderTalons.length; talIdx++) {
 
-			TalonSRX talon = (TalonSRX) encoderTalons[talIdx];
+			TalonSRX talon = encoderTalons[talIdx];
 			/*
-			 * lets grab the 360 degree position of the MagEncoder's absolute
-			 * position, and intitally set the relative sensor to match.
+			 * lets grab the 360 degree position of the MagEncoder's absolute position, and
+			 * intitally set the relative sensor to match.
 			 */
-			int absolutePosition = talon.getSensorCollection().getPulseWidthPosition();
+			// int absolutePosition = talon.getSensorCollection().getPulseWidthPosition();
 			/* mask out overflows, keep bottom 12 bits */
-			absolutePosition &= 0xFFF;
+			// absolutePosition &= 0xFFF;
 			// if (Constants.kSensorPhase)
 			// absolutePosition *= -1;
 			// if (Constants.kMotorInvert)
 			// absolutePosition *= -1;
 			/* set the quadrature (relative) sensor to match absolute */
-			talon.setSelectedSensorPosition(absolutePosition, kPIDLoopIdx, kTimeoutMs);
+			talon.setSelectedSensorPosition(0, kPIDLoopIdx, 10);
 		}
 	}
+
 	public void log() {
-		SmartDashboard.putNumber("Left Distance", encoderTalons[0].getSelectedSensorPosition(kPIDLoopIdx));
-		SmartDashboard.putNumber("Right Distance", encoderTalons[1].getSelectedSensorPosition(kPIDLoopIdx));
-		
+		int leftUnits = encoderTalons[0].getSelectedSensorPosition(kPIDLoopIdx);
+		int rightUnits = encoderTalons[1].getSelectedSensorPosition(kPIDLoopIdx);
+		SmartDashboard.putNumber("Left  - Sensor Units", leftUnits);
+		SmartDashboard.putNumber("Right - Sensor Units", rightUnits);
+		SmartDashboard.putNumber("Inches per rotation", (kDriveWheelDiameterInches * Math.PI));
 	}
+
 	public void reset() {
 		drive(0.0, 0.0);
 	}
+
 	public void drivePosition(double targetPositionRotations) {
 
 		for (int talIdx = 0; talIdx < allTalons.length; talIdx++) {
@@ -208,8 +212,8 @@ public class DriveBase extends Subsystem {
 			DriverStation.reportWarning("Set talon " + talIdx, false);
 		}
 	}
-	
-	public double getEncoderPosition() {
+
+	public double getEncoderAverage() {
 		double total = 0;
 		for (int talIdx = 0; talIdx < encoderTalons.length; talIdx++) {
 
@@ -219,4 +223,82 @@ public class DriveBase extends Subsystem {
 		return total / encoderTalons.length;
 	}
 
+	private static double rotationsToInches(double rotations) {
+		return rotations * ((kDriveWheelDiameterInches * Math.PI) / unitsPerRotation);
+	}
+
+	public static double unitsToInches(double units) {
+		return units * ((kDriveWheelDiameterInches * Math.PI) / unitsPerRotation);
+	}
+
+	private static double rpmToInchesPerSecond(double rpm) {
+		return rotationsToInches(rpm) * 60;
+	}
+
+	public static double inchesToRotations(double inches) {
+
+		return inches / ((kDriveWheelDiameterInches * Math.PI) / unitsPerRotation);
+	}
+
+	private static double inchesPerSecondToRpm(double inches_per_second) {
+		return inchesToRotations(inches_per_second) * 60;
+	}
+
+	public double getLeftDistanceInches() {
+		return rotationsToInches(getLeftMaster().getSelectedSensorPosition(kPIDLoopIdx));
+	}
+
+	public double getRightDistanceInches() {
+		return rotationsToInches(getRightMaster().getSelectedSensorPosition(kPIDLoopIdx));
+	}
+
+	public double getLeftDistanceUnits() {
+		return getLeftMaster().getSelectedSensorPosition(kPIDLoopIdx);
+	}
+
+	public double getRightDistanceUnits() {
+		return getRightMaster().getSelectedSensorPosition(kPIDLoopIdx);
+	}
+
+	public double getLeftDistanceInches(double unitsStartedFrom) {
+		return rotationsToInches(getLeftDistanceUnits(unitsStartedFrom));
+	}
+
+	public double getRightDistanceInches(double unitsStartedFrom) {
+		return rotationsToInches(getRightDistanceUnits(unitsStartedFrom));
+	}
+
+	public double getLeftDistanceUnits(double unitsStartedFrom) {
+		return difference(getLeftDistanceUnits(), unitsStartedFrom);
+	}
+
+	public double getRightDistanceUnits(double unitsStartedFrom) {
+		return difference(getRightDistanceUnits(), unitsStartedFrom);
+	}
+
+	public double getLeftVelocityInchesPerSec() {
+		return rpmToInchesPerSecond(getLeftMaster().getSelectedSensorVelocity(kPIDLoopIdx));
+	}
+
+	private WPI_TalonSRX getLeftMaster() {
+		return encoderTalons[GenericHID.Hand.kLeft.value];
+	}
+
+	public double getRightVelocityInchesPerSec() {
+		return rpmToInchesPerSecond(getRightMaster().getSelectedSensorVelocity(kPIDLoopIdx));
+	}
+
+	private WPI_TalonSRX getRightMaster() {
+		return encoderTalons[GenericHID.Hand.kRight.value];
+	}
+
+	public double difference(double valA, double valB) {
+		double absValA = Math.abs(valA);
+		double absValB = Math.abs(valB);
+		if (absValA > absValB) {
+			return absValA - absValB;
+		} else {
+			return absValB - absValA;
+		}
+	}
 }

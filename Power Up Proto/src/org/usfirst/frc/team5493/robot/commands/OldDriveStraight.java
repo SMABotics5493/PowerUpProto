@@ -58,14 +58,14 @@ public class OldDriveStraight extends Command {
 
 	protected void distance(double targetPositionRotations) {
 		if (!isStarted) {
-			startingPosition = Robot.driveBase.getEncoderPosition();
+			startingPosition = Robot.driveBase.getEncoderAverage();
 
 			isStarted = true;
 			DriverStation.reportWarning("distance", false);
 			//_talon.set(ControlMode.Position, targetPositionRotations);
 		} else {
 			DriverStation.reportWarning("waiting", false);
-			double current = Robot.driveBase.getEncoderPosition();
+			double current = Robot.driveBase.getEncoderAverage();
 			DriverStation.reportWarning("waiting start " + startingPosition, false);
 			DriverStation.reportWarning("waiting curre " + current, false);
 			

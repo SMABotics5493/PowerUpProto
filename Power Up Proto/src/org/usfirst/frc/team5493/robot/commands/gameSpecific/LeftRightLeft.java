@@ -20,7 +20,7 @@ public class LeftRightLeft extends CommandGroup {
 			addSequential(new TiltyBoiDown());
 			addSequential(new DriveStraightWithGyro(-.3,20,-90));
 			addSequential(new CubeOuttakeAuto(.5));
-			addSequential(new CascadeDownByTime(RobotMap.GroundHeight));
+//			addSequential(new CascadeDownByTime(RobotMap.GroundHeight));
 			addSequential(new DriveStraightWithGyro(.3, 20,0));
 			break;
 		case 2:
