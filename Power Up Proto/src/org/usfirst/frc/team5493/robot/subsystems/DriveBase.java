@@ -206,7 +206,7 @@ public class DriveBase extends Subsystem {
 
 		for (int talIdx = 0; talIdx < allTalons.length; talIdx++) {
 
-			TalonSRX talon = (TalonSRX) allTalons[talIdx];
+			TalonSRX talon = allTalons[talIdx];
 			talon.set(ControlMode.Position, targetPositionRotations);
 
 			DriverStation.reportWarning("Set talon " + talIdx, false);
@@ -217,7 +217,7 @@ public class DriveBase extends Subsystem {
 		double total = 0;
 		for (int talIdx = 0; talIdx < encoderTalons.length; talIdx++) {
 
-			TalonSRX talon = (TalonSRX) encoderTalons[talIdx];
+			TalonSRX talon = encoderTalons[talIdx];
 			total += Math.abs(talon.getSelectedSensorPosition(kPIDLoopIdx));
 		}
 		return total / encoderTalons.length;
