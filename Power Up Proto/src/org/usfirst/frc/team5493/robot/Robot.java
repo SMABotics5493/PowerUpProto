@@ -45,8 +45,8 @@ public class Robot extends IterativeRobot {
 	SendableChooser chooser;
 
 	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
+	 * This function is run when the robot is first started up and should be used
+	 * for any initialization code.
 	 */
 
 	public void robotInit() {
@@ -61,7 +61,8 @@ public class Robot extends IterativeRobot {
 		chooser = new SendableChooser();
 		chooser.addObject("AutoDoNothing", new AutoDoNothing());
 		chooser.addObject("AutoLeftLeft", new AutoLeftLeft());
-//		chooser.addDefault("AutoStraightOverLine", new DriveStraightWithGyro(-.3, 40, 20));
+		// chooser.addDefault("AutoStraightOverLine", new DriveStraightWithGyro(-.3, 40,
+		// 20));
 		chooser.addObject("OldAutoStraight", new OldDriveStraight());
 
 		SmartDashboard.putData("Auto mode", chooser);
@@ -70,9 +71,9 @@ public class Robot extends IterativeRobot {
 	}
 
 	/**
-	 * This function is called once each time the robot enters Disabled mode.
-	 * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
+	 * This function is called once each time the robot enters Disabled mode. You
+	 * can use it to reset any subsystem information you want to clear when the
+	 * robot is disabled.
 	 */
 	public void disabledInit() {
 		// encoder.reset();
@@ -84,38 +85,39 @@ public class Robot extends IterativeRobot {
 
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
+	 * between different autonomous modes using the dashboard. The sendable chooser
+	 * code works with the Java SmartDashboard. If you prefer the LabVIEW Dashboard,
+	 * remove all of the chooser code and uncomment the getString code to get the
+	 * auto name from the text box below the Gyro
 	 *
 	 * You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
+	 * chooser code above (like the commented example) or additional comparisons to
+	 * the switch structure below with additional strings & commands.
 	 */
 	public void autonomousInit() {
 		autonomousCommand = (Command) chooser.getSelected();
 
-		int startingPosition = 1;
-	String gameData;
+		int startingPosition = DriverStation.getInstance().getLocation();
+		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		if (gameData.length() > 0) {
 			if (gameData.equals("LRL")) {
 				autonomousCommand = new LeftRightLeft(startingPosition);
 			}
-//			if (gameData.charAt(0) == 'L') {
-//			}
-//				// Put left auto code here
-//				autonomousCommand = new DriveStraightWithGyro(0.5, 40, 0);
-//			} else {
-//				// Put right auto code here
-//				autonomousCommand = null;
-//			}
+			// if (gameData.charAt(0) == 'L') {
+			// }
+			// // Put left auto code here
+			// autonomousCommand = new DriveStraightWithGyro(0.5, 40, 0);
+			// } else {
+			// // Put right auto code here
+			// autonomousCommand = null;
+			// }
 		}
 
-	autonomousCommand=new DriveStraightWithGyro(-.4, 120, 0);
-	// schedule the autonomous command (example)
-	if(autonomousCommand!=null)autonomousCommand.start();
+		// autonomousCommand=new DriveStraightWithGyro(-.4, 120, 0);
+		// schedule the autonomous command (example)
+		if (autonomousCommand != null)
+			autonomousCommand.start();
 
 	}
 

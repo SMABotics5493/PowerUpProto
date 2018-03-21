@@ -120,13 +120,13 @@ public class DriveBase extends Subsystem {
 		log();
 	}
 
-	public void driveHeading(double direction, double arc) {
+	public void driveHeading(double direction, double arc, boolean quickTurn) {
 		// drive.setSafetyEnabled(false);
 		// drive.tankDrive(-.6, -.6);
-		drive.curvatureDrive(direction, arc, false);
+		drive.curvatureDrive(direction, arc, quickTurn);
 		// drive.drive(direction, arc);
 		// drive.setSafetyEnabled(true);
-		DriverStation.getInstance().reportWarning("Drive Heading", true);
+//		DriverStation.getInstance().reportWarning("Drive Heading", true);
 	}
 
 	private void initializeTalonsForEncoder() {
@@ -178,7 +178,7 @@ public class DriveBase extends Subsystem {
 			 * lets grab the 360 degree position of the MagEncoder's absolute position, and
 			 * intitally set the relative sensor to match.
 			 */
-			// int absolutePosition = talon.getSensorCollection().getPulseWidthPosition();
+			int absolutePosition = talon.getSensorCollection().getPulseWidthPosition();
 			/* mask out overflows, keep bottom 12 bits */
 			// absolutePosition &= 0xFFF;
 			// if (Constants.kSensorPhase)

@@ -73,7 +73,7 @@ public class OldDriveStraight extends Command {
 			DriverStation.reportWarning("waiting finished? " + isFinished, false);
 		}
 		double angle = Robot.gyro.getAngle();
-		Robot.driveBase.driveHeading(-0.23, -angle*Kp);
+		Robot.driveBase.driveHeading(-0.23, -angle*Kp, false);
 
 	}
 }
