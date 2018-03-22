@@ -62,6 +62,7 @@ public class RobotMap {
 	public static final int LIMIT_SWITH_DOWN_CLIMBER = 3;
 	public static final double SwitchHeight = .75; 
 	public static final int GroundHeight = 0;
+	public static final double ScaleHeight = 2.0; 
 	
 	//public static int gyro;
 	

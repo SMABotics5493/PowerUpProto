@@ -4,7 +4,14 @@ import org.usfirst.frc.team5493.robot.commands.AutoDoNothing;
 import org.usfirst.frc.team5493.robot.commands.AutoLeftLeft;
 import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5493.robot.commands.OldDriveStraight;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftLeftLeft;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftLeftRight;
 import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftRightLeft;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftRightRight;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightLeftLeft;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightLeftRight;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightRightLeft;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightRightRight;
 import org.usfirst.frc.team5493.robot.subsystems.Cascade;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
@@ -102,6 +109,27 @@ public class Robot extends IterativeRobot {
 		if (gameData.length() > 0) {
 			if (gameData.equals("LRL")) {
 				autonomousCommand = new LeftRightLeft(startingPosition);
+			}
+			if (gameData.equals("RLR")) {
+				autonomousCommand = new RightLeftRight(startingPosition);
+			}
+			if (gameData.equals("LLL")) {
+				autonomousCommand = new LeftLeftLeft(startingPosition);
+			}
+			if (gameData.equals("RRR")) {
+				autonomousCommand = new RightRightRight(startingPosition);
+			}
+			if (gameData.equals("LRR")) {
+				autonomousCommand = new LeftRightRight(startingPosition);
+			}
+			if (gameData.equals("RLL")) {
+				autonomousCommand = new RightLeftLeft(startingPosition);
+			}
+			if (gameData.equals("RRL")) {
+				autonomousCommand = new RightRightLeft(startingPosition);
+			}
+			if (gameData.equals("LLR")) {
+				autonomousCommand = new LeftLeftRight(startingPosition);
 			}
 //			if (gameData.charAt(0) == 'L') {
 //			}

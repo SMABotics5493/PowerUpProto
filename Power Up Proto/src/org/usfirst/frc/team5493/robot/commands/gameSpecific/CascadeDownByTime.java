@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.TimedCommand;
 
+
 /**
  *
  */
 public class CascadeDownByTime extends TimedCommand {
-
 	
-
+	
 	public CascadeDownByTime(double Time) {
 		
 		super(Time);
@@ -52,5 +52,5 @@ public class CascadeDownByTime extends TimedCommand {
 	protected void interrupted() {
 		end();
 	}
-	}
+}
 
