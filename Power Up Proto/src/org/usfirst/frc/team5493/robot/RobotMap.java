@@ -64,6 +64,12 @@ public class RobotMap {
 	public static final int GroundHeight = 0;
 	public static final double ScaleHeight = 2.0; 
 	
+	public static final double AutoLine = 120;
+	public static final double distanceToSwitch = 20;
+	public static final double distanceFromSwitch = -20;
+	public static final double distanceToScale = 40;
+	public static final double distanceFromScale = -40;
+	public static final double AutoMiddleLine = 120;
 	//public static int gyro;
 	
 	// If you are using multiple modules, make sure to define both the port

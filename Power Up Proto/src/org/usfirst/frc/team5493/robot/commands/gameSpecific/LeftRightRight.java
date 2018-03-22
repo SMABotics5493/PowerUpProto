@@ -15,7 +15,7 @@ public class LeftRightRight extends CommandGroup {
     	switch (startingPosition) {
 		case 1:
 			//Right
-			addSequential(new DriveStraightWithGyro(-.6,20,0));
+			addSequential(new DriveStraightWithGyro(-.6,120,0));
 			addSequential(new CascadeUpByTime(RobotMap.ScaleHeight));
 			addSequential(new TiltyBoiDown());
 			addSequential(new DriveStraightWithGyro(-.3,20,-90));
@@ -26,7 +26,7 @@ public class LeftRightRight extends CommandGroup {
 			
 		case 2:
 			//Middle Position
-			addSequential(new DriveStraightWithGyro(-.6,20,0));
+			addSequential(new DriveStraightWithGyro(-.6,120,0));
 			//addSequential(new CascadeUpByTime(RobotMap.SwitchHeight));
 			//addSequential(new TiltyBoiDown());
 			//addSequential(new DriveStraightWithGyro(-.3,20,90));
