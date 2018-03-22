@@ -32,9 +32,9 @@ public class RobotMap {
 	//public static final int CASCADE_JOYSTICK = 1;
 	
 	public static final int LEFT_FRONT = 3;
-	public static final int LEFT_BACK = 5;
+	public static final int LEFT_BACK = 0;
 	public static final int RIGHT_FRONT = 2;
-	public static final int RIGHT_BACK = 4;
+	public static final int RIGHT_BACK = 1;
 
 	public final static int INTAKE_LEFT = 8;
 	public final static int INTAKE_RIGHT = 9;

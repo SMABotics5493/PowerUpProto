@@ -4,14 +4,7 @@ import org.usfirst.frc.team5493.robot.commands.AutoDoNothing;
 import org.usfirst.frc.team5493.robot.commands.AutoLeftLeft;
 import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5493.robot.commands.OldDriveStraight;
-import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftLeftLeft;
-import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftLeftRight;
 import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftRightLeft;
-import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftRightRight;
-import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightLeftLeft;
-import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightLeftRight;
-import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightRightLeft;
-import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightRightRight;
 import org.usfirst.frc.team5493.robot.subsystems.Cascade;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
@@ -103,8 +96,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		autonomousCommand = (Command) chooser.getSelected();
 
-		int startingPosition = 1;
-	String gameData;
+		int startingPosition = DriverStation.getInstance().getLocation();
+		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		if (gameData.length() > 0) {
 			if (gameData.equals("LRL")) {
@@ -141,11 +134,10 @@ public class Robot extends IterativeRobot {
 //			}
 		}
 
-	autonomousCommand=new DriveStraightWithGyro(-.3, 8300, 0);
-	//autonomousCommand = new AutoLeftLeft();
-	// schedule the autonomous command (example)
-	if(autonomousCommand!=null)autonomousCommand.start();
-
+		// autonomousCommand=new DriveStraightWithGyro(-.4, 120, 0);
+		// schedule the autonomous command (example)
+		if (autonomousCommand != null)
+			autonomousCommand.start();
 	}
 
 	/**
