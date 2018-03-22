@@ -1,24 +1,26 @@
-package org.usfirst.frc.team5493.robot.commands;
+package org.usfirst.frc.team5493.robot.commands.gameSpecific;
 
 import org.usfirst.frc.team5493.robot.Robot;
-import org.usfirst.frc.team5493.robot.RobotMap;
 import org.usfirst.frc.team5493.robot.utils.ButtonMonitor;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 
 /**
  *
  */
-public class CascadeUp extends Command {
+public class CascadeDownByTime extends TimedCommand {
 
-	private ButtonMonitor buttonMonitor;
+	
 
-	public CascadeUp(Button cmdButton) {
+	public CascadeDownByTime(double Time) {
+		
+		super(Time);
+		
 		requires(Robot.cascade);
-		buttonMonitor = new ButtonMonitor(cmdButton);
-		//super(0.25);
+		
+		
 	}
 
 	// Called just before this Command runs the first time
@@ -28,14 +30,14 @@ public class CascadeUp extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (buttonMonitor.checkButtonState() == ButtonMonitor.ButtonState.Active) {
-			Robot.cascade.climbUp();
+		if (!isTimedOut()) {
+			Robot.cascade.climbDown();
 		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return buttonMonitor.checkButtonState() == ButtonMonitor.ButtonState.Inactive;
+		return isTimedOut();
 		// true; 
 //		return Robot.cascade.hasClimbedDown();
 	}

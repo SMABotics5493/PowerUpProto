@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5493.robot;
 
 import org.usfirst.frc.team5493.robot.commands.CascadeBySpeed;
+import org.usfirst.frc.team5493.robot.commands.CascadeDown;
+import org.usfirst.frc.team5493.robot.commands.CascadeUp;
 import org.usfirst.frc.team5493.robot.commands.ClimbDown;
 import org.usfirst.frc.team5493.robot.commands.ClimbUp;
 import org.usfirst.frc.team5493.robot.commands.CubeIntake;
@@ -29,17 +31,19 @@ public class OI {
 
 	JoystickButton cubeIntake = new JoystickButton(joystick, RobotMap.JOYBTN_LB);
 	JoystickButton cubeOuttake = new JoystickButton(joystick, RobotMap.JOYBTN_RB);
-	JoystickButton cascadeLock = new JoystickButton(joystick, RobotMap.CASCADE_LOCK);
-	JoystickButton cascadeSpeed = new JoystickButton(joystick, RobotMap.CASCADE_JOYSTICK);
-	JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
-	JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
+	//JoystickButton cascadeLock = new JoystickButton(joystick, RobotMap.CASCADE_LOCK);
+	//JoystickButton cascadeSpeed = new JoystickButton(joystick, RobotMap.CASCADE_JOYSTICK);
+	JoystickButton solenoidForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_Y);
+	JoystickButton solenoidReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_A);
 	JoystickButton tiltyBoiUp = new JoystickButton(driveJoystick, RobotMap.JOYBTN_LB);
 	JoystickButton tiltyBoiDown = new JoystickButton(driveJoystick, RobotMap.JOYBTN_RB);
 	JoystickButton pullUp = new JoystickButton(joystick, RobotMap.JOYBTN_X);
 	JoystickButton pullDown = new JoystickButton(joystick, RobotMap.JOYBTN_B);
-	JoystickButton solenoidEndForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_Y);
-	JoystickButton solenoidEndReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_A);
+	JoystickButton solenoidEndForward = new JoystickButton(driveJoystick, RobotMap.JOYBTN_X);
+	JoystickButton solenoidEndReverse = new JoystickButton(driveJoystick, RobotMap.JOYBTN_B);
 	JoystickButton endgameRelease = new JoystickButton(joystick, RobotMap.JOYBTN_START);
+	JoystickButton cascadeUp = new JoystickButton(joystick, RobotMap.JOYBTN_Y);
+	JoystickButton cascadeDown = new JoystickButton(joystick, RobotMap.JOYBTN_A);
 
 	public Joystick getDriveJoystick() {
 		return driveJoystick;
@@ -51,12 +55,10 @@ public class OI {
 
 	public OI() {
 
-		cascadeSpeed.whileActive(new CascadeBySpeed(cascadeLock));
-		cascadeLock.whileActive(new CascadeBySpeed(cascadeLock));
+		//cascadeSpeed.whileActive(new CascadeBySpeed(cascadeLock));
+		//cascadeLock.whileActive(new CascadeBySpeed(cascadeLock));
 		cubeIntake.whileHeld(new CubeIntake(cubeIntake));
 		cubeOuttake.whileHeld(new CubeOuttake(cubeOuttake));
-//		cascadeLock.whileHeld(new CascadeBySpeed(cascadeLock));
-//		cascadeSpeed.whileHeld(new CascadeDown(cascadeSpeed));
 		solenoidForward.whenPressed(new TransmissionForward());
 		solenoidReverse.whenPressed(new TransmissionReverse());
 		pullUp.whileHeld(new ClimbUp(pullUp));
@@ -66,6 +68,8 @@ public class OI {
 		solenoidEndForward.whenPressed(new EndForward());
 		solenoidEndReverse.whenPressed(new EndReverse());
 		endgameRelease.whileHeld(new EndgameRaise());
+		cascadeUp.whileHeld(new CascadeUp(cascadeUp));
+		cascadeDown.whileHeld(new CascadeDown(cascadeDown));
 
 	}
 

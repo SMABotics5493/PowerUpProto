@@ -65,16 +65,25 @@ public class DriveStraightWithGyro extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+<<<<<<< HEAD
 		// DriverStation.reportWarning("end", false);
 		Robot.driveBase.reset();
 		isStarted = false;
 		isFinished = true;
+=======
+		DriverStation.reportWarning("end", false);
+>>>>>>> NewAbby
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+<<<<<<< HEAD
 		// DriverStation.reportWarning("interrupt", false);
+=======
+		DriverStation.reportWarning("interrupt", false);
+		end();
+>>>>>>> NewAbby
 	}
 
 	protected void distance() {
@@ -140,11 +149,17 @@ public class DriveStraightWithGyro extends Command {
 			setHeading = targetHeading;
 		}
 
+<<<<<<< HEAD
 		// Robot.driveBase.driveHeading(_speed, setHeading);
 		Robot.driveBase.driveHeading(_directionalSpeed, setHeading, _quickTurn);
 		// Robot.driveBase.drive(_speed, _speed);
 
 		log(traveled);
+=======
+		Robot.driveBase.driveHeading(_speed, setHeading);
+		//Robot.driveBase.driveHeading(_speed, 0);
+		//Robot.driveBase.drive(_speed, _speed);
+>>>>>>> NewAbby
 
 	}
 
