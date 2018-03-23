@@ -15,18 +15,18 @@ public class LeftRightLeft extends CommandGroup {
     	switch (startingPosition) {
 		case 1:
 			//TODO: Position 1 logic
-				addSequential(new DriveStraightWithGyro(-.3,12,0));
+				addSequential(new DriveStraightWithGyro(-.3,RobotMap.AutoLine,0));
 			addSequential(new CascadeUpByTime(RobotMap.SwitchHeight));
 			addSequential(new TiltyBoiDown());
-			addSequential(new DriveStraightWithGyro(-.18,0,-90, true));
+			addSequential(new DriveStraightWithGyro(-.18,RobotMap.DistanceToSwitch,-90, true));
 			addSequential(new DriveStraightWithGyro(-.3,12,0));
 			addSequential(new CubeOuttakeAuto(.5));
 			addSequential(new CascadeDownByTime(RobotMap.SwitchHeight)); 
-		    addSequential(new DriveStraightWithGyro(.3, 20,0));
+		    addSequential(new DriveStraightWithGyro(.3, RobotMap.DistaceFromSwitch ,0));
 			break;
 		case 2:
 			//Middle Position
-			addSequential(new DriveStraightWithGyro(-.6,20,0));
+			addSequential(new DriveStraightWithGyro(-.6,RobotMap.AutoLine,0));
 			//addSequential(new CascadeUpByTime(RobotMap.SwitchHeight));
 			//addSequential(new TiltyBoiDown());
 			//addSequential(new DriveStraightWithGyro(-.3,20,90));
@@ -36,13 +36,13 @@ public class LeftRightLeft extends CommandGroup {
 			break;
 		case 3:
 			//Right Position
-			addSequential(new DriveStraightWithGyro(-.6,40,0));
+			addSequential(new DriveStraightWithGyro(-.6, RobotMap.AutoLine,0));
 			addSequential(new CascadeUpByTime(RobotMap.ScaleHeight));
 			addSequential(new TiltyBoiDown());
-			addSequential(new DriveStraightWithGyro(-.3,20,90));
+			addSequential(new DriveStraightWithGyro(-.3,RobotMap.DistanceFromSwitch,90));
 			addSequential(new CubeOuttakeAuto(.5));
 			addSequential(new CascadeDownByTime(RobotMap.ScaleHeight)); 
-		    addSequential(new DriveStraightWithGyro(.3,20,0));
+		    addSequential(new DriveStraightWithGyro(.3,RobotMap.DistanceFromSwitch,0));
 			break;
 		}
         // Add Commands here:

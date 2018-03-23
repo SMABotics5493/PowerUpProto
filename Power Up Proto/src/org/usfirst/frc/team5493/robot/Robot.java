@@ -1,9 +1,7 @@
 package org.usfirst.frc.team5493.robot;
 
 import org.usfirst.frc.team5493.robot.commands.AutoDoNothing;
-import org.usfirst.frc.team5493.robot.commands.AutoLeftLeft;
 import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
-import org.usfirst.frc.team5493.robot.commands.OldDriveStraight;
 import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftRightLeft;
 import org.usfirst.frc.team5493.robot.subsystems.Cascade;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
@@ -60,9 +58,8 @@ public class Robot extends IterativeRobot {
 
 		chooser = new SendableChooser();
 		chooser.addObject("AutoDoNothing", new AutoDoNothing());
-		chooser.addObject("AutoLeftLeft", new AutoLeftLeft());
 //		chooser.addDefault("AutoStraightOverLine", new DriveStraightWithGyro(-.3, 40, 20));
-		chooser.addObject("OldAutoStraight", new OldDriveStraight());
+
 
 		SmartDashboard.putData("Auto mode", chooser);
 		SmartDashboard.putData("Drive Base", driveBase);

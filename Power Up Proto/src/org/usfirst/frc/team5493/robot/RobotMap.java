@@ -65,10 +65,10 @@ public class RobotMap {
 	public static final double ScaleHeight = 2.0; 
 	
 	public static final double AutoLine = 120;
-	public static final double distanceToSwitch = 20;
-	public static final double distanceFromSwitch = -20;
-	public static final double distanceToScale = 40;
-	public static final double distanceFromScale = -40;
+	public static final double DistanceToSwitch = 20;
+	public static final double DistanceFromSwitch = -20;
+	public static final double DistanceToScale = 40;
+	public static final double DistanceFromScale = -40;
 	public static final double AutoMiddleLine = 120;
 	//public static int gyro;
 	
