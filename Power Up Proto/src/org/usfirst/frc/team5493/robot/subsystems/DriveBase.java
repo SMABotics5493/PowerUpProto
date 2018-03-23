@@ -11,7 +11,6 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -53,11 +52,11 @@ public class DriveBase extends Subsystem {
 		leftFrontMotor.set(ControlMode.Follower, RobotMap.LEFT_BACK);
 		rightFrontMotor.set(ControlMode.Follower, RobotMap.RIGHT_BACK);
 
-		encoderTalons = new WPI_TalonSRX[2];
-		// encoderTalons[0] = leftBackMotor;
-		encoderTalons[RobotMap.LEFT_BACK] = leftBackMotor;
-		// encoderTalons[1] = rightBackMotor;
-		encoderTalons[RobotMap.RIGHT_BACK] = rightBackMotor;
+		 encoderTalons = new WPI_TalonSRX[2];
+		 encoderTalons[0] = leftBackMotor;
+		//encoderTalons[RobotMap.LEFT_BACK] = leftBackMotor;
+		 encoderTalons[1] = rightBackMotor;
+		//encoderTalons[RobotMap.RIGHT_BACK] = rightBackMotor;
 
 		this.initializeTalonsForEncoder();
 
@@ -134,7 +133,7 @@ public class DriveBase extends Subsystem {
 
 			WPI_TalonSRX talon = encoderTalons[talIdx];
 
-			ErrorCode lcode = (talon).configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, kPIDLoopIdx, kTimeoutMs);
+			ErrorCode lcode = (talon).configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, kPIDLoopIdx, 2);
 
 			if (lcode == ErrorCode.OK) {
 				DriverStation.reportWarning(talon.getDeviceID() + " Encoder Quad Sensor Okay", false);
@@ -193,8 +192,8 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void log() {
-		int leftUnits = encoderTalons[0].getSelectedSensorPosition(kPIDLoopIdx);
-		int rightUnits = encoderTalons[1].getSelectedSensorPosition(kPIDLoopIdx);
+		double leftUnits = getLeftDistanceUnits();
+		double rightUnits = getRightDistanceUnits();
 		SmartDashboard.putNumber("Left  - Sensor Units", leftUnits);
 		SmartDashboard.putNumber("Right - Sensor Units", rightUnits);
 		SmartDashboard.putNumber("Inches per rotation", (kDriveWheelDiameterInches * Math.PI));
@@ -283,7 +282,7 @@ public class DriveBase extends Subsystem {
 	}
 
 	private WPI_TalonSRX getLeftMaster() {
-		return encoderTalons[GenericHID.Hand.kLeft.value];
+		return encoderTalons[0];
 	}
 
 	public double getRightVelocityInchesPerSec() {
@@ -291,7 +290,7 @@ public class DriveBase extends Subsystem {
 	}
 
 	private WPI_TalonSRX getRightMaster() {
-		return encoderTalons[GenericHID.Hand.kRight.value];
+		return encoderTalons[1];
 	}
 
 	public double difference(double valA, double valB) {

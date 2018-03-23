@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5493.robot;
 
 import org.usfirst.frc.team5493.robot.commands.AutoDoNothing;
+import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
 import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftLeftLeft;
 import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftLeftRight;
 import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftRightLeft;
@@ -137,7 +138,7 @@ public class Robot extends IterativeRobot {
 //			}
 		}
 
-		// autonomousCommand=new DriveStraightWithGyro(-.4, 120, 0);
+		 autonomousCommand=new DriveStraightWithGyro(-.4, 120, 0);
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
