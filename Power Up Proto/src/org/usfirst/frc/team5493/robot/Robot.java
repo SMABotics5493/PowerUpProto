@@ -1,8 +1,14 @@
 package org.usfirst.frc.team5493.robot;
 
 import org.usfirst.frc.team5493.robot.commands.AutoDoNothing;
-import org.usfirst.frc.team5493.robot.commands.DriveStraightWithGyro;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftLeftLeft;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftLeftRight;
 import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftRightLeft;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.LeftRightRight;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightLeftLeft;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightLeftRight;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightRightLeft;
+import org.usfirst.frc.team5493.robot.commands.gameSpecific.RightRightRight;
 import org.usfirst.frc.team5493.robot.subsystems.Cascade;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;

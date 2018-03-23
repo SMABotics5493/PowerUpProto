@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -42,18 +43,20 @@ public class DriveBase extends Subsystem {
 	public DriveBase() {
 		super();
 
-		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT); // (._.) (._.) (._.)
-		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK); // <) )/ \( )/ \( (>
+		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT); // (._.) (._.)
+																// (._.)
+		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK); // <) )/ \( )/ \(
+																// (>
 		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT); // / \ / \ / \
 		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK);
-		
+
 		leftFrontMotor.set(ControlMode.Follower, RobotMap.LEFT_BACK);
 		rightFrontMotor.set(ControlMode.Follower, RobotMap.RIGHT_BACK);
 
 		encoderTalons = new WPI_TalonSRX[2];
-		//encoderTalons[0] = leftBackMotor;
+		// encoderTalons[0] = leftBackMotor;
 		encoderTalons[RobotMap.LEFT_BACK] = leftBackMotor;
-		//encoderTalons[1] = rightBackMotor;
+		// encoderTalons[1] = rightBackMotor;
 		encoderTalons[RobotMap.RIGHT_BACK] = rightBackMotor;
 
 		this.initializeTalonsForEncoder();
@@ -64,13 +67,12 @@ public class DriveBase extends Subsystem {
 		allTalons[2] = rightBackMotor;
 		allTalons[3] = rightFrontMotor;
 
-		SpeedControllerGroup leftSide = new SpeedControllerGroup(leftBackMotor,
-		 leftFrontMotor);
-		 SpeedControllerGroup rightSide = new SpeedControllerGroup(rightBackMotor,
-		 rightFrontMotor);
+		SpeedControllerGroup leftSide = new SpeedControllerGroup(leftBackMotor, leftFrontMotor);
+		SpeedControllerGroup rightSide = new SpeedControllerGroup(rightBackMotor, rightFrontMotor);
 		drive = new DifferentialDrive(leftSide, rightSide);
 
-		// drive = new RobotDrive(leftFrontMotor, leftBackMotor, rightFrontMotor,
+		// drive = new RobotDrive(leftFrontMotor, leftBackMotor,
+		// rightFrontMotor,
 		// rightBackMotor);
 		// drive = new RobotDrive(leftFrontMotor, rightFrontMotor);
 		drive.setExpiration(0.1);
@@ -112,7 +114,8 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void drive(double left, double right) {
-		//DriverStation.getInstance().reportWarning("Driving: " + left + " " + right, false);
+		// DriverStation.getInstance().reportWarning("Driving: " + left + " " +
+		// right, false);
 		drive.tankDrive(left, right);
 		log();
 	}
@@ -123,7 +126,7 @@ public class DriveBase extends Subsystem {
 		drive.curvatureDrive(direction, arc, quickTurn);
 		// drive.drive(direction, arc);
 		// drive.setSafetyEnabled(true);
-//		DriverStation.getInstance().reportWarning("Drive Heading", true);
+		// DriverStation.getInstance().reportWarning("Drive Heading", true);
 	}
 
 	private void initializeTalonsForEncoder() {
@@ -152,8 +155,9 @@ public class DriveBase extends Subsystem {
 			talon.configPeakOutputForward(1, kTimeoutMs);
 			talon.configPeakOutputReverse(-1, kTimeoutMs);
 			/*
-			 * set the allowable closed-loop error, Closed-Loop output will be neutral
-			 * within this range. See Table in Section 17.2.1 for native units per rotation.
+			 * set the allowable closed-loop error, Closed-Loop output will be
+			 * neutral within this range. See Table in Section 17.2.1 for native
+			 * units per rotation.
 			 */
 			talon.configAllowableClosedloopError(0, kPIDLoopIdx, kTimeoutMs);
 
@@ -172,10 +176,11 @@ public class DriveBase extends Subsystem {
 
 			TalonSRX talon = encoderTalons[talIdx];
 			/*
-			 * lets grab the 360 degree position of the MagEncoder's absolute position, and
-			 * intitally set the relative sensor to match.
+			 * lets grab the 360 degree position of the MagEncoder's absolute
+			 * position, and intitally set the relative sensor to match.
 			 */
-			//int absolutePosition = talon.getSensorCollection().getPulseWidthPosition();
+			// int absolutePosition =
+			// talon.getSensorCollection().getPulseWidthPosition();
 			/* mask out overflows, keep bottom 12 bits */
 			// absolutePosition &= 0xFFF;
 			// if (Constants.kSensorPhase)
