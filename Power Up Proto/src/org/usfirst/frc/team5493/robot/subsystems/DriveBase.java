@@ -61,7 +61,7 @@ public class DriveBase extends Subsystem {
 
 		this.initializeTalonsForEncoder();
 
-		allTalons = new WPI_TalonSRX[2];
+		allTalons = new WPI_TalonSRX[4];
 		allTalons[0] = leftBackMotor;
 		allTalons[1] = leftFrontMotor;
 		allTalons[2] = rightBackMotor;
