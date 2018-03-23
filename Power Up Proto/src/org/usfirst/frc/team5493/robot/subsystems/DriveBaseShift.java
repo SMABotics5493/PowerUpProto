@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class ThrowDaggersInBensEyes extends Subsystem {
+public class DriveBaseShift extends Subsystem {
 	
-	DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.SOLENOID_FORWARD, RobotMap.SOLENOID_REVERSE);
+	DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.DRIVEBASE_HIGH, RobotMap.DRIVEBASE_LOW);
 	
-	public ThrowDaggersInBensEyes() {
+	public DriveBaseShift() {
 		solenoid.set(DoubleSolenoid.Value.kForward);
 		Robot.isShifted = false;
 	}

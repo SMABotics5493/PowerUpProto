@@ -12,7 +12,7 @@ public class TransmissionReverse extends Command {
 	boolean isFinished;
 
 	public TransmissionReverse() {
-		requires(Robot.throwDaggersInBensEyes);
+		requires(Robot.driveBaseShift);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
@@ -23,7 +23,7 @@ public class TransmissionReverse extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.throwDaggersInBensEyes.reverse(null);
+		Robot.driveBaseShift.reverse(null);
 		isFinished = true;
 	}
 

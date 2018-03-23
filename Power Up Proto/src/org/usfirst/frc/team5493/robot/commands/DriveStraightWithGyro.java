@@ -29,7 +29,7 @@ public class DriveStraightWithGyro extends Command {
 
 	public DriveStraightWithGyro(double directionalSpeed, double distance, double heading) {
 		requires(Robot.driveBase);
-		requires(Robot.throwDaggersInBensEyes);
+//		requires(Robot.driveBaseShift);
 		_distance = DriveBase.inchesToRotations(distance);
 		_heading = heading;
 		_directionalSpeed = directionalSpeed;
@@ -90,7 +90,7 @@ public class DriveStraightWithGyro extends Command {
 			isFinished = false;
 			startingPosition = Robot.driveBase.getEncoderAverage();
 			startingAngle = currentHeading;
-			// Robot.throwDaggersInBensEyes.reverse(null);
+			// Robot.driveBaseShift.reverse(null);
 
 			isStarted = true;
 			targetHeading = currentHeading + _heading;

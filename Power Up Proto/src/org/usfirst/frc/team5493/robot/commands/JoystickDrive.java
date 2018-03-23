@@ -12,7 +12,7 @@ public class JoystickDrive extends Command {
 	private boolean isFinished;
     public JoystickDrive() {
         requires(Robot.driveBase);
-        requires(Robot.throwDaggersInBensEyes);
+//        requires(Robot.driveBaseShift);
     }
 
     // Called just before this Command runs the first time

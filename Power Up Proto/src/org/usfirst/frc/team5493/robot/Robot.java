@@ -15,7 +15,7 @@ import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
 import org.usfirst.frc.team5493.robot.subsystems.Endgame;
-import org.usfirst.frc.team5493.robot.subsystems.ThrowDaggersInBensEyes;
+import org.usfirst.frc.team5493.robot.subsystems.DriveBaseShift;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveBase driveBase = new DriveBase();
 	public static Cascade cascade;
 	public static OI oi;
-	public static ThrowDaggersInBensEyes throwDaggersInBensEyes;
+	public static DriveBaseShift driveBaseShift;
 	public static Endgame endgame;
 	public static CubeControls cubeControls;
 	public static Climber climber;
@@ -58,7 +58,7 @@ public class Robot extends IterativeRobot {
 		gyro = new ADXRS450_Gyro();
 		cascade = new Cascade();
 		cubeControls = new CubeControls();
-		throwDaggersInBensEyes = new ThrowDaggersInBensEyes();
+		driveBaseShift = new DriveBaseShift();
 		endgame = new Endgame();
 		climber = new Climber();
 		oi = new OI();
