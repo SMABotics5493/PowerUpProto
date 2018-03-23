@@ -72,11 +72,11 @@ public class CubeControls extends Subsystem {
 	//}
 	
 	public void raiseUp() {
-		Robot.cubeControls.intakeLift.set(0.8);
+		Robot.cubeControls.intakeLift.set(0.4);
 	}
 	
 	public void raiseDown() {
-		Robot.cubeControls.intakeLift.set(-0.8);
+		Robot.cubeControls.intakeLift.set(-0.4);
 	}
 	
 	public void end2() {

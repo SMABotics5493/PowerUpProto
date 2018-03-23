@@ -19,8 +19,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveBase extends Subsystem {
-	final static double kDriveWheelDiameterInches = 6.0;
-
+	final static double kDriveWheelDiameterInches = 6.0;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 	final static double cyclesPerRevolution = 360.0;
 	final static double unitsPerRotation = 1440.0;
 	double averageDistance;
@@ -42,9 +41,9 @@ public class DriveBase extends Subsystem {
 	public DriveBase() {
 		super();
 
-		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT); // (._.) (._.)
-																// (._.)
-		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK); // <) )/ \( )/ \(
+		leftFrontMotor = new WPI_TalonSRX(RobotMap.LEFT_FRONT); // (._.) (._.)(._.)
+																
+		leftBackMotor = new WPI_TalonSRX(RobotMap.LEFT_BACK);    // <) )/ \( )/ \(
 																// (>
 		rightFrontMotor = new WPI_TalonSRX(RobotMap.RIGHT_FRONT); // / \ / \ / \
 		rightBackMotor = new WPI_TalonSRX(RobotMap.RIGHT_BACK);

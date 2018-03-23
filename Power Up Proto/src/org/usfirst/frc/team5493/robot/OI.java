@@ -1,5 +1,19 @@
 package org.usfirst.frc.team5493.robot;
 
+import org.usfirst.frc.team5493.robot.commands.CascadeDown;
+import org.usfirst.frc.team5493.robot.commands.CascadeUp;
+import org.usfirst.frc.team5493.robot.commands.ClimbDown;
+import org.usfirst.frc.team5493.robot.commands.ClimbUp;
+import org.usfirst.frc.team5493.robot.commands.CubeIntake;
+import org.usfirst.frc.team5493.robot.commands.CubeOuttake;
+import org.usfirst.frc.team5493.robot.commands.EndForward;
+import org.usfirst.frc.team5493.robot.commands.EndReverse;
+import org.usfirst.frc.team5493.robot.commands.EndgameRaise;
+import org.usfirst.frc.team5493.robot.commands.TiltyBoiDown;
+import org.usfirst.frc.team5493.robot.commands.TiltyBoiUp;
+import org.usfirst.frc.team5493.robot.commands.TransmissionForward;
+import org.usfirst.frc.team5493.robot.commands.TransmissionReverse;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -38,24 +52,24 @@ public class OI {
 		return joystick;
 	}
 
-//	public OI() {
-//
-//		//cascadeSpeed.whileActive(new CascadeBySpeed(cascadeLock));
-//		//cascadeLock.whileActive(new CascadeBySpeed(cascadeLock));
-//		cubeIntake.whileHeld(new CubeIntake(cubeIntake));
-//		cubeOuttake.whileHeld(new CubeOuttake(cubeOuttake));
-//		solenoidForward.whenPressed(new TransmissionForward());
-//		solenoidReverse.whenPressed(new TransmissionReverse());
-//		pullUp.whileHeld(new ClimbUp(pullUp));
-//		pullDown.whileHeld(new ClimbDown(pullDown));
-//		tiltyBoiUp.whileHeld(new TiltyBoiUp());
-//		tiltyBoiDown.whileHeld(new TiltyBoiDown());
-//		solenoidEndForward.whenPressed(new EndForward());
-//		solenoidEndReverse.whenPressed(new EndReverse());
-//		endgameRelease.whileHeld(new EndgameRaise());
-//		cascadeUp.whileHeld(new CascadeUp(cascadeUp));
-//		cascadeDown.whileHeld(new CascadeDown(cascadeDown));
-//
-//	}
+	public OI() {
+
+		//cascadeSpeed.whileActive(new CascadeBySpeed(cascadeLock));
+		//cascadeLock.whileActive(new CascadeBySpeed(cascadeLock));
+		cubeIntake.whileHeld(new CubeIntake(cubeIntake));
+		cubeOuttake.whileHeld(new CubeOuttake(cubeOuttake));
+		solenoidForward.whenPressed(new TransmissionForward());
+		solenoidReverse.whenPressed(new TransmissionReverse());
+		pullUp.whileHeld(new ClimbUp(pullUp));
+		pullDown.whileHeld(new ClimbDown(pullDown));
+		tiltyBoiUp.whileHeld(new TiltyBoiUp());
+		tiltyBoiDown.whileHeld(new TiltyBoiDown());
+		solenoidEndForward.whenPressed(new EndForward());
+		solenoidEndReverse.whenPressed(new EndReverse());
+		endgameRelease.whileHeld(new EndgameRaise());
+		cascadeUp.whileHeld(new CascadeUp(cascadeUp));
+		cascadeDown.whileHeld(new CascadeDown(cascadeDown));
+
+	}
 
 }

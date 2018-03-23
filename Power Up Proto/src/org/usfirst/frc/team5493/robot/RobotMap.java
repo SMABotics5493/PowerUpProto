@@ -51,11 +51,11 @@ public class RobotMap {
 	public static final int RIGHT_ENCODER_A = 3;
 	public static final int RIGHT_ENCODER_B = 4;
 	
-	public static final int SOLENOID_FORWARD = 0;
-	public static final int SOLENOID_REVERSE = 1;
+	public static final int SOLENOID_FORWARD = 6;
+	public static final int SOLENOID_REVERSE = 7;
 	
-	public static final int ENDGAME_ENGAGED = 6;
-	public static final int ENDGAME_DISENGAGED = 7;
+	public static final int ENDGAME_ENGAGED = 0;
+	public static final int ENDGAME_DISENGAGED = 1;
 	
 	public static final int LIMIT_SWITCH_CUBE_CONTROLS = 1; //port on DIO
 	public static final int LIMIT_SWITH_UP_CLIMBER = 2; 
