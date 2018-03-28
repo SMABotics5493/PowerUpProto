@@ -14,8 +14,8 @@ import org.usfirst.frc.team5493.robot.subsystems.Cascade;
 import org.usfirst.frc.team5493.robot.subsystems.Climber;
 import org.usfirst.frc.team5493.robot.subsystems.CubeControls;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBase;
-import org.usfirst.frc.team5493.robot.subsystems.Endgame;
 import org.usfirst.frc.team5493.robot.subsystems.DriveBaseShift;
+import org.usfirst.frc.team5493.robot.subsystems.Endgame;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import com.ctre.CANTalon.TalonControlMode;
+
 
 public class Robot extends IterativeRobot {
 
@@ -39,7 +39,6 @@ public class Robot extends IterativeRobot {
 	public static Climber climber;
 
 	public static ADXRS450_Gyro gyro;
-	// Encoder encoder = new Encoder(4, 5, true, EncodingType.k2X);
 	static double distancePerRevolution = 480.66;
 	static double pulsesPerRevolution = 1440;
 	static double countsPerRevolution = 360;
